@@ -1,0 +1,431 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		AFF65DDB1B365A5800AFD902 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AFF65DDA1B365A5800AFD902 /* main.m */; };
+		AFF65DDE1B365A5800AFD902 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AFF65DDD1B365A5800AFD902 /* AppDelegate.m */; };
+		AFF65DE11B365A5800AFD902 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AFF65DE01B365A5800AFD902 /* ViewController.m */; };
+		AFF65DE41B365A5800AFD902 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AFF65DE21B365A5800AFD902 /* Main.storyboard */; };
+		AFF65DE61B365A5800AFD902 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AFF65DE51B365A5800AFD902 /* Images.xcassets */; };
+		AFF65DE91B365A5800AFD902 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = AFF65DE71B365A5800AFD902 /* LaunchScreen.xib */; };
+		AFF65DF51B365A5800AFD902 /* Promo_PodTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AFF65DF41B365A5800AFD902 /* Promo_PodTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		AFF65DEF1B365A5800AFD902 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AFF65DCD1B365A5800AFD902 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AFF65DD41B365A5800AFD902;
+			remoteInfo = "Promo Pod";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		AFF65DD51B365A5800AFD902 /* Promo Pod.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Promo Pod.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		AFF65DD91B365A5800AFD902 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AFF65DDA1B365A5800AFD902 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		AFF65DDC1B365A5800AFD902 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		AFF65DDD1B365A5800AFD902 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		AFF65DDF1B365A5800AFD902 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		AFF65DE01B365A5800AFD902 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		AFF65DE31B365A5800AFD902 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		AFF65DE51B365A5800AFD902 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		AFF65DE81B365A5800AFD902 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		AFF65DEE1B365A5800AFD902 /* Promo PodTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Promo PodTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		AFF65DF31B365A5800AFD902 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AFF65DF41B365A5800AFD902 /* Promo_PodTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Promo_PodTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		AFF65DD21B365A5800AFD902 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AFF65DEB1B365A5800AFD902 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		AFF65DCC1B365A5800AFD902 = {
+			isa = PBXGroup;
+			children = (
+				AFF65DD71B365A5800AFD902 /* Promo Pod */,
+				AFF65DF11B365A5800AFD902 /* Promo PodTests */,
+				AFF65DD61B365A5800AFD902 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		AFF65DD61B365A5800AFD902 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AFF65DD51B365A5800AFD902 /* Promo Pod.app */,
+				AFF65DEE1B365A5800AFD902 /* Promo PodTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		AFF65DD71B365A5800AFD902 /* Promo Pod */ = {
+			isa = PBXGroup;
+			children = (
+				AFF65DDC1B365A5800AFD902 /* AppDelegate.h */,
+				AFF65DDD1B365A5800AFD902 /* AppDelegate.m */,
+				AFF65DDF1B365A5800AFD902 /* ViewController.h */,
+				AFF65DE01B365A5800AFD902 /* ViewController.m */,
+				AFF65DE21B365A5800AFD902 /* Main.storyboard */,
+				AFF65DE51B365A5800AFD902 /* Images.xcassets */,
+				AFF65DE71B365A5800AFD902 /* LaunchScreen.xib */,
+				AFF65DD81B365A5800AFD902 /* Supporting Files */,
+			);
+			path = "Promo Pod";
+			sourceTree = "<group>";
+		};
+		AFF65DD81B365A5800AFD902 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				AFF65DD91B365A5800AFD902 /* Info.plist */,
+				AFF65DDA1B365A5800AFD902 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		AFF65DF11B365A5800AFD902 /* Promo PodTests */ = {
+			isa = PBXGroup;
+			children = (
+				AFF65DF41B365A5800AFD902 /* Promo_PodTests.m */,
+				AFF65DF21B365A5800AFD902 /* Supporting Files */,
+			);
+			path = "Promo PodTests";
+			sourceTree = "<group>";
+		};
+		AFF65DF21B365A5800AFD902 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				AFF65DF31B365A5800AFD902 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		AFF65DD41B365A5800AFD902 /* Promo Pod */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AFF65DF81B365A5800AFD902 /* Build configuration list for PBXNativeTarget "Promo Pod" */;
+			buildPhases = (
+				AFF65DD11B365A5800AFD902 /* Sources */,
+				AFF65DD21B365A5800AFD902 /* Frameworks */,
+				AFF65DD31B365A5800AFD902 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Promo Pod";
+			productName = "Promo Pod";
+			productReference = AFF65DD51B365A5800AFD902 /* Promo Pod.app */;
+			productType = "com.apple.product-type.application";
+		};
+		AFF65DED1B365A5800AFD902 /* Promo PodTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AFF65DFB1B365A5800AFD902 /* Build configuration list for PBXNativeTarget "Promo PodTests" */;
+			buildPhases = (
+				AFF65DEA1B365A5800AFD902 /* Sources */,
+				AFF65DEB1B365A5800AFD902 /* Frameworks */,
+				AFF65DEC1B365A5800AFD902 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AFF65DF01B365A5800AFD902 /* PBXTargetDependency */,
+			);
+			name = "Promo PodTests";
+			productName = "Promo PodTests";
+			productReference = AFF65DEE1B365A5800AFD902 /* Promo PodTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		AFF65DCD1B365A5800AFD902 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0630;
+				ORGANIZATIONNAME = YidgetSoft;
+				TargetAttributes = {
+					AFF65DD41B365A5800AFD902 = {
+						CreatedOnToolsVersion = 6.3.2;
+					};
+					AFF65DED1B365A5800AFD902 = {
+						CreatedOnToolsVersion = 6.3.2;
+						TestTargetID = AFF65DD41B365A5800AFD902;
+					};
+				};
+			};
+			buildConfigurationList = AFF65DD01B365A5800AFD902 /* Build configuration list for PBXProject "Promo Pod" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = AFF65DCC1B365A5800AFD902;
+			productRefGroup = AFF65DD61B365A5800AFD902 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				AFF65DD41B365A5800AFD902 /* Promo Pod */,
+				AFF65DED1B365A5800AFD902 /* Promo PodTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		AFF65DD31B365A5800AFD902 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AFF65DE41B365A5800AFD902 /* Main.storyboard in Resources */,
+				AFF65DE91B365A5800AFD902 /* LaunchScreen.xib in Resources */,
+				AFF65DE61B365A5800AFD902 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AFF65DEC1B365A5800AFD902 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		AFF65DD11B365A5800AFD902 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AFF65DE11B365A5800AFD902 /* ViewController.m in Sources */,
+				AFF65DDE1B365A5800AFD902 /* AppDelegate.m in Sources */,
+				AFF65DDB1B365A5800AFD902 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AFF65DEA1B365A5800AFD902 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AFF65DF51B365A5800AFD902 /* Promo_PodTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		AFF65DF01B365A5800AFD902 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AFF65DD41B365A5800AFD902 /* Promo Pod */;
+			targetProxy = AFF65DEF1B365A5800AFD902 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		AFF65DE21B365A5800AFD902 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AFF65DE31B365A5800AFD902 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		AFF65DE71B365A5800AFD902 /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AFF65DE81B365A5800AFD902 /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		AFF65DF61B365A5800AFD902 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		AFF65DF71B365A5800AFD902 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		AFF65DF91B365A5800AFD902 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "Promo Pod/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		AFF65DFA1B365A5800AFD902 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "Promo Pod/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		AFF65DFC1B365A5800AFD902 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "Promo PodTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Promo Pod.app/Promo Pod";
+			};
+			name = Debug;
+		};
+		AFF65DFD1B365A5800AFD902 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "Promo PodTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Promo Pod.app/Promo Pod";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		AFF65DD01B365A5800AFD902 /* Build configuration list for PBXProject "Promo Pod" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AFF65DF61B365A5800AFD902 /* Debug */,
+				AFF65DF71B365A5800AFD902 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AFF65DF81B365A5800AFD902 /* Build configuration list for PBXNativeTarget "Promo Pod" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AFF65DF91B365A5800AFD902 /* Debug */,
+				AFF65DFA1B365A5800AFD902 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		AFF65DFB1B365A5800AFD902 /* Build configuration list for PBXNativeTarget "Promo PodTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AFF65DFC1B365A5800AFD902 /* Debug */,
+				AFF65DFD1B365A5800AFD902 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = AFF65DCD1B365A5800AFD902 /* Project object */;
+}
