@@ -7,6 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "RootViewController.h"
+#import "UIColor+HTMLColors.h"
+#import "Chameleon.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 

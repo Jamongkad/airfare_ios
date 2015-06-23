@@ -7,10 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		90404FC72D084677F12479C1 /* libPods-Promo Pod.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C1E40EC5B0858B776612D238 /* libPods-Promo Pod.a */; };
+		AF046A141B368EDD00785AFB /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF046A131B368EDD00785AFB /* RootViewController.m */; };
+		AF046A191B36A49F00785AFB /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF046A181B36A49F00785AFB /* SearchViewController.m */; };
+		AF046A1C1B36AF3300785AFB /* SearchFormViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF046A1B1B36AF3300785AFB /* SearchFormViewController.m */; };
+		AFC14E611B38446E00531016 /* DepartureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AFC14E601B38446E00531016 /* DepartureViewController.m */; };
+		AFC14E641B3856E100531016 /* SearchResultsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AFC14E631B3856E100531016 /* SearchResultsTableViewController.m */; };
 		AFF65DDB1B365A5800AFD902 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AFF65DDA1B365A5800AFD902 /* main.m */; };
 		AFF65DDE1B365A5800AFD902 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AFF65DDD1B365A5800AFD902 /* AppDelegate.m */; };
-		AFF65DE11B365A5800AFD902 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AFF65DE01B365A5800AFD902 /* ViewController.m */; };
-		AFF65DE41B365A5800AFD902 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AFF65DE21B365A5800AFD902 /* Main.storyboard */; };
 		AFF65DE61B365A5800AFD902 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AFF65DE51B365A5800AFD902 /* Images.xcassets */; };
 		AFF65DE91B365A5800AFD902 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = AFF65DE71B365A5800AFD902 /* LaunchScreen.xib */; };
 		AFF65DF51B365A5800AFD902 /* Promo_PodTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AFF65DF41B365A5800AFD902 /* Promo_PodTests.m */; };
@@ -27,19 +31,29 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A82ADAF4E42B80BF85C041E9 /* Pods-Promo Pod.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Promo Pod.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Promo Pod/Pods-Promo Pod.debug.xcconfig"; sourceTree = "<group>"; };
+		AF046A121B368EDD00785AFB /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
+		AF046A131B368EDD00785AFB /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
+		AF046A171B36A49F00785AFB /* SearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
+		AF046A181B36A49F00785AFB /* SearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
+		AF046A1A1B36AF3300785AFB /* SearchFormViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchFormViewController.h; sourceTree = "<group>"; };
+		AF046A1B1B36AF3300785AFB /* SearchFormViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchFormViewController.m; sourceTree = "<group>"; };
+		AFC14E5F1B38446E00531016 /* DepartureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DepartureViewController.h; sourceTree = "<group>"; };
+		AFC14E601B38446E00531016 /* DepartureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DepartureViewController.m; sourceTree = "<group>"; };
+		AFC14E621B3856E100531016 /* SearchResultsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchResultsTableViewController.h; sourceTree = "<group>"; };
+		AFC14E631B3856E100531016 /* SearchResultsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchResultsTableViewController.m; sourceTree = "<group>"; };
 		AFF65DD51B365A5800AFD902 /* Promo Pod.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Promo Pod.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AFF65DD91B365A5800AFD902 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AFF65DDA1B365A5800AFD902 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		AFF65DDC1B365A5800AFD902 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		AFF65DDD1B365A5800AFD902 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		AFF65DDF1B365A5800AFD902 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		AFF65DE01B365A5800AFD902 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		AFF65DE31B365A5800AFD902 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		AFF65DE51B365A5800AFD902 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		AFF65DE81B365A5800AFD902 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		AFF65DEE1B365A5800AFD902 /* Promo PodTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Promo PodTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AFF65DF31B365A5800AFD902 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AFF65DF41B365A5800AFD902 /* Promo_PodTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Promo_PodTests.m; sourceTree = "<group>"; };
+		B7CD7D8183EE05DA008A4DD4 /* Pods-Promo Pod.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Promo Pod.release.xcconfig"; path = "Pods/Target Support Files/Pods-Promo Pod/Pods-Promo Pod.release.xcconfig"; sourceTree = "<group>"; };
+		C1E40EC5B0858B776612D238 /* libPods-Promo Pod.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Promo Pod.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,6 +61,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				90404FC72D084677F12479C1 /* libPods-Promo Pod.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -60,12 +75,64 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		556EC0D60A18C093B1533347 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C1E40EC5B0858B776612D238 /* libPods-Promo Pod.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		649E309B4877E254B7912137 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				A82ADAF4E42B80BF85C041E9 /* Pods-Promo Pod.debug.xcconfig */,
+				B7CD7D8183EE05DA008A4DD4 /* Pods-Promo Pod.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		AF046A111B3661E800785AFB /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				AF046A121B368EDD00785AFB /* RootViewController.h */,
+				AF046A131B368EDD00785AFB /* RootViewController.m */,
+				AF046A161B36A34B00785AFB /* Forms */,
+				AF046A151B36A34600785AFB /* App */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		AF046A151B36A34600785AFB /* App */ = {
+			isa = PBXGroup;
+			children = (
+				AF046A171B36A49F00785AFB /* SearchViewController.h */,
+				AF046A181B36A49F00785AFB /* SearchViewController.m */,
+				AFC14E5F1B38446E00531016 /* DepartureViewController.h */,
+				AFC14E601B38446E00531016 /* DepartureViewController.m */,
+				AFC14E621B3856E100531016 /* SearchResultsTableViewController.h */,
+				AFC14E631B3856E100531016 /* SearchResultsTableViewController.m */,
+			);
+			name = App;
+			sourceTree = "<group>";
+		};
+		AF046A161B36A34B00785AFB /* Forms */ = {
+			isa = PBXGroup;
+			children = (
+				AF046A1A1B36AF3300785AFB /* SearchFormViewController.h */,
+				AF046A1B1B36AF3300785AFB /* SearchFormViewController.m */,
+			);
+			name = Forms;
+			sourceTree = "<group>";
+		};
 		AFF65DCC1B365A5800AFD902 = {
 			isa = PBXGroup;
 			children = (
 				AFF65DD71B365A5800AFD902 /* Promo Pod */,
 				AFF65DF11B365A5800AFD902 /* Promo PodTests */,
 				AFF65DD61B365A5800AFD902 /* Products */,
+				649E309B4877E254B7912137 /* Pods */,
+				556EC0D60A18C093B1533347 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -83,9 +150,7 @@
 			children = (
 				AFF65DDC1B365A5800AFD902 /* AppDelegate.h */,
 				AFF65DDD1B365A5800AFD902 /* AppDelegate.m */,
-				AFF65DDF1B365A5800AFD902 /* ViewController.h */,
-				AFF65DE01B365A5800AFD902 /* ViewController.m */,
-				AFF65DE21B365A5800AFD902 /* Main.storyboard */,
+				AF046A111B3661E800785AFB /* ViewControllers */,
 				AFF65DE51B365A5800AFD902 /* Images.xcassets */,
 				AFF65DE71B365A5800AFD902 /* LaunchScreen.xib */,
 				AFF65DD81B365A5800AFD902 /* Supporting Files */,
@@ -126,9 +191,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = AFF65DF81B365A5800AFD902 /* Build configuration list for PBXNativeTarget "Promo Pod" */;
 			buildPhases = (
+				52712209ED6D1BBA1E46DE55 /* Check Pods Manifest.lock */,
 				AFF65DD11B365A5800AFD902 /* Sources */,
 				AFF65DD21B365A5800AFD902 /* Frameworks */,
 				AFF65DD31B365A5800AFD902 /* Resources */,
+				C268341C0E43C7A066D71E96 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -199,7 +266,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AFF65DE41B365A5800AFD902 /* Main.storyboard in Resources */,
 				AFF65DE91B365A5800AFD902 /* LaunchScreen.xib in Resources */,
 				AFF65DE61B365A5800AFD902 /* Images.xcassets in Resources */,
 			);
@@ -214,13 +280,50 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		52712209ED6D1BBA1E46DE55 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		C268341C0E43C7A066D71E96 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Promo Pod/Pods-Promo Pod-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		AFF65DD11B365A5800AFD902 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AFF65DE11B365A5800AFD902 /* ViewController.m in Sources */,
 				AFF65DDE1B365A5800AFD902 /* AppDelegate.m in Sources */,
+				AF046A141B368EDD00785AFB /* RootViewController.m in Sources */,
+				AF046A191B36A49F00785AFB /* SearchViewController.m in Sources */,
+				AFC14E641B3856E100531016 /* SearchResultsTableViewController.m in Sources */,
+				AFC14E611B38446E00531016 /* DepartureViewController.m in Sources */,
+				AF046A1C1B36AF3300785AFB /* SearchFormViewController.m in Sources */,
 				AFF65DDB1B365A5800AFD902 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -244,14 +347,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		AFF65DE21B365A5800AFD902 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				AFF65DE31B365A5800AFD902 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		AFF65DE71B365A5800AFD902 /* LaunchScreen.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -345,6 +440,7 @@
 		};
 		AFF65DF91B365A5800AFD902 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A82ADAF4E42B80BF85C041E9 /* Pods-Promo Pod.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "Promo Pod/Info.plist";
@@ -355,6 +451,7 @@
 		};
 		AFF65DFA1B365A5800AFD902 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B7CD7D8183EE05DA008A4DD4 /* Pods-Promo Pod.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "Promo Pod/Info.plist";
@@ -416,6 +513,7 @@
 				AFF65DFA1B365A5800AFD902 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		AFF65DFB1B365A5800AFD902 /* Build configuration list for PBXNativeTarget "Promo PodTests" */ = {
 			isa = XCConfigurationList;
@@ -424,6 +522,7 @@
 				AFF65DFD1B365A5800AFD902 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
