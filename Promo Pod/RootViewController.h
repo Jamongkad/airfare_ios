@@ -9,7 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "Masonry.h"
 #import "SearchViewController.h"
+#import "DatabaseController.h"
 
 @interface RootViewController : UIViewController
-
+@property (nonatomic, strong) DatabaseController *dbc;
 @end

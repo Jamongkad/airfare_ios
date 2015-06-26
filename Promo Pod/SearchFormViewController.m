@@ -24,11 +24,10 @@
         section = [XLFormSectionDescriptor formSection];
         [formDescriptor addFormSection:section];
         
-        row = [XLFormRowDescriptor formRowDescriptorWithTag:@"Departure" rowType:XLFormRowDescriptorTypeButton title:@"Departure"];
-        row.action.viewControllerClass = [DepartureViewController class];
+        row = [XLFormRowDescriptor formRowDescriptorWithTag:@"Departure" rowType:XLFormRowDescriptorTypeSelectorPush title:@"Departure"];
         [section addFormRow:row];
         
-        row = [XLFormRowDescriptor formRowDescriptorWithTag:@"Arrival" rowType:XLFormRowDescriptorTypeButton title:@"Arrival"];
+        row = [XLFormRowDescriptor formRowDescriptorWithTag:@"Arrival" rowType:XLFormRowDescriptorTypeSelectorPush title:@"Arrival"];
         [section addFormRow:row];
         
         return [super initWithForm:formDescriptor];
@@ -37,8 +36,15 @@
     return self;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    DepartureViewController *dvc = [[DepartureViewController alloc] init];
+    [dvc setFlightIdentifier:indexPath.row];
+    [self.navigationController pushViewController:dvc animated:YES];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self.tableView setBackgroundColor:[UIColor whiteColor]];
     // Do any additional setup after loading the view.
 }
 

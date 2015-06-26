@@ -8,10 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import <ChameleonFramework/Chameleon.h>
+#import "UIColor+HTMLColors.h"
 #import "Masonry.h"
-
 #import "SearchFormViewController.h"
 
-@interface SearchViewController : UIViewController
+#import "DatabaseController.h"
 
+
+@interface SearchViewController : UIViewController
 @end

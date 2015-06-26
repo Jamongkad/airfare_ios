@@ -7,9 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DatabaseController.h"
 
 @interface SearchResultsTableViewController : UITableViewController
 @property (nonatomic) int searchCount;
-@property (nonatomic, strong) NSString *searchText;
+@property (nonatomic, strong) NSDictionary *getResult;
 @property (nonatomic, strong) NSArray *searchResults;
+@property (nonatomic, strong) DatabaseController *dbc;
+@property (nonatomic) long flightIdentifier;
 @end

@@ -15,10 +15,20 @@
 
 @implementation DepartureViewController
 
+@synthesize flightIdentifier;
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    NSLog(@"Flight Identity %ld", self.flightIdentifier);
+    
     // Do any additional setup after loading the view.
-    self.title = @"Select Depature";
+    if(self.flightIdentifier == 0) {
+        self.title = @"Select Departure";
+    } else {
+        self.title = @"Select Arrival";
+    }
+   
     [self.view setBackgroundColor:[UIColor whiteColor]];
     
     UITextField *tf = [[UITextField alloc] init];
@@ -26,9 +36,8 @@
     [tf setBorderStyle:UITextBorderStyleRoundedRect];
     [tf becomeFirstResponder];
     
-    [tf addTarget:self action:@selector(updateTextLabel:) forControlEvents:UIControlEventEditingChanged];
+    //[tf addTarget:self action:@selector(updateTextLabel:) forControlEvents:UIControlEventEditingChanged];
     [tf addTarget:self action:@selector(enterSearch:) forControlEvents:UIControlEventEditingDidEndOnExit];
-    
     
     [tf mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.view);
@@ -38,6 +47,7 @@
     }];
     
     self.srtvc = [[SearchResultsTableViewController alloc] init];
+    [self.srtvc setFlightIdentifier:self.flightIdentifier];
     
     [self addChildViewController:self.srtvc];
     [self.view addSubview:self.srtvc.view];
@@ -77,7 +87,6 @@
         AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
         
         [manager GET:url parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-
             [self.srtvc setSearchCount:(int)[responseObject count]];
             [self.srtvc setSearchResults:responseObject];
             [self.srtvc.tableView reloadData];

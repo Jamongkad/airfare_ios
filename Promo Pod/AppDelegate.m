@@ -17,6 +17,10 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    DatabaseController *dbc = [[DatabaseController alloc] init];
+    [dbc createTablesAndSeed];
+    
     [[UINavigationBar appearance] setBarTintColor:[UIColor flatSkyBlueColor]];
     [[UINavigationBar appearance] setTranslucent:NO];
     [[UINavigationBar appearance] setTitleTextAttributes:@{

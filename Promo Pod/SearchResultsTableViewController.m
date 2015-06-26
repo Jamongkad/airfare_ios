@@ -14,9 +14,17 @@
 
 @implementation SearchResultsTableViewController
 
-@synthesize searchCount, searchText, searchResults;
+@synthesize searchCount, getResult, searchResults, flightIdentifier;
 
 extern NSString * const cellIdentifier = @"kIdentifier";
+
+- (instancetype)init {
+    if(self = [super init]) {
+        self.dbc = [[DatabaseController alloc] init];
+    }
+    
+    return self;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -58,11 +66,28 @@ extern NSString * const cellIdentifier = @"kIdentifier";
     
     NSDictionary *results = self.searchResults[indexPath.row];
     
-    NSLog(@"Results: %@", results);
-    
     // Configure the cell...
     cell.textLabel.text = [NSString stringWithFormat:@"%@ - %@", results[@"airport"], results[@"iata"]];
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    id currentFlight;
+    if(self.flightIdentifier == 0) {
+        //means departure
+        currentFlight = @1;
+    } else {
+        //means arrival
+        currentFlight = @2;
+    }
+    
+    NSDictionary *results = self.searchResults[indexPath.row];
+    NSMutableDictionary *newResults = [results mutableCopy];
+    [newResults setObject:@"departure" forKey:@"travelType"];
+    [newResults setObject:currentFlight forKey:@"currentFlight"];
+    [self.dbc saveFlight:newResults];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 /*

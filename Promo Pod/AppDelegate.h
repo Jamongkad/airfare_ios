@@ -10,6 +10,7 @@
 #import "RootViewController.h"
 #import "UIColor+HTMLColors.h"
 #import "Chameleon.h"
+#import "DatabaseController.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 

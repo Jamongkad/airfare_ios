@@ -13,6 +13,8 @@
 		AF046A1C1B36AF3300785AFB /* SearchFormViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF046A1B1B36AF3300785AFB /* SearchFormViewController.m */; };
 		AFC14E611B38446E00531016 /* DepartureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AFC14E601B38446E00531016 /* DepartureViewController.m */; };
 		AFC14E641B3856E100531016 /* SearchResultsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AFC14E631B3856E100531016 /* SearchResultsTableViewController.m */; };
+		AFDA811C1B3A650D00B847D1 /* Database.m in Sources */ = {isa = PBXBuildFile; fileRef = AFDA811B1B3A650D00B847D1 /* Database.m */; };
+		AFDA811F1B3A657800B847D1 /* DatabaseController.m in Sources */ = {isa = PBXBuildFile; fileRef = AFDA811E1B3A657800B847D1 /* DatabaseController.m */; };
 		AFF65DDB1B365A5800AFD902 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AFF65DDA1B365A5800AFD902 /* main.m */; };
 		AFF65DDE1B365A5800AFD902 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AFF65DDD1B365A5800AFD902 /* AppDelegate.m */; };
 		AFF65DE61B365A5800AFD902 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AFF65DE51B365A5800AFD902 /* Images.xcassets */; };
@@ -42,6 +44,10 @@
 		AFC14E601B38446E00531016 /* DepartureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DepartureViewController.m; sourceTree = "<group>"; };
 		AFC14E621B3856E100531016 /* SearchResultsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchResultsTableViewController.h; sourceTree = "<group>"; };
 		AFC14E631B3856E100531016 /* SearchResultsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchResultsTableViewController.m; sourceTree = "<group>"; };
+		AFDA811A1B3A650D00B847D1 /* Database.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Database.h; sourceTree = "<group>"; };
+		AFDA811B1B3A650D00B847D1 /* Database.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Database.m; sourceTree = "<group>"; };
+		AFDA811D1B3A657800B847D1 /* DatabaseController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatabaseController.h; sourceTree = "<group>"; };
+		AFDA811E1B3A657800B847D1 /* DatabaseController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatabaseController.m; sourceTree = "<group>"; };
 		AFF65DD51B365A5800AFD902 /* Promo Pod.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Promo Pod.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AFF65DD91B365A5800AFD902 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AFF65DDA1B365A5800AFD902 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -97,6 +103,7 @@
 			children = (
 				AF046A121B368EDD00785AFB /* RootViewController.h */,
 				AF046A131B368EDD00785AFB /* RootViewController.m */,
+				AFC14E651B3A42F300531016 /* Tables */,
 				AF046A161B36A34B00785AFB /* Forms */,
 				AF046A151B36A34600785AFB /* App */,
 			);
@@ -125,6 +132,24 @@
 			name = Forms;
 			sourceTree = "<group>";
 		};
+		AFC14E651B3A42F300531016 /* Tables */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Tables;
+			sourceTree = "<group>";
+		};
+		AFDA81191B3A64E200B847D1 /* DB */ = {
+			isa = PBXGroup;
+			children = (
+				AFDA811A1B3A650D00B847D1 /* Database.h */,
+				AFDA811B1B3A650D00B847D1 /* Database.m */,
+				AFDA811D1B3A657800B847D1 /* DatabaseController.h */,
+				AFDA811E1B3A657800B847D1 /* DatabaseController.m */,
+			);
+			name = DB;
+			sourceTree = "<group>";
+		};
 		AFF65DCC1B365A5800AFD902 = {
 			isa = PBXGroup;
 			children = (
@@ -150,6 +175,7 @@
 			children = (
 				AFF65DDC1B365A5800AFD902 /* AppDelegate.h */,
 				AFF65DDD1B365A5800AFD902 /* AppDelegate.m */,
+				AFDA81191B3A64E200B847D1 /* DB */,
 				AF046A111B3661E800785AFB /* ViewControllers */,
 				AFF65DE51B365A5800AFD902 /* Images.xcassets */,
 				AFF65DE71B365A5800AFD902 /* LaunchScreen.xib */,
@@ -320,6 +346,8 @@
 			files = (
 				AFF65DDE1B365A5800AFD902 /* AppDelegate.m in Sources */,
 				AF046A141B368EDD00785AFB /* RootViewController.m in Sources */,
+				AFDA811C1B3A650D00B847D1 /* Database.m in Sources */,
+				AFDA811F1B3A657800B847D1 /* DatabaseController.m in Sources */,
 				AF046A191B36A49F00785AFB /* SearchViewController.m in Sources */,
 				AFC14E641B3856E100531016 /* SearchResultsTableViewController.m in Sources */,
 				AFC14E611B38446E00531016 /* DepartureViewController.m in Sources */,

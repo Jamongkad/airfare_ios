@@ -13,5 +13,5 @@
 #import <AFNetworking/AFNetworking.h>
 
 @interface DepartureViewController : UIViewController
-
+@property (nonatomic) long flightIdentifier;
 @end
