@@ -11,8 +11,10 @@
 #import "UIColor+HTMLColors.h"
 #import "Masonry.h"
 #import "SearchFormViewController.h"
+#import <ObjectiveSugar/ObjectiveSugar.h>
 
 #import "DatabaseController.h"
+#import "DepartureViewController.h"
 
 
 @interface SearchViewController : UIViewController

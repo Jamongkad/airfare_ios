@@ -25,6 +25,8 @@
     [super viewDidLoad];
     
     self.title = @"Promo Pod";
+    
+    UIEdgeInsets padding = UIEdgeInsetsMake(10, 10, 10, 10);
         
     UIImageView *bgImage = [[UIImageView alloc] init];
     [bgImage setFrame:self.view.bounds];
@@ -78,22 +80,26 @@
     
     UILabel *viewPromo = [[UILabel alloc] init];
     [viewPromo setText:@"View All Flight Promos"];
+    [viewPromo setTextAlignment:NSTextAlignmentCenter];
     [viewPromo setTextColor:[UIColor flatWhiteColor]];
+    [viewPromo setNumberOfLines:0];
     [viewPromo setFont:[UIFont systemFontOfSize:19]];
     [viewAllPromos addSubview:viewPromo];
     
     [viewPromo mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.center.equalTo(viewAllPromos);
+        make.edges.equalTo(viewAllPromos).insets(padding);
     }];
     
     UILabel *viewSearchFlights = [[UILabel alloc] init];
     [viewSearchFlights setText:@"Search Flights"];
+    [viewSearchFlights setTextAlignment:NSTextAlignmentCenter];
     [viewSearchFlights setTextColor:[UIColor flatWhiteColor]];
+    [viewSearchFlights setNumberOfLines:0];
     [viewSearchFlights setFont:[UIFont systemFontOfSize:19]];
     [searchFlights addSubview:viewSearchFlights];
     
     [viewSearchFlights mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.center.equalTo(searchFlights);
+        make.edges.equalTo(searchFlights).insets(padding);
     }];
     
     UITapGestureRecognizer *searchFlightGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(openSearch:)];

@@ -117,8 +117,6 @@
 				AF046A181B36A49F00785AFB /* SearchViewController.m */,
 				AFC14E5F1B38446E00531016 /* DepartureViewController.h */,
 				AFC14E601B38446E00531016 /* DepartureViewController.m */,
-				AFC14E621B3856E100531016 /* SearchResultsTableViewController.h */,
-				AFC14E631B3856E100531016 /* SearchResultsTableViewController.m */,
 			);
 			name = App;
 			sourceTree = "<group>";
@@ -135,6 +133,8 @@
 		AFC14E651B3A42F300531016 /* Tables */ = {
 			isa = PBXGroup;
 			children = (
+				AFC14E621B3856E100531016 /* SearchResultsTableViewController.h */,
+				AFC14E631B3856E100531016 /* SearchResultsTableViewController.m */,
 			);
 			name = Tables;
 			sourceTree = "<group>";

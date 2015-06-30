@@ -60,21 +60,28 @@
         make.bottom.equalTo(self.view);
     }];
     
+    NSString *url = @"http://promopod.gearfish.com/all_locations";
+    
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    [manager GET:url parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        [self.srtvc setSearchCount:(int)[responseObject count]];
+        [self.srtvc setSearchResults:responseObject];
+        [self.srtvc.tableView reloadData];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"Error: %@", error);
+    }];
+    
 }
 
 - (void)enterSearch:(id)sender {
-    
     UITextField *tf = ((UITextField *) sender);
     [self RESTLocationSearch:tf];
     [tf resignFirstResponder];
-    
 }
 
 - (void)updateTextLabel:(id)sender {
-    
     UITextField *tf = ((UITextField *) sender);
     [self RESTLocationSearch:tf];
-    
 }
 
 - (void)RESTLocationSearch:(UITextField *)tf {
@@ -82,8 +89,6 @@
     if([tf.text length] > 0) {
         NSString *url = [NSString stringWithFormat:@"%@%@", @"http://promopod.gearfish.com/location/", [[tf text] stringByReplacingOccurrencesOfString:@" " withString:@""]];
         
-        NSLog(@"url %@", url);
-
         AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
         
         [manager GET:url parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {

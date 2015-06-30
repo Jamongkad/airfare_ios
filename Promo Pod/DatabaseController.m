@@ -59,6 +59,14 @@
                    flightObj[@"travelType"],
                    flightObj[@"currentFlight"]
                ];
+    long theID = _db.lastInsertRowId;
+    
+    NSString *resetSql = @"UPDATE FlightsChosen "
+                          "SET currentFlight = 0 "
+                          "WHERE id != %lu AND currentFlight = %@";
+    
+    _success = [_db executeUpdateWithFormat:resetSql, theID, flightObj[@"currentFlight"]];
+    
     
     if(!_success) {
         NSLog(@"%s: executeQuery failed: %@", __FUNCTION__, [_db lastErrorMessage]);

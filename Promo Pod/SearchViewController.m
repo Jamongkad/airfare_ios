@@ -11,6 +11,17 @@
 @interface SearchViewController ()
 @property (nonatomic, strong) SearchFormViewController *sfvc;
 @property (nonatomic, strong) DatabaseController *dbc;
+@property (nonatomic, strong) UIView *departureView;
+@property (nonatomic, strong) UIView *arrivalView;
+@property (nonatomic, strong) UIView *departureLabelContainer;
+@property (nonatomic, strong) UIView *arrivalLabelContainer;
+@property (nonatomic, strong) UIButton *searchBtn;
+
+@property (nonatomic, strong) UILabel *departureLabel;
+@property (nonatomic, strong) UILabel *departureLabelIATA;
+@property (nonatomic, strong) UILabel *arrivalLabel;
+@property (nonatomic, strong) UILabel *arrivalLabelIATA;
+
 @end
 
 @implementation SearchViewController
@@ -33,80 +44,210 @@
     
     [self.view setBackgroundColor:[UIColor whiteColor]];
     
-    UIButton *searchBtn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [searchBtn setTitle:@"Search" forState:UIControlStateNormal];
-    [searchBtn setBackgroundColor:[UIColor colorWithComplementaryFlatColorOf:[UIColor flatSkyBlueColor]]];
-    [searchBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [searchBtn addTarget:self action:@selector(search:) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:searchBtn];
+    self.searchBtn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [self.searchBtn setTitle:@"Search" forState:UIControlStateNormal];
+    [self.searchBtn setBackgroundColor:[UIColor colorWithComplementaryFlatColorOf:[UIColor flatSkyBlueColor]]];
+    [self.searchBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [self.searchBtn addTarget:self action:@selector(search:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:self.searchBtn];
     
-    [searchBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+    [self.searchBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.height.equalTo(@50);
         make.bottom.equalTo(self.view);
         make.width.equalTo(self.view);
     }];
     
-    UIView *departureView = [[UIView alloc] init];
-    [departureView setBackgroundColor:[UIColor colorWithCSS:@"#F7F7F7"]];
-    [self.view addSubview:departureView];
+    self.departureView = [[UIView alloc] init];
+    [self.departureView setBackgroundColor:[UIColor colorWithCSS:@"#2F4F4F"]];
+    [self.view addSubview:self.departureView];
 
-    UIView *arrivalView = [[UIView alloc] init];
-    [arrivalView setBackgroundColor:[UIColor colorWithCSS:@"#BEBEBE"]];
-    [self.view addSubview:arrivalView];
-
-    self.sfvc = [[SearchFormViewController alloc] init];
-    [self addChildViewController:self.sfvc];
-    [self.view addSubview:self.sfvc.view];
-    [self.sfvc didMoveToParentViewController:self];
+    self.arrivalView = [[UIView alloc] init];
+    [self.arrivalView setBackgroundColor:[UIColor colorWithCSS:@"#2F4F4F"]];
+    [self.view addSubview:self.arrivalView];
     
-    [self.sfvc.view mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.view.mas_top);
-        make.left.equalTo(self.view.mas_left);
-        make.right.equalTo(self.view.mas_right);
-        make.bottom.equalTo(departureView.mas_top);
+    [self.departureView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.view).offset(30);
+        make.left.equalTo(self.view.mas_left).offset(10);
+        make.height.mas_equalTo(100);
+        make.width.mas_equalTo(([[UIScreen mainScreen] bounds].size.width/2) - 14);
     }];
     
-    [self.sfvc.tableView setScrollEnabled:NO];
-    
-    [departureView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.sfvc.view.mas_bottom);
-        make.left.equalTo(self.view.mas_left);
-        make.height.mas_equalTo(150);
-        make.width.mas_equalTo([[UIScreen mainScreen] bounds].size.width/2);
-        make.bottom.equalTo(searchBtn.mas_top).offset(-300);
+    [self.arrivalView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.view).offset(30);
+        make.right.equalTo(self.view.mas_right).offset(-10);
+        make.height.equalTo(self.departureView);
+        make.width.equalTo(self.departureView);
     }];
     
-    [arrivalView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.sfvc.view.mas_bottom);
-        make.right.equalTo(self.view.mas_right);
-        make.height.mas_equalTo(150);
-        make.width.mas_equalTo([[UIScreen mainScreen] bounds].size.width/2);
-        make.bottom.equalTo(searchBtn.mas_top).offset(-300);
+    UITapGestureRecognizer *departureTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(openDeparture:)];
+    [self.departureView addGestureRecognizer:departureTap];
+    
+    UITapGestureRecognizer *arrivalTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(openArrival:)];
+    [self.arrivalView addGestureRecognizer:arrivalTap];
+    
+    self.departureLabelContainer = [[UIView alloc] init];
+    [self.departureLabelContainer setBackgroundColor:[UIColor colorWithContrastingBlackOrWhiteColorOn:[UIColor colorWithCSS:@"#2F2F2F"] isFlat:YES]];
+    [self.departureView addSubview:self.departureLabelContainer];
+    
+    self.arrivalLabelContainer = [[UIView alloc] init];
+    [self.arrivalLabelContainer setBackgroundColor:[UIColor colorWithContrastingBlackOrWhiteColorOn:[UIColor colorWithCSS:@"#2F2F2F"] isFlat:YES]];
+    [self.arrivalView addSubview:self.arrivalLabelContainer];
+    
+    UILabel *arrivalLabel = [[UILabel alloc] init];
+    [arrivalLabel setText:@"ARRIVAL"];
+    [arrivalLabel setTextAlignment:NSTextAlignmentCenter];
+    [arrivalLabel setTextColor:[UIColor colorWithCSS:@"#000"]];
+    [self.arrivalLabelContainer addSubview:arrivalLabel];
+    
+    [arrivalLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(self.arrivalLabelContainer);
     }];
     
-    /*
-    if(self.searchResultData) {
-        UILabel *departureLabel = [[UILabel alloc] init];
-        [departureLabel setText:self.searchResultData[@"airport"]];
-        [departureView addSubview:departureLabel];
-        
-        [departureLabel mas_updateConstraints:^(MASConstraintMaker *make) {
-            make.edges.equalTo(departureView);
-        }];
-    }
-    */
-    NSMutableArray *d = [self.dbc getFlightData];
-    NSLog(@"Flights %@", d);
+    UILabel *departureLabel = [[UILabel alloc] init];
+    [departureLabel setText:@"DEPARTURE"];
+    [departureLabel setTextAlignment:NSTextAlignmentCenter];
+    [departureLabel setTextColor:[UIColor colorWithCSS:@"#000"]];
+    [self.departureLabelContainer addSubview:departureLabel];
+    
+    [departureLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(self.departureLabelContainer);
+    }];
+    
+    [self.departureLabelContainer mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.departureView);
+        make.left.equalTo(self.departureView);
+        make.right.equalTo(self.departureView);
+        make.height.equalTo(@30);
+    }];
+    
+    [self.arrivalLabelContainer mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.arrivalView);
+        make.left.equalTo(self.arrivalView);
+        make.right.equalTo(self.arrivalView);
+        make.height.equalTo(self.departureLabelContainer);
+    }];
+    
+    self.departureLabel = [[UILabel alloc] init];
+    self.departureLabelIATA = [[UILabel alloc] init];
+    
+    self.arrivalLabel = [[UILabel alloc] init];
+    self.arrivalLabelIATA = [[UILabel alloc] init];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    
     NSMutableArray *d = [self.dbc getFlightData];
-    NSLog(@"Flights %@", d);
+    if([d count] > 0) {
+        UIEdgeInsets padding = UIEdgeInsetsMake(10, 10, 10, 10);
+        
+        UIView *departureLabelContainer = [[UIView alloc] init];
+        [departureLabelContainer addSubview:self.departureLabel];
+        
+        UIView *departureIATAContainer = [[UIView alloc] init];
+        [departureIATAContainer addSubview:self.departureLabelIATA];
+        
+        UIView *arrivalLabelContainer = [[UIView alloc] init];
+        [arrivalLabelContainer addSubview:self.arrivalLabel];
+        
+        UIView *arrivalIATAContainer = [[UIView alloc] init];
+        [arrivalIATAContainer addSubview:self.arrivalLabelIATA];
+        
+        [self.departureView addSubview:departureLabelContainer];
+        [self.departureView addSubview:departureIATAContainer];
+        
+        [self.arrivalView addSubview:arrivalLabelContainer];
+        [self.arrivalView addSubview:arrivalIATAContainer];
+        
+        for(id flight in d) {
+            if([flight[@"currentFlight"] isEqualToString:@"1"]) {
+
+                [self.departureLabel setText:flight[@"airport"]];
+                [self.departureLabel setNumberOfLines:0];
+                [self.departureLabel setTextColor:[UIColor flatSkyBlueColor]];
+                [self.departureLabel setFont:[UIFont boldSystemFontOfSize:16]];
+                [self.departureLabel setNeedsDisplay];
+                
+                [self.departureLabelIATA setText:flight[@"iata"]];
+                [self.departureLabelIATA setFont:[UIFont systemFontOfSize:20]];
+                [self.departureLabelIATA setNumberOfLines:0];
+                [self.departureLabelIATA setTextColor:[UIColor flatWhiteColor]];
+                [self.departureLabelIATA setTextAlignment:NSTextAlignmentCenter];
+            
+                [departureLabelContainer mas_updateConstraints:^(MASConstraintMaker *make) {
+                    make.top.equalTo(self.departureLabelContainer.mas_bottom);
+                    make.left.equalTo(self.departureView);
+                    make.bottom.equalTo(self.departureView);
+                    make.width.equalTo(@130);
+                }];
+                
+                [departureIATAContainer mas_updateConstraints:^(MASConstraintMaker *make) {
+                    make.top.equalTo(self.departureLabelContainer.mas_bottom);
+                    make.right.equalTo(self.departureView);
+                    make.left.equalTo(departureLabelContainer.mas_right);
+                    make.bottom.equalTo(self.departureView);
+                }];
+            
+                [self.departureLabel mas_updateConstraints:^(MASConstraintMaker *make) {
+                    make.edges.equalTo(departureLabelContainer).insets(padding);
+                }];
+                
+                [self.departureLabelIATA mas_updateConstraints:^(MASConstraintMaker *make) {
+                    make.edges.equalTo(departureIATAContainer).insets(padding);
+                }];
+            }
+           
+            if([flight[@"currentFlight"] isEqualToString:@"2"]) {
+    
+                [self.arrivalLabel setText:flight[@"airport"]];
+                [self.arrivalLabel setNumberOfLines:0];
+                [self.arrivalLabel setTextColor:[UIColor flatSkyBlueColor]];
+                [self.arrivalLabel setFont:[UIFont boldSystemFontOfSize:16]];
+                [self.arrivalLabel setNeedsDisplay];
+                
+                [self.arrivalLabelIATA setText:flight[@"iata"]];
+                [self.arrivalLabelIATA setFont:[UIFont systemFontOfSize:20]];
+                [self.arrivalLabelIATA setNumberOfLines:0];
+                [self.arrivalLabelIATA setTextColor:[UIColor flatWhiteColor]];
+                [self.arrivalLabelIATA setTextAlignment:NSTextAlignmentCenter];
+                
+                [arrivalLabelContainer mas_updateConstraints:^(MASConstraintMaker *make) {
+                    make.top.equalTo(self.departureLabelContainer.mas_bottom);
+                    make.left.equalTo(self.arrivalView);
+                    make.bottom.equalTo(self.arrivalView);
+                    make.width.equalTo(@130);
+                }];
+                
+                [arrivalIATAContainer mas_updateConstraints:^(MASConstraintMaker *make) {
+                    make.top.equalTo(self.departureLabelContainer.mas_bottom);
+                    make.right.equalTo(self.arrivalView);
+                    make.left.equalTo(arrivalLabelContainer.mas_right);
+                    make.bottom.equalTo(self.arrivalView);
+                }];
+            
+                [self.arrivalLabel mas_updateConstraints:^(MASConstraintMaker *make) {
+                    make.edges.equalTo(arrivalLabelContainer).insets(padding);
+                }];
+                
+                [self.arrivalLabelIATA mas_updateConstraints:^(MASConstraintMaker *make) {
+                    make.edges.equalTo(arrivalIATAContainer).insets(padding);
+                }];
+                
+            }
+        }
+    }
 }
 
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
+- (void)openDeparture:(id)sender {
+    DepartureViewController *dvc = [[DepartureViewController alloc] init];
+    [dvc setFlightIdentifier:0];
+    [self.navigationController pushViewController:dvc animated:YES];
+}
+
+- (void)openArrival:(id)sender {
+    DepartureViewController *dvc = [[DepartureViewController alloc] init];
+    [dvc setFlightIdentifier:1];
+    [self.navigationController pushViewController:dvc animated:YES];
 }
 
 - (void)search:(id)sender {
