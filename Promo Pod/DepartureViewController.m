@@ -87,8 +87,9 @@
 - (void)RESTLocationSearch:(UITextField *)tf {
 
     if([tf.text length] > 0) {
-        NSString *url = [NSString stringWithFormat:@"%@%@", @"http://promopod.gearfish.com/location/", [[tf text] stringByReplacingOccurrencesOfString:@" " withString:@""]];
-        
+        NSString *searchQuery = [[tf text] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+        NSString *url = [NSString stringWithFormat:@"%@%@", @"http://promopod.gearfish.com/location/", searchQuery];
+
         AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
         
         [manager GET:url parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
@@ -98,7 +99,7 @@
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
             NSLog(@"Error: %@", error);
         }];
-    
+
     } else {
         [self.srtvc setSearchCount:0];
     }

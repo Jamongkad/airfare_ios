@@ -22,6 +22,9 @@
 @property (nonatomic, strong) UILabel *arrivalLabel;
 @property (nonatomic, strong) UILabel *arrivalLabelIATA;
 
+@property (nonatomic, strong) NSDictionary *departureData;
+@property (nonatomic, strong) NSDictionary *arrivalData;
+
 @end
 
 @implementation SearchViewController
@@ -68,7 +71,7 @@
     [self.departureView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.view).offset(30);
         make.left.equalTo(self.view.mas_left).offset(10);
-        make.height.mas_equalTo(100);
+        make.height.mas_equalTo(130);
         make.width.mas_equalTo(([[UIScreen mainScreen] bounds].size.width/2) - 14);
     }];
     
@@ -139,7 +142,7 @@
     
     NSMutableArray *d = [self.dbc getFlightData];
     if([d count] > 0) {
-        UIEdgeInsets padding = UIEdgeInsetsMake(10, 10, 10, 10);
+        UIEdgeInsets padding = UIEdgeInsetsMake(10, 10, 10, 5);
         
         UIView *departureLabelContainer = [[UIView alloc] init];
         [departureLabelContainer addSubview:self.departureLabel];
@@ -161,6 +164,8 @@
         
         for(id flight in d) {
             if([flight[@"currentFlight"] isEqualToString:@"1"]) {
+                
+                self.departureData = flight;
 
                 [self.departureLabel setText:flight[@"airport"]];
                 [self.departureLabel setNumberOfLines:0];
@@ -169,7 +174,7 @@
                 [self.departureLabel setNeedsDisplay];
                 
                 [self.departureLabelIATA setText:flight[@"iata"]];
-                [self.departureLabelIATA setFont:[UIFont systemFontOfSize:20]];
+                [self.departureLabelIATA setFont:[UIFont systemFontOfSize:14]];
                 [self.departureLabelIATA setNumberOfLines:0];
                 [self.departureLabelIATA setTextColor:[UIColor flatWhiteColor]];
                 [self.departureLabelIATA setTextAlignment:NSTextAlignmentCenter];
@@ -178,7 +183,7 @@
                     make.top.equalTo(self.departureLabelContainer.mas_bottom);
                     make.left.equalTo(self.departureView);
                     make.bottom.equalTo(self.departureView);
-                    make.width.equalTo(@130);
+                    make.width.mas_equalTo(self.departureView.frame.size.width * 0.75);
                 }];
                 
                 [departureIATAContainer mas_updateConstraints:^(MASConstraintMaker *make) {
@@ -198,6 +203,8 @@
             }
            
             if([flight[@"currentFlight"] isEqualToString:@"2"]) {
+                
+                self.arrivalData = flight;
     
                 [self.arrivalLabel setText:flight[@"airport"]];
                 [self.arrivalLabel setNumberOfLines:0];
@@ -206,7 +213,7 @@
                 [self.arrivalLabel setNeedsDisplay];
                 
                 [self.arrivalLabelIATA setText:flight[@"iata"]];
-                [self.arrivalLabelIATA setFont:[UIFont systemFontOfSize:20]];
+                [self.arrivalLabelIATA setFont:[UIFont systemFontOfSize:14]];
                 [self.arrivalLabelIATA setNumberOfLines:0];
                 [self.arrivalLabelIATA setTextColor:[UIColor flatWhiteColor]];
                 [self.arrivalLabelIATA setTextAlignment:NSTextAlignmentCenter];
@@ -215,7 +222,7 @@
                     make.top.equalTo(self.departureLabelContainer.mas_bottom);
                     make.left.equalTo(self.arrivalView);
                     make.bottom.equalTo(self.arrivalView);
-                    make.width.equalTo(@130);
+                    make.width.mas_equalTo(self.arrivalView.frame.size.width * 0.75);
                 }];
                 
                 [arrivalIATAContainer mas_updateConstraints:^(MASConstraintMaker *make) {
@@ -252,7 +259,22 @@
 
 - (void)search:(id)sender {
     NSLog(@"Searching");
-    [self.dbc clearAllFlights];
+    if(self.departureData && self.arrivalData) {
+        NSString *url = [NSString stringWithFormat:@"http://promopod.gearfish.com/departing/%@/arriving/%@", self.departureData[@"location"], self.arrivalData[@"location"]];
+        NSString *escapedString = [url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+        
+        NSLog(@"%@", escapedString);
+    
+        AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+        [manager GET:escapedString parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+            NSLog(@"%@", responseObject);
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            NSLog(@"Error: %@", error);
+        }];
+   
+
+    }
+    //[self.dbc clearAllFlights];
 }
 
 - (void)cancel:(id)sender {
