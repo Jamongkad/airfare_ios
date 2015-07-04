@@ -62,15 +62,18 @@
     
     NSString *url = @"http://promopod.gearfish.com/all_locations";
     
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.labelText = @"Fetching Airports...";
+    
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     [manager GET:url parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         [self.srtvc setSearchCount:(int)[responseObject count]];
         [self.srtvc setSearchResults:responseObject];
         [self.srtvc.tableView reloadData];
+        [hud hide:YES];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"Error: %@", error);
     }];
-    
 }
 
 - (void)enterSearch:(id)sender {
@@ -92,10 +95,14 @@
 
         AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
         
+        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        hud.labelText = @"Searching...";
+        
         [manager GET:url parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
             [self.srtvc setSearchCount:(int)[responseObject count]];
             [self.srtvc setSearchResults:responseObject];
             [self.srtvc.tableView reloadData];
+            [hud hide:YES];
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
             NSLog(@"Error: %@", error);
         }];

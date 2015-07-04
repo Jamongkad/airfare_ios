@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "Masonry.h"
 #import "SearchResultsTableViewController.h"
-
+#import <MBProgressHUD/MBProgressHUD.h>
 #import <AFNetworking/AFNetworking.h>
 
 @interface DepartureViewController : UIViewController

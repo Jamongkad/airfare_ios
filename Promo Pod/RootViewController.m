@@ -10,6 +10,7 @@
 
 @interface RootViewController ()
 @property (nonatomic, strong) SearchViewController *svc;
+@property (nonatomic, strong) FlightsViewController *fvc;
 @end
 
 @implementation RootViewController
@@ -119,7 +120,9 @@
 }
 
 - (void)openPromo:(id)sender {
-    NSLog(@"Open Promo");
+    self.fvc = [[FlightsViewController alloc] init];
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:self.fvc];
+    [self presentViewController:nav animated:YES completion:nil];
 }
 
 - (void)didReceiveMemoryWarning {

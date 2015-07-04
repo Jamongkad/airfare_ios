@@ -271,8 +271,6 @@
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
             NSLog(@"Error: %@", error);
         }];
-   
-
     }
     //[self.dbc clearAllFlights];
 }
@@ -283,7 +281,6 @@
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-
     // Dispose of any resources that can be recreated.
 }
 

@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "Masonry.h"
 #import "SearchViewController.h"
+#import "FlightsViewController.h"
+#import "FlightsTableViewController.h"
 #import "DatabaseController.h"
 
 @interface RootViewController : UIViewController
