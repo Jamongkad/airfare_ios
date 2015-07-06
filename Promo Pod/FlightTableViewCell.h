@@ -20,11 +20,11 @@
     UILabel *travelPeriodTo;
     UILabel *travelPeriodFrom;
     
-    
     UIView *cellContainer;
     UIView *rateContainer;
     UIView *separator;
     UIView *vertLine;
+    UIView *flightOptions;
 }
 
 @property (nonatomic, strong) UILabel *currencyRate;
@@ -36,5 +36,7 @@
 @property (nonatomic, strong) UILabel *travelPeriodLabel;
 @property (nonatomic, strong) UILabel *travelPeriodTo;
 @property (nonatomic, strong) UILabel *travelPeriodFrom;
+
+@property (nonatomic, strong) UIView *flightOptions;
 
 @end

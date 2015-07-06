@@ -10,7 +10,7 @@
 
 @implementation FlightTableViewCell
 
-@synthesize currencyRate, airline, origin, destination, travelPeriodLabel, travelPeriodTo, travelPeriodFrom;
+@synthesize currencyRate, airline, origin, destination, travelPeriodLabel, travelPeriodTo, travelPeriodFrom, flightOptions;
 
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     if(self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
@@ -62,6 +62,13 @@
         [travelPeriodTo setTextColor:[UIColor flatGrayColorDark]];
         [travelPeriodTo setFont:[UIFont systemFontOfSize:14]];
         [self.contentView addSubview:travelPeriodTo];
+        
+        
+        //flightOptions = [[UIView alloc] initWithFrame:CGRectMake(120, 20, 200, 44)];
+        flightOptions = [[UIView alloc] init];
+        [flightOptions setHidden:YES];
+        [flightOptions setBackgroundColor:[UIColor orangeColor]];
+        [self.contentView addSubview:flightOptions];
     }
     
     return self;
@@ -101,7 +108,7 @@
     
     [origin mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(vertLine.mas_right).offset(10);
-        make.top.equalTo(self.contentView.mas_top).offset(20);
+        make.top.equalTo(self.contentView.mas_top).offset(5);
     }];
     
     [destination mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -113,12 +120,13 @@
         make.left.equalTo(vertLine.mas_right).offset(10);
         make.bottom.equalTo(travelPeriodFrom.mas_top);
     }];
-    
+    /*
     [travelPeriodFrom mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(travelPeriodLabel.mas_bottom);
         make.left.equalTo(vertLine.mas_right).offset(10);
         make.bottom.equalTo(self.contentView.mas_bottom).offset(-5);
     }];
+    */
     
     [travelPeriodTo mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(travelPeriodLabel.mas_bottom);
@@ -134,6 +142,31 @@
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 
+    if(selected) {
+        [flightOptions setHidden:NO];
+        
+        [flightOptions mas_remakeConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(vertLine.mas_right);
+            make.right.equalTo(self.contentView);
+            make.bottom.equalTo(self.contentView);
+            make.height.equalTo(@50);
+        }];
+        
+        [travelPeriodFrom mas_remakeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(travelPeriodLabel.mas_bottom);
+            make.left.equalTo(vertLine.mas_right).offset(10);
+            make.bottom.equalTo(self.contentView.mas_bottom).offset(-50);
+        }];
+        
+    } else {
+        [flightOptions setHidden:YES];
+        
+        [travelPeriodFrom mas_remakeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(travelPeriodLabel.mas_bottom);
+            make.left.equalTo(vertLine.mas_right).offset(10);
+            make.bottom.equalTo(self.contentView.mas_bottom).offset(-5);
+        }];
+    }
     // Configure the view for the selected state
 }
 

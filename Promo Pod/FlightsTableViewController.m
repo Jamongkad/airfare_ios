@@ -9,7 +9,9 @@
 #import "FlightsTableViewController.h"
 #import "NSDate+DateTools.h"
 
-@interface FlightsTableViewController ()
+@interface FlightsTableViewController () {
+    int currentSelection;
+}
 @property NSDateFormatter *formatter;
 @property NSDate *toSelectedDate;
 @property NSDate *fromSelectedDate;
@@ -42,6 +44,8 @@ static NSString *CellIdentifier = @"FlightCell";
     self.formatter.locale = enUSPOSIXLocale;
     self.formatter.timeZone = [NSTimeZone timeZoneForSecondsFromGMT:0];
     [self.formatter setDateFormat:@"yyyy'-'MM'-'dd' 'HH':'mm':'ss'"];
+    
+    currentSelection = -1;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -59,7 +63,6 @@ static NSString *CellIdentifier = @"FlightCell";
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
     if([self.flights count] > 0) {
-        NSLog(@"Search Count %lu", [self.flights count]);
         return [self.flights count];
     } else {
         return 0;
@@ -68,20 +71,20 @@ static NSString *CellIdentifier = @"FlightCell";
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     FlightTableViewCell *cell = (FlightTableViewCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    
     if(cell == nil) {
         cell = [[FlightTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     
     // Configure the cell...
     NSDictionary *data = [self.flights objectAtIndex:indexPath.row];
-    NSLog(@"%@", data);
     
     self.fromSelectedDate = [self.formatter dateFromString:data[@"travel_period_from"]];
     self.toSelectedDate = [self.formatter dateFromString:data[@"travel_period_to"]];
    
     NSDateFormatter *df = [[NSDateFormatter alloc] init];
     [df setTimeStyle:NSDateFormatterNoStyle];
-    [df setDateStyle:NSDateFormatterLongStyle];
+    [df setDateStyle:NSDateFormatterMediumStyle];
 
     NSLocale *usLocale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US"];
     [df setLocale:usLocale];
@@ -108,11 +111,26 @@ static NSString *CellIdentifier = @"FlightCell";
     [cell.travelPeriodLabel setText:@"Travel Period:"];
     [cell.travelPeriodFrom setText:[NSString stringWithFormat:@"%@ to ", fromDate]];
     [cell.travelPeriodTo setText:toDate];
+    
     return cell;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    int row = (int)[indexPath row];
+    currentSelection = row;
+    
+    [UIView transitionWithView:tableView duration:0 options:UIViewAnimationOptionTransitionCrossDissolve animations:^{
+        [self.tableView beginUpdates];
+        [self.tableView endUpdates];
+    } completion:nil];
+}
+
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 150;
+    if([indexPath row] == currentSelection) {
+        return 150;
+    } else {
+        return 100;
+    }
 }
 
 /*
