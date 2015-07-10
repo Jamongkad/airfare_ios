@@ -11,6 +11,10 @@
 #import <ChameleonFramework/Chameleon.h>
 #import "UIColor+HTMLColors.h"
 #import "FlightTableViewCell.h"
+#import "MatTapGestureRecognizer.h"
+
+#import "FlightDetailViewController.h"
+#import "CompareFlightsViewController.h"
 
 @interface FlightsTableViewController : UITableViewController
 @property (nonatomic, strong) NSArray *flights;

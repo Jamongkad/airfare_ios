@@ -19,13 +19,23 @@
     UILabel *travelPeriodLabel;
     UILabel *travelPeriodTo;
     UILabel *travelPeriodFrom;
+    UILabel *flightDetailLabel;
+    UILabel *flightCompareLabel;
+    UILabel *additionalFlightOptions;
     
     UIView *cellContainer;
     UIView *rateContainer;
     UIView *separator;
     UIView *vertLine;
+    UIView *horzLine;
+    UIView *seperator;
     UIView *flightOptions;
+    
+    UIView *flightDetail;
+    UIView *flightCompare;
 }
+
+@property (nonatomic, strong) NSDictionary *flightData;
 
 @property (nonatomic, strong) UILabel *currencyRate;
 @property (nonatomic, strong) UILabel *airline;
@@ -38,5 +48,7 @@
 @property (nonatomic, strong) UILabel *travelPeriodFrom;
 
 @property (nonatomic, strong) UIView *flightOptions;
+@property (nonatomic, strong) UIView *flightDetail;
+@property (nonatomic, strong) UIView *flightCompare;
 
 @end

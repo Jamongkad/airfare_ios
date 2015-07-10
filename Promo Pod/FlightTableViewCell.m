@@ -10,18 +10,18 @@
 
 @implementation FlightTableViewCell
 
-@synthesize currencyRate, airline, origin, destination, travelPeriodLabel, travelPeriodTo, travelPeriodFrom, flightOptions;
+@synthesize flightData, currencyRate, airline, origin, destination, travelPeriodLabel, travelPeriodTo, travelPeriodFrom, flightOptions, flightDetail, flightCompare;
 
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     if(self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
-        //[self setBackgroundColor:[UIColor clearColor]];
+
         [self setSelectionStyle:UITableViewCellSelectionStyleNone];
         
         rateContainer = [[UIView alloc] init];
         
         currencyRate = [[UILabel alloc] init];
         [currencyRate setTextColor:[UIColor flatSkyBlueColor]];
-        [currencyRate setFont:[UIFont systemFontOfSize:17]];
+        [currencyRate setFont:[UIFont boldSystemFontOfSize:15]];
         [rateContainer addSubview:currencyRate];
         
         airline = [[UILabel alloc] init];
@@ -37,6 +37,14 @@
         vertLine = [[UIView alloc] init];
         [vertLine setBackgroundColor:[UIColor flatBlueColor]];
         [cellContainer addSubview:vertLine];
+        
+        horzLine = [[UIView alloc] init];
+        [horzLine setBackgroundColor:[UIColor colorWithCSS:@"#E0EEEE"]];
+        [cellContainer addSubview:horzLine];
+        
+        separator = [[UIView alloc] init];
+        [separator setBackgroundColor:[UIColor colorWithCSS:@"#E0EEEE"]];
+        [cellContainer addSubview:separator];
         
         origin = [[UILabel alloc] init];
         [origin setFont:[UIFont systemFontOfSize:20]];
@@ -63,12 +71,33 @@
         [travelPeriodTo setFont:[UIFont systemFontOfSize:14]];
         [self.contentView addSubview:travelPeriodTo];
         
-        
-        //flightOptions = [[UIView alloc] initWithFrame:CGRectMake(120, 20, 200, 44)];
         flightOptions = [[UIView alloc] init];
         [flightOptions setHidden:YES];
-        [flightOptions setBackgroundColor:[UIColor orangeColor]];
         [self.contentView addSubview:flightOptions];
+        
+        flightDetail = [[UIView alloc] init];
+        flightCompare = [[UIView alloc] init];
+        
+        [flightOptions addSubview:flightDetail];
+        [flightOptions addSubview:flightCompare];
+        
+        flightDetailLabel = [[UILabel alloc] init];
+        [flightDetailLabel setText:@"Details"];
+        [flightDetailLabel setFont:[UIFont systemFontOfSize:13]];
+        [flightDetailLabel setTextColor:[UIColor flatSkyBlueColor]];
+        [flightDetail addSubview:flightDetailLabel];
+        
+        flightCompareLabel = [[UILabel alloc] init];
+        [flightCompareLabel setText:@"Compare Flights"];
+        [flightCompareLabel setFont:[UIFont systemFontOfSize:13]];
+        [flightCompareLabel setTextColor:[UIColor flatSkyBlueColor]];
+        [flightCompare addSubview:flightCompareLabel];
+        
+        additionalFlightOptions = [[UILabel alloc] init];
+        [additionalFlightOptions setFont:[UIFont systemFontOfSize:9]];
+        [additionalFlightOptions setTextColor:[UIColor flatOrangeColorDark]];
+        [self.contentView addSubview:additionalFlightOptions];
+    
     }
     
     return self;
@@ -79,6 +108,12 @@
     
     UIEdgeInsets padding = UIEdgeInsetsMake(10, 10, 10, 10);
     
+    if([self.flightData[@"similar_flights"] count]) {
+        [additionalFlightOptions setText:@"*other promos available"];
+    } else {
+        [additionalFlightOptions setText:@""];
+    }
+  
     [cellContainer mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self.contentView).insets(padding);
     }];
@@ -98,7 +133,7 @@
         make.top.equalTo(currencyRate.mas_bottom);
         make.centerX.equalTo(currencyRate);
     }];
-
+    
     [vertLine mas_makeConstraints:^(MASConstraintMaker *make) {
         make.width.equalTo(@1);
         make.height.equalTo(self.contentView);
@@ -120,18 +155,26 @@
         make.left.equalTo(vertLine.mas_right).offset(10);
         make.bottom.equalTo(travelPeriodFrom.mas_top);
     }];
-    /*
-    [travelPeriodFrom mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(travelPeriodLabel.mas_bottom);
-        make.left.equalTo(vertLine.mas_right).offset(10);
-        make.bottom.equalTo(self.contentView.mas_bottom).offset(-5);
-    }];
-    */
     
     [travelPeriodTo mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(travelPeriodLabel.mas_bottom);
         make.left.equalTo(travelPeriodFrom.mas_right);
         make.bottom.equalTo(travelPeriodFrom);
+    }];
+    
+    [flightDetailLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(flightDetail.mas_top);
+        make.center.equalTo(flightDetail);
+    }];
+    
+    [flightCompareLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(flightCompare.mas_top);
+        make.center.equalTo(flightCompare);
+    }];
+    
+    [additionalFlightOptions mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(vertLine.mas_right).offset(10);
+        make.top.equalTo(origin.mas_bottom);
     }];
 }
 
@@ -141,15 +184,16 @@
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
-
     if(selected) {
         [flightOptions setHidden:NO];
+        [horzLine setHidden:NO];
+        [separator setHidden:NO];
         
         [flightOptions mas_remakeConstraints:^(MASConstraintMaker *make) {
             make.left.equalTo(vertLine.mas_right);
             make.right.equalTo(self.contentView);
             make.bottom.equalTo(self.contentView);
-            make.height.equalTo(@50);
+            make.height.equalTo(@40);
         }];
         
         [travelPeriodFrom mas_remakeConstraints:^(MASConstraintMaker *make) {
@@ -158,14 +202,55 @@
             make.bottom.equalTo(self.contentView.mas_bottom).offset(-50);
         }];
         
+        if([self.flightData[@"similar_flights"] count] > 0) {
+            
+            [flightDetail mas_remakeConstraints:^(MASConstraintMaker *make) {
+                make.top.equalTo(flightOptions.mas_top);
+                make.left.equalTo(flightOptions.mas_left);
+                make.bottom.equalTo(flightOptions.mas_bottom);
+                make.width.equalTo(flightOptions).dividedBy(2);
+            }];
+            
+            [flightCompare mas_remakeConstraints:^(MASConstraintMaker *make) {
+                make.top.equalTo(flightOptions.mas_top);
+                make.right.equalTo(flightOptions.mas_right);
+                make.left.equalTo(flightDetail.mas_right);
+                make.bottom.equalTo(flightOptions.mas_bottom);
+            }];
+            
+            [flightCompare setHidden:NO];
+        } else {
+            [flightDetail mas_remakeConstraints:^(MASConstraintMaker *make) {
+                make.edges.equalTo(flightOptions);
+            }];
+            [flightCompare setHidden:YES];
+        }
+        
+        [horzLine mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.height.equalTo(@1);
+            make.left.equalTo(rateContainer.mas_right).offset(1);
+            make.right.equalTo(self.contentView.mas_right);
+            make.bottom.equalTo(flightDetail.mas_top);
+        }];
+        
+        [separator mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.width.equalTo(@1);
+            make.left.equalTo(flightDetail.mas_right);
+            make.height.equalTo(flightDetail.mas_height);
+            make.bottom.equalTo(self.contentView.mas_bottom);
+        }];
+        
     } else {
         [flightOptions setHidden:YES];
+        [horzLine setHidden:YES];
+        [separator setHidden:YES];
         
         [travelPeriodFrom mas_remakeConstraints:^(MASConstraintMaker *make) {
             make.top.equalTo(travelPeriodLabel.mas_bottom);
             make.left.equalTo(vertLine.mas_right).offset(10);
             make.bottom.equalTo(self.contentView.mas_bottom).offset(-5);
         }];
+
     }
     // Configure the view for the selected state
 }

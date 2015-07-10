@@ -78,6 +78,7 @@ static NSString *CellIdentifier = @"FlightCell";
     
     // Configure the cell...
     NSDictionary *data = [self.flights objectAtIndex:indexPath.row];
+    [cell setFlightData:data];
     
     self.fromSelectedDate = [self.formatter dateFromString:data[@"travel_period_from"]];
     self.toSelectedDate = [self.formatter dateFromString:data[@"travel_period_to"]];
@@ -105,6 +106,7 @@ static NSString *CellIdentifier = @"FlightCell";
     
     NSString *price = [NSString stringWithFormat:@"%@%@", @"PHP", [currencyFormat stringFromNumber:rate]];
     [cell.currencyRate setText:price];
+    
     [cell.airline setText:data[@"provider"]];
     [cell.origin setText:[NSString stringWithFormat:@"%@ to ", data[@"origin"]]];
     [cell.destination setText:data[@"destination"]];
@@ -112,7 +114,47 @@ static NSString *CellIdentifier = @"FlightCell";
     [cell.travelPeriodFrom setText:[NSString stringWithFormat:@"%@ to ", fromDate]];
     [cell.travelPeriodTo setText:toDate];
     
+    MatTapGestureRecognizer *detailTap = [[MatTapGestureRecognizer alloc] initWithTarget:self action:@selector(detailTap:)];
+    [detailTap setFlightData:data];
+    
+    MatTapGestureRecognizer *compareTap = [[MatTapGestureRecognizer alloc] initWithTarget:self action:@selector(compareTap:)];
+    [compareTap setFlightData:data];
+    
+    [cell.flightDetail addGestureRecognizer:detailTap];
+    [cell.flightCompare addGestureRecognizer:compareTap];
+    
     return cell;
+}
+
+- (void)detailTap:(id)sender {
+    MatTapGestureRecognizer *tap = (MatTapGestureRecognizer *)sender;
+    //NSLog(@"%@", tap.flightData);
+    
+    FlightDetailViewController *fdvc = [[FlightDetailViewController alloc] init];
+    /*
+        UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:fdvc];
+    [self presentViewController:nav animated:YES completion:^{
+        [self.tableView beginUpdates];
+        currentSelection = -1;
+        [self.tableView endUpdates];
+    }];
+    */
+    
+    [self.navigationController pushViewController:fdvc animated:YES];
+    [self.tableView beginUpdates];
+    currentSelection = -1;
+    [self.tableView endUpdates];
+}
+
+- (void)compareTap:(id)sender {
+    MatTapGestureRecognizer *tap = (MatTapGestureRecognizer *)sender;
+    //NSLog(@"%@", tap.flightData);
+    CompareFlightsViewController *cfvc = [[CompareFlightsViewController alloc] init];
+    
+    [self.navigationController pushViewController:cfvc animated:YES];
+    [self.tableView beginUpdates];
+    currentSelection = -1;
+    [self.tableView endUpdates];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -123,6 +165,7 @@ static NSString *CellIdentifier = @"FlightCell";
         [self.tableView beginUpdates];
         [self.tableView endUpdates];
     } completion:nil];
+    
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
