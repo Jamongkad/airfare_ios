@@ -148,8 +148,8 @@ static NSString *CellIdentifier = @"FlightCell";
 
 - (void)compareTap:(id)sender {
     MatTapGestureRecognizer *tap = (MatTapGestureRecognizer *)sender;
-    //NSLog(@"%@", tap.flightData);
     CompareFlightsViewController *cfvc = [[CompareFlightsViewController alloc] init];
+    [cfvc setFlightData:tap.flightData];
     
     [self.navigationController pushViewController:cfvc animated:YES];
     [self.tableView beginUpdates];

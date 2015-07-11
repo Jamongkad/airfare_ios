@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Masonry.h"
+#import "PromosTableViewController.h"
 
 @interface CompareFlightsViewController : UIViewController
-
+@property (nonatomic, strong) NSDictionary *flightData;
 @end
