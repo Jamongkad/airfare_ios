@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FlightTableViewCell.h"
 
 @interface PromosTableViewController : UITableViewController
-
+@property (nonatomic, strong) NSArray *similarFlights;
 @end

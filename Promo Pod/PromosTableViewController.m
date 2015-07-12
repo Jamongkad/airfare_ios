@@ -10,9 +10,17 @@
 
 @interface PromosTableViewController ()
 
+
+@property NSDateFormatter *formatter;
+@property NSDate *toSelectedDate;
+@property NSDate *fromSelectedDate;
 @end
 
 @implementation PromosTableViewController
+
+extern NSString * const CellIdentifier = @"FlightCell";
+
+@synthesize similarFlights;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -22,6 +30,15 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    [self.tableView setBackgroundColor:[UIColor clearColor]];
+    [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
+    [self.tableView registerClass:[FlightTableViewCell class] forCellReuseIdentifier:CellIdentifier];
+    
+    NSLocale *enUSPOSIXLocale = [NSLocale localeWithLocaleIdentifier:@"en_US_POSIX"];
+    self.formatter = [[NSDateFormatter alloc] init];
+    self.formatter.locale = enUSPOSIXLocale;
+    self.formatter.timeZone = [NSTimeZone timeZoneForSecondsFromGMT:0];
+    [self.formatter setDateFormat:@"yyyy'-'MM'-'dd' 'HH':'mm':'ss'"];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -32,26 +49,65 @@
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-#warning Potentially incomplete method implementation.
     // Return the number of sections.
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return 0;
+    return [similarFlights count];
 }
 
-/*
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+    FlightTableViewCell *cell = (FlightTableViewCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
+    if(cell == nil) {
+        cell = [[FlightTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+    }
+    
+    NSDictionary *data = [similarFlights objectAtIndex:indexPath.row];
     // Configure the cell...
+    [cell setFlightData:data];
+    
+    self.fromSelectedDate = [self.formatter dateFromString:data[@"travel_period_from"]];
+    self.toSelectedDate = [self.formatter dateFromString:data[@"travel_period_to"]];
+   
+    NSDateFormatter *df = [[NSDateFormatter alloc] init];
+    [df setTimeStyle:NSDateFormatterNoStyle];
+    [df setDateStyle:NSDateFormatterMediumStyle];
+
+    NSLocale *usLocale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US"];
+    [df setLocale:usLocale];
+    NSString *fromDate = [df stringFromDate:self.fromSelectedDate];
+    NSString *toDate = [df stringFromDate:self.toSelectedDate];
+    
+    if(indexPath.row % 2 == 0) {
+        [cell setBackgroundColor:[UIColor flatWhiteColor]];
+    } else {
+        [cell setBackgroundColor:[UIColor colorWithCSS:@"#FAFAFA"]];
+    }
+    
+    NSNumberFormatter *currencyFormat = [[NSNumberFormatter alloc] init];
+    [currencyFormat setNumberStyle:NSNumberFormatterCurrencyStyle];
+    [currencyFormat setCurrencySymbol:@""];
+    
+    NSNumber *rate = [NSNumber numberWithFloat:[data[@"price"] floatValue]];
+    NSString *price = [NSString stringWithFormat:@"%@%@", @"PHP", [currencyFormat stringFromNumber:rate]];
+    [cell.currencyRate setText:price];
+    
+    [cell.airline setText:data[@"provider"]];
+    [cell.origin setText:[NSString stringWithFormat:@"%@ to ", data[@"origin"]]];
+    [cell.destination setText:data[@"destination"]];
+    [cell.travelPeriodLabel setText:@"Travel Period:"];
+    [cell.travelPeriodFrom setText:[NSString stringWithFormat:@"%@ to ", fromDate]];
+    [cell.travelPeriodTo setText:toDate];
     
     return cell;
 }
-*/
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 100;
+}
 
 /*
 // Override to support conditional editing of the table view.

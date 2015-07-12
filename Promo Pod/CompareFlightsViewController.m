@@ -22,9 +22,10 @@
     [self.view setBackgroundColor:[UIColor whiteColor]];
     
     NSDictionary *flights = self.flightData;
-    NSLog(@"%@", flights);
     
     PromosTableViewController *ptvc = [[PromosTableViewController alloc] init];
+    [ptvc setSimilarFlights:self.flightData[@"similar_flights"]];
+    
     [self addChildViewController:ptvc];
     [self.view addSubview:ptvc.view];
     [ptvc didMoveToParentViewController:self];
@@ -40,6 +41,11 @@
     [priceLabel setText:price];
     [priceLabel setFont:[UIFont systemFontOfSize:40]];
     [self.view addSubview:priceLabel];
+    
+    UILabel *carrierLabel = [[UILabel alloc] init];
+    [carrierLabel setText:flights[@"provider"]];
+    [carrierLabel setFont:[UIFont systemFontOfSize:13]];
+    [self.view addSubview:carrierLabel];
     
     UILabel *originLabel = [[UILabel alloc] init];
     [originLabel setText:flights[@"origin"]];
@@ -74,8 +80,13 @@
         make.centerX.equalTo(self.view);
     }];
     
+    [carrierLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(priceLabel.mas_bottom);
+        make.centerX.equalTo(priceLabel);
+    }];
+    
     [originLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(priceLabel.mas_bottom).offset(20);
+        make.top.equalTo(carrierLabel.mas_bottom).offset(20);
         make.centerX.equalTo(priceLabel);
     }];
     
@@ -100,7 +111,7 @@
     }];
     
     [similarFlights mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(destinationAirport.mas_bottom).offset(50);
+        make.top.equalTo(destinationAirport.mas_bottom).offset(30);
         make.left.equalTo(self.view.mas_left).offset(10);
     }];
     
@@ -110,7 +121,6 @@
         make.right.equalTo(self.view.mas_right);
         make.bottom.equalTo(self.view.mas_bottom);
     }];
-    
 }
 
 - (void)didReceiveMemoryWarning {

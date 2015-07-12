@@ -51,4 +51,6 @@
 @property (nonatomic, strong) UIView *flightDetail;
 @property (nonatomic, strong) UIView *flightCompare;
 
+@property (nonatomic) BOOL enableControls;
+
 @end

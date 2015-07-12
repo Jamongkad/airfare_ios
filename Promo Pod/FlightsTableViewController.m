@@ -79,6 +79,7 @@ static NSString *CellIdentifier = @"FlightCell";
     // Configure the cell...
     NSDictionary *data = [self.flights objectAtIndex:indexPath.row];
     [cell setFlightData:data];
+    [cell setEnableControls:YES];
     
     self.fromSelectedDate = [self.formatter dateFromString:data[@"travel_period_from"]];
     self.toSelectedDate = [self.formatter dateFromString:data[@"travel_period_to"]];

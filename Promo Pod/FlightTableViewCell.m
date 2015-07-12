@@ -184,73 +184,81 @@
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
-    if(selected) {
-        [flightOptions setHidden:NO];
-        [horzLine setHidden:NO];
-        [separator setHidden:NO];
-        
-        [flightOptions mas_remakeConstraints:^(MASConstraintMaker *make) {
-            make.left.equalTo(vertLine.mas_right);
-            make.right.equalTo(self.contentView);
-            make.bottom.equalTo(self.contentView);
-            make.height.equalTo(@40);
-        }];
-        
-        [travelPeriodFrom mas_remakeConstraints:^(MASConstraintMaker *make) {
-            make.top.equalTo(travelPeriodLabel.mas_bottom);
-            make.left.equalTo(vertLine.mas_right).offset(10);
-            make.bottom.equalTo(self.contentView.mas_bottom).offset(-50);
-        }];
-        
-        if([self.flightData[@"similar_flights"] count] > 0) {
+    if(self.enableControls == YES) {
+        if(selected) {
+            [flightOptions setHidden:NO];
+            [horzLine setHidden:NO];
+            [separator setHidden:NO];
             
-            [flightDetail mas_remakeConstraints:^(MASConstraintMaker *make) {
-                make.top.equalTo(flightOptions.mas_top);
-                make.left.equalTo(flightOptions.mas_left);
-                make.bottom.equalTo(flightOptions.mas_bottom);
-                make.width.equalTo(flightOptions).dividedBy(2);
+            [flightOptions mas_remakeConstraints:^(MASConstraintMaker *make) {
+                make.left.equalTo(vertLine.mas_right);
+                make.right.equalTo(self.contentView);
+                make.bottom.equalTo(self.contentView);
+                make.height.equalTo(@40);
             }];
             
-            [flightCompare mas_remakeConstraints:^(MASConstraintMaker *make) {
-                make.top.equalTo(flightOptions.mas_top);
-                make.right.equalTo(flightOptions.mas_right);
+            [travelPeriodFrom mas_remakeConstraints:^(MASConstraintMaker *make) {
+                make.top.equalTo(travelPeriodLabel.mas_bottom);
+                make.left.equalTo(vertLine.mas_right).offset(10);
+                make.bottom.equalTo(self.contentView.mas_bottom).offset(-50);
+            }];
+            
+            if([self.flightData[@"similar_flights"] count] > 0) {
+                
+                [flightDetail mas_remakeConstraints:^(MASConstraintMaker *make) {
+                    make.top.equalTo(flightOptions.mas_top);
+                    make.left.equalTo(flightOptions.mas_left);
+                    make.bottom.equalTo(flightOptions.mas_bottom);
+                    make.width.equalTo(flightOptions).dividedBy(2);
+                }];
+                
+                [flightCompare mas_remakeConstraints:^(MASConstraintMaker *make) {
+                    make.top.equalTo(flightOptions.mas_top);
+                    make.right.equalTo(flightOptions.mas_right);
+                    make.left.equalTo(flightDetail.mas_right);
+                    make.bottom.equalTo(flightOptions.mas_bottom);
+                }];
+                
+                [flightCompare setHidden:NO];
+            } else {
+                [flightDetail mas_remakeConstraints:^(MASConstraintMaker *make) {
+                    make.edges.equalTo(flightOptions);
+                }];
+                [flightCompare setHidden:YES];
+            }
+            
+            [horzLine mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.height.equalTo(@1);
+                make.left.equalTo(rateContainer.mas_right).offset(1);
+                make.right.equalTo(self.contentView.mas_right);
+                make.bottom.equalTo(flightDetail.mas_top);
+            }];
+            
+            [separator mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.width.equalTo(@1);
                 make.left.equalTo(flightDetail.mas_right);
-                make.bottom.equalTo(flightOptions.mas_bottom);
+                make.height.equalTo(flightDetail.mas_height);
+                make.bottom.equalTo(self.contentView.mas_bottom);
             }];
             
-            [flightCompare setHidden:NO];
         } else {
-            [flightDetail mas_remakeConstraints:^(MASConstraintMaker *make) {
-                make.edges.equalTo(flightOptions);
+            [flightOptions setHidden:YES];
+            [horzLine setHidden:YES];
+            [separator setHidden:YES];
+            
+            [travelPeriodFrom mas_remakeConstraints:^(MASConstraintMaker *make) {
+                make.top.equalTo(travelPeriodLabel.mas_bottom);
+                make.left.equalTo(vertLine.mas_right).offset(10);
+                make.bottom.equalTo(self.contentView.mas_bottom).offset(-5);
             }];
-            [flightCompare setHidden:YES];
+
         }
-        
-        [horzLine mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.height.equalTo(@1);
-            make.left.equalTo(rateContainer.mas_right).offset(1);
-            make.right.equalTo(self.contentView.mas_right);
-            make.bottom.equalTo(flightDetail.mas_top);
-        }];
-        
-        [separator mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.width.equalTo(@1);
-            make.left.equalTo(flightDetail.mas_right);
-            make.height.equalTo(flightDetail.mas_height);
-            make.bottom.equalTo(self.contentView.mas_bottom);
-        }];
-        
     } else {
-        [flightOptions setHidden:YES];
-        [horzLine setHidden:YES];
-        [separator setHidden:YES];
-        
         [travelPeriodFrom mas_remakeConstraints:^(MASConstraintMaker *make) {
             make.top.equalTo(travelPeriodLabel.mas_bottom);
             make.left.equalTo(vertLine.mas_right).offset(10);
             make.bottom.equalTo(self.contentView.mas_bottom).offset(-5);
         }];
-
     }
     // Configure the view for the selected state
 }
