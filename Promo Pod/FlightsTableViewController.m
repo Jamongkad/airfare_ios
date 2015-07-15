@@ -20,22 +20,22 @@
 @implementation FlightsTableViewController
 
 @synthesize flights;
-
 static NSString *CellIdentifier = @"FlightCell";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     self.title = @"Flight Promos";
-    
+    /*
     UIBarButtonItem *dismiss = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancel:)];
     
     [dismiss setTintColor:[UIColor whiteColor]];
-    
     [self.navigationItem setLeftBarButtonItem:dismiss];
+    */
+    
     [self.view setBackgroundColor:[UIColor whiteColor]];
     
-    [self.tableView setBackgroundColor:[UIColor clearColor]];
+    //[self.tableView setBackgroundColor:[UIColor whiteColor]];
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     [self.tableView registerClass:[FlightTableViewCell class] forCellReuseIdentifier:CellIdentifier];
     
