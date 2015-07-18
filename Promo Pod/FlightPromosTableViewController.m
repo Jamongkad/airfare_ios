@@ -103,22 +103,11 @@ static NSString *CellIdentifier = @"PromoCell";
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     NSDictionary *data = [self.flights objectAtIndex:indexPath.row];
-    FlightsTableViewController *ftvc = [[FlightsTableViewController alloc] init];
-
-    NSString *url = [NSString stringWithFormat:@"%@/%@", @"http://promopod.gearfish.com/flights", data[@"flights"]];
-    NSString *escapedString = [url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     
-    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    [manager GET:escapedString parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        [ftvc setFlights:responseObject];
-        [ftvc.tableView reloadData];
-        
-        [self.navigationController pushViewController:ftvc animated:YES];
+    GroupFlightsViewController *gfvc = [[GroupFlightsViewController alloc] init];
+    [gfvc setFlightData:data];
+    [self.navigationController pushViewController:gfvc animated:YES];
     
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"Error: %@", error);
-    }];
-
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {

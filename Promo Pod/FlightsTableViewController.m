@@ -7,7 +7,6 @@
 //
 
 #import "FlightsTableViewController.h"
-#import "NSDate+DateTools.h"
 
 @interface FlightsTableViewController () {
     int currentSelection;
@@ -25,15 +24,7 @@ static NSString *CellIdentifier = @"FlightCell";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.title = @"Flight Promos";
-    /*
-    UIBarButtonItem *dismiss = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancel:)];
-    
-    [dismiss setTintColor:[UIColor whiteColor]];
-    [self.navigationItem setLeftBarButtonItem:dismiss];
-    */
-    
-    [self.view setBackgroundColor:[UIColor whiteColor]];
+    [self.view setBackgroundColor:[UIColor clearColor]];
     
     //[self.tableView setBackgroundColor:[UIColor whiteColor]];
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
@@ -46,6 +37,9 @@ static NSString *CellIdentifier = @"FlightCell";
     [self.formatter setDateFormat:@"yyyy'-'MM'-'dd' 'HH':'mm':'ss'"];
     
     currentSelection = -1;
+    
+    FlightHeaderView *headerView = [[FlightHeaderView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, 100)];
+    [self.tableView setTableHeaderView:headerView];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -62,6 +56,7 @@ static NSString *CellIdentifier = @"FlightCell";
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
+
     if([self.flights count] > 0) {
         return [self.flights count];
     } else {

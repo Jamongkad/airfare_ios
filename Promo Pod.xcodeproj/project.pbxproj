@@ -20,8 +20,10 @@
 		AFAB64351B452B0B00F0132E /* FlightsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AFAB64341B452B0B00F0132E /* FlightsViewController.m */; };
 		AFAB64381B45397400F0132E /* FlightsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AFAB64371B45397400F0132E /* FlightsTableViewController.m */; };
 		AFAB643C1B46854700F0132E /* FlightTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AFAB643B1B46854700F0132E /* FlightTableViewCell.m */; };
+		AFADC21C1B56507E0099500E /* GroupFlightsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AFADC21B1B56507E0099500E /* GroupFlightsViewController.m */; };
 		AFC14E611B38446E00531016 /* DepartureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AFC14E601B38446E00531016 /* DepartureViewController.m */; };
 		AFC14E641B3856E100531016 /* SearchResultsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AFC14E631B3856E100531016 /* SearchResultsTableViewController.m */; };
+		AFC621101B59F55800D1E357 /* FlightHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = AFC6210F1B59F55800D1E357 /* FlightHeaderView.m */; };
 		AFDA811C1B3A650D00B847D1 /* Database.m in Sources */ = {isa = PBXBuildFile; fileRef = AFDA811B1B3A650D00B847D1 /* Database.m */; };
 		AFDA811F1B3A657800B847D1 /* DatabaseController.m in Sources */ = {isa = PBXBuildFile; fileRef = AFDA811E1B3A657800B847D1 /* DatabaseController.m */; };
 		AFF65DDB1B365A5800AFD902 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AFF65DDA1B365A5800AFD902 /* main.m */; };
@@ -67,10 +69,14 @@
 		AFAB64371B45397400F0132E /* FlightsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlightsTableViewController.m; sourceTree = "<group>"; };
 		AFAB643A1B46854700F0132E /* FlightTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlightTableViewCell.h; sourceTree = "<group>"; };
 		AFAB643B1B46854700F0132E /* FlightTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlightTableViewCell.m; sourceTree = "<group>"; };
+		AFADC21A1B56507E0099500E /* GroupFlightsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupFlightsViewController.h; sourceTree = "<group>"; };
+		AFADC21B1B56507E0099500E /* GroupFlightsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupFlightsViewController.m; sourceTree = "<group>"; };
 		AFC14E5F1B38446E00531016 /* DepartureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DepartureViewController.h; sourceTree = "<group>"; };
 		AFC14E601B38446E00531016 /* DepartureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DepartureViewController.m; sourceTree = "<group>"; };
 		AFC14E621B3856E100531016 /* SearchResultsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchResultsTableViewController.h; sourceTree = "<group>"; };
 		AFC14E631B3856E100531016 /* SearchResultsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchResultsTableViewController.m; sourceTree = "<group>"; };
+		AFC6210E1B59F55800D1E357 /* FlightHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlightHeaderView.h; sourceTree = "<group>"; };
+		AFC6210F1B59F55800D1E357 /* FlightHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlightHeaderView.m; sourceTree = "<group>"; };
 		AFDA811A1B3A650D00B847D1 /* Database.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Database.h; sourceTree = "<group>"; };
 		AFDA811B1B3A650D00B847D1 /* Database.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Database.m; sourceTree = "<group>"; };
 		AFDA811D1B3A657800B847D1 /* DatabaseController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatabaseController.h; sourceTree = "<group>"; };
@@ -149,6 +155,8 @@
 				AF3B06ED1B4FC7EE00C886D9 /* FlightDetailViewController.m */,
 				AFAB64331B452B0B00F0132E /* FlightsViewController.h */,
 				AFAB64341B452B0B00F0132E /* FlightsViewController.m */,
+				AFADC21A1B56507E0099500E /* GroupFlightsViewController.h */,
+				AFADC21B1B56507E0099500E /* GroupFlightsViewController.m */,
 				AF046A171B36A49F00785AFB /* SearchViewController.h */,
 				AF046A181B36A49F00785AFB /* SearchViewController.m */,
 			);
@@ -169,6 +177,8 @@
 			children = (
 				AF3B06F01B4FCF2600C886D9 /* MatTapGestureRecognizer.h */,
 				AF3B06F11B4FCF2600C886D9 /* MatTapGestureRecognizer.m */,
+				AFC6210E1B59F55800D1E357 /* FlightHeaderView.h */,
+				AFC6210F1B59F55800D1E357 /* FlightHeaderView.m */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -408,9 +418,11 @@
 				AF39F92E1B53918C00A5FC54 /* FlightPromosTableViewController.m in Sources */,
 				AFF65DDE1B365A5800AFD902 /* AppDelegate.m in Sources */,
 				AF046A141B368EDD00785AFB /* RootViewController.m in Sources */,
+				AFC621101B59F55800D1E357 /* FlightHeaderView.m in Sources */,
 				AF3B06F21B4FCF2600C886D9 /* MatTapGestureRecognizer.m in Sources */,
 				AF3B06EB1B4FC7E100C886D9 /* CompareFlightsViewController.m in Sources */,
 				AFDA811C1B3A650D00B847D1 /* Database.m in Sources */,
+				AFADC21C1B56507E0099500E /* GroupFlightsViewController.m in Sources */,
 				AFDA811F1B3A657800B847D1 /* DatabaseController.m in Sources */,
 				AFAB64351B452B0B00F0132E /* FlightsViewController.m in Sources */,
 				AFAB643C1B46854700F0132E /* FlightTableViewCell.m in Sources */,

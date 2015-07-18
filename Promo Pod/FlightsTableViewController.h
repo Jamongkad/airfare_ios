@@ -16,6 +16,9 @@
 #import "FlightDetailViewController.h"
 #import "CompareFlightsViewController.h"
 
+#import "NSDate+DateTools.h"
+#import "FlightHeaderView.h"
+
 @interface FlightsTableViewController : UITableViewController
 @property (nonatomic, strong) NSArray *flights;
 @end

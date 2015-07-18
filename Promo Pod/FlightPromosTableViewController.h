@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "PromoTableViewCell.h"
 #import "UIColor+HTMLColors.h"
-#import "FlightsTableViewController.h"
+#import "GroupFlightsViewController.h"
 #import <AFNetworking/AFNetworking.h>
 
 @interface FlightPromosTableViewController : UITableViewController
