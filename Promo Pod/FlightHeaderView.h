@@ -11,6 +11,20 @@
 #import "UIColor+HTMLColors.h"
 #import <ChameleonFramework/Chameleon.h>
 
-@interface FlightHeaderView : UIView
+@interface FlightHeaderView : UIView {
+    UIView *airportView;
+    UIView *tripView;
+    UIView *vertLine;
+    UIView *perPersonView;
+    UIView *airlineView;
+    
+    UILabel *oneWayLabel;
+    UILabel *perPersonLabel;
+    UILabel *selectDepartureLabel;
+    UILabel *displayFlightsLabel;
+    UILabel *displayAirlineLabel;
+}
+
+@property (nonatomic, strong) UILabel *displayFlightsLabel;
 
 @end

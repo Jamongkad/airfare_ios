@@ -66,24 +66,7 @@ static NSString *CellIdentifier = @"PromoCell";
     
     [cell.flightLabel setText:data[@"displayFlights"]];
     
-    NSString *provider = data[@"cheapestProvider"];
-    
-    if([provider isEqualToString:@"cebupac"]) {
-        [cell.cheapestProvider setTextColor:[UIColor flatYellowColor]];
-    }
-    
-    if([provider isEqualToString:@"airasia"]) {
-        [cell.cheapestProvider setTextColor:[UIColor flatRedColor]];
-    }
-    
-    if([provider isEqualToString:@"jetstar"]) {
-        [cell.cheapestProvider setTextColor:[UIColor flatOrangeColor]];
-    }
-    
-    if([provider isEqualToString:@"tigerair"]) {
-        [cell.cheapestProvider setTextColor:[UIColor colorWithCSS:@"#FFAA26"]];
-    }
-    
+    [cell.cheapestProvider setTextColor:[UIColor flatSkyBlueColor]];
     [cell.cheapestProvider setText:data[@"cheapestProvider"]];
     
     [cell.startingPrice setText:[NSString stringWithFormat:@"PHP%@", data[@"startingFrom"]]];

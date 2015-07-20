@@ -25,6 +25,8 @@
     NSString *url = [NSString stringWithFormat:@"%@/%@", @"http://promopod.gearfish.com/flights", self.flightData[@"flights"]];
     NSString *escapedString = [url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     
+    [ftvc setDisplayFlights:self.flightData[@"displayFlights"]];
+    
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     [manager GET:escapedString parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         [ftvc setFlights:responseObject];

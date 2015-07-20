@@ -25,22 +25,11 @@
     [self.navigationItem setLeftBarButtonItem:dismiss];
     [self.view setBackgroundColor:[UIColor whiteColor]];
     
-    self.ftvc = [[FlightsTableViewController alloc] init];
     self.fptvc = [[FlightPromosTableViewController alloc] init];
     
     [self addChildViewController:self.fptvc];
     [self.view addSubview:self.fptvc.view];
     [self.fptvc didMoveToParentViewController:self];
-    /*
-     
-    [self addChildViewController:self.ftvc];
-    [self.view addSubview:self.ftvc.view];
-    [self.ftvc didMoveToParentViewController:self];
-    
-    [self.ftvc.view mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.equalTo(self.view);
-    }];
-    */
     
     [self.fptvc.view mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self.view);
@@ -49,22 +38,6 @@
     // Do any additional setup after loading the view.
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     [self pullGroupFlights:hud];
-}
-
-- (void)pullAllAirfare:(MBProgressHUD *)hud {
-
-    NSString *airfareURL = @"http://promopod.gearfish.com/airfare";
-    hud.labelText = @"Fetching Flights...";
-    
-    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    [manager GET:airfareURL parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        [self.ftvc setFlights:responseObject];
-        [self.ftvc.tableView reloadData];
-        [hud hide:YES];
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"Error: %@", error);
-    }];
-   
 }
 
 - (void)pullGroupFlights:(MBProgressHUD *)hud {

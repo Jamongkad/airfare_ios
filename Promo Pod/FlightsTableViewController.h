@@ -21,4 +21,5 @@
 
 @interface FlightsTableViewController : UITableViewController
 @property (nonatomic, strong) NSArray *flights;
+@property (nonatomic, strong) NSString *displayFlights;
 @end

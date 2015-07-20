@@ -10,7 +10,7 @@
 
 @implementation FlightTableViewCell
 
-@synthesize flightData, currencyRate, airline, origin, destination, travelPeriodLabel, travelPeriodTo, travelPeriodFrom, flightOptions, flightDetail, flightCompare;
+@synthesize flightData, currencyRate, airlineLabel, travelPeriodLabel, travelPeriodTo, travelPeriodFrom, flightOptions, flightDetail, flightCompare;
 
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     if(self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
@@ -23,11 +23,6 @@
         [currencyRate setTextColor:[UIColor flatSkyBlueColor]];
         [currencyRate setFont:[UIFont boldSystemFontOfSize:15]];
         [rateContainer addSubview:currencyRate];
-        
-        airline = [[UILabel alloc] init];
-        [airline setTextColor:[UIColor lightGrayColor]];
-        [airline setFont:[UIFont systemFontOfSize:13]];
-        [rateContainer addSubview:airline];
         
         cellContainer = [[UIView alloc] init];
        
@@ -46,15 +41,10 @@
         [separator setBackgroundColor:[UIColor colorWithCSS:@"#E0EEEE"]];
         [cellContainer addSubview:separator];
         
-        origin = [[UILabel alloc] init];
-        [origin setFont:[UIFont systemFontOfSize:20]];
-        [origin setTextColor:[UIColor flatGrayColorDark]];
-        [self.contentView addSubview:origin];
-        
-        destination = [[UILabel alloc] init];
-        [destination setFont:[UIFont systemFontOfSize:20]];
-        [destination setTextColor:[UIColor flatGrayColorDark]];
-        [self.contentView addSubview:destination];
+        airlineLabel = [[UILabel alloc] init];
+        [airlineLabel setFont:[UIFont boldSystemFontOfSize:20]];
+        [airlineLabel setTextColor:[UIColor flatSkyBlueColorDark]];
+        [self.contentView addSubview:airlineLabel];
         
         travelPeriodLabel = [[UILabel alloc] init];
         [travelPeriodLabel setTextColor:[UIColor lightGrayColor]];
@@ -129,11 +119,6 @@
         make.center.equalTo(rateContainer);
     }];
     
-    [airline mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(currencyRate.mas_bottom);
-        make.centerX.equalTo(currencyRate);
-    }];
-    
     [vertLine mas_makeConstraints:^(MASConstraintMaker *make) {
         make.width.equalTo(@1);
         make.height.equalTo(self.contentView);
@@ -141,14 +126,9 @@
         make.bottom.equalTo(self.contentView.mas_bottom);
     }];
     
-    [origin mas_makeConstraints:^(MASConstraintMaker *make) {
+    [airlineLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(vertLine.mas_right).offset(10);
         make.top.equalTo(self.contentView.mas_top).offset(5);
-    }];
-    
-    [destination mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(origin.mas_right);
-        make.top.equalTo(origin);
     }];
     
     [travelPeriodLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -159,6 +139,7 @@
     [travelPeriodTo mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(travelPeriodLabel.mas_bottom);
         make.left.equalTo(travelPeriodFrom.mas_right);
+        make.right.equalTo(self.contentView.mas_right);
         make.bottom.equalTo(travelPeriodFrom);
     }];
     
@@ -174,7 +155,7 @@
     
     [additionalFlightOptions mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(vertLine.mas_right).offset(10);
-        make.top.equalTo(origin.mas_bottom);
+        make.top.equalTo(airlineLabel.mas_bottom);
     }];
 }
 

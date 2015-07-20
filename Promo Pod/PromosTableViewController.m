@@ -94,10 +94,8 @@ extern NSString * const CellIdentifier = @"FlightCell";
     NSNumber *rate = [NSNumber numberWithFloat:[data[@"price"] floatValue]];
     NSString *price = [NSString stringWithFormat:@"%@%@", @"PHP", [currencyFormat stringFromNumber:rate]];
     [cell.currencyRate setText:price];
-    
-    [cell.airline setText:data[@"provider"]];
-    [cell.origin setText:[NSString stringWithFormat:@"%@ to ", data[@"origin"]]];
-    [cell.destination setText:data[@"destination"]];
+    [cell.airlineLabel setText:[NSString stringWithFormat:@"%@ to ", data[@"origin"]]];
+
     [cell.travelPeriodLabel setText:@"Travel Period:"];
     [cell.travelPeriodFrom setText:[NSString stringWithFormat:@"%@ to ", fromDate]];
     [cell.travelPeriodTo setText:toDate];

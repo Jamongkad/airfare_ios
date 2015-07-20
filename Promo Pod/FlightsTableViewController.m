@@ -18,15 +18,14 @@
 
 @implementation FlightsTableViewController
 
-@synthesize flights;
+@synthesize flights, displayFlights;
+
 static NSString *CellIdentifier = @"FlightCell";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     [self.view setBackgroundColor:[UIColor clearColor]];
     
-    //[self.tableView setBackgroundColor:[UIColor whiteColor]];
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     [self.tableView registerClass:[FlightTableViewCell class] forCellReuseIdentifier:CellIdentifier];
     
@@ -38,7 +37,8 @@ static NSString *CellIdentifier = @"FlightCell";
     
     currentSelection = -1;
     
-    FlightHeaderView *headerView = [[FlightHeaderView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, 100)];
+    FlightHeaderView *headerView = [[FlightHeaderView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, 130)];
+    [headerView.displayFlightsLabel setText:self.displayFlights];
     [self.tableView setTableHeaderView:headerView];
 }
 
@@ -102,10 +102,8 @@ static NSString *CellIdentifier = @"FlightCell";
     
     NSString *price = [NSString stringWithFormat:@"%@%@", @"PHP", [currencyFormat stringFromNumber:rate]];
     [cell.currencyRate setText:price];
+    [cell.airlineLabel setText:data[@"provider_fullname"]];
     
-    [cell.airline setText:data[@"provider"]];
-    [cell.origin setText:[NSString stringWithFormat:@"%@ to ", data[@"origin"]]];
-    [cell.destination setText:data[@"destination"]];
     [cell.travelPeriodLabel setText:@"Travel Period:"];
     [cell.travelPeriodFrom setText:[NSString stringWithFormat:@"%@ to ", fromDate]];
     [cell.travelPeriodTo setText:toDate];

@@ -13,8 +13,7 @@
 
 @interface FlightTableViewCell : UITableViewCell {
     UILabel *currencyRate;
-    UILabel *airline;
-    UILabel *origin;
+    UILabel *airlineLabel;
     UILabel *destination;
     UILabel *travelPeriodLabel;
     UILabel *travelPeriodTo;
@@ -38,10 +37,7 @@
 @property (nonatomic, strong) NSDictionary *flightData;
 
 @property (nonatomic, strong) UILabel *currencyRate;
-@property (nonatomic, strong) UILabel *airline;
-
-@property (nonatomic, strong) UILabel *origin;
-@property (nonatomic, strong) UILabel *destination;
+@property (nonatomic, strong) UILabel *airlineLabel;
 
 @property (nonatomic, strong) UILabel *travelPeriodLabel;
 @property (nonatomic, strong) UILabel *travelPeriodTo;
