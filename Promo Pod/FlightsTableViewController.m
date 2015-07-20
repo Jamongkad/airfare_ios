@@ -107,39 +107,39 @@ static NSString *CellIdentifier = @"FlightCell";
     [cell.travelPeriodLabel setText:@"Travel Period:"];
     [cell.travelPeriodFrom setText:[NSString stringWithFormat:@"%@ to ", fromDate]];
     [cell.travelPeriodTo setText:toDate];
-    
-    MatTapGestureRecognizer *detailTap = [[MatTapGestureRecognizer alloc] initWithTarget:self action:@selector(detailTap:)];
-    [detailTap setFlightData:data];
-    
-    MatTapGestureRecognizer *compareTap = [[MatTapGestureRecognizer alloc] initWithTarget:self action:@selector(compareTap:)];
-    [compareTap setFlightData:data];
-    
-    [cell.flightDetail addGestureRecognizer:detailTap];
-    [cell.flightCompare addGestureRecognizer:compareTap];
-    
     return cell;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 80;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSDictionary *data = [self.flights objectAtIndex:indexPath.row];
+    NSLog(@"Flight Deets: %@", data);
+}
+
+/*
 - (void)detailTap:(id)sender {
     MatTapGestureRecognizer *tap = (MatTapGestureRecognizer *)sender;
     //NSLog(@"%@", tap.flightData);
     
     FlightDetailViewController *fdvc = [[FlightDetailViewController alloc] init];
-    /*
+
         UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:fdvc];
     [self presentViewController:nav animated:YES completion:^{
         [self.tableView beginUpdates];
         currentSelection = -1;
         [self.tableView endUpdates];
     }];
-    */
-    
+     
     [self.navigationController pushViewController:fdvc animated:YES];
     [self.tableView beginUpdates];
-    currentSelection = -1;
     [self.tableView endUpdates];
 }
+ */
 
+/*
 - (void)compareTap:(id)sender {
     MatTapGestureRecognizer *tap = (MatTapGestureRecognizer *)sender;
     CompareFlightsViewController *cfvc = [[CompareFlightsViewController alloc] init];
@@ -150,7 +150,9 @@ static NSString *CellIdentifier = @"FlightCell";
     currentSelection = -1;
     [self.tableView endUpdates];
 }
+*/
 
+/*
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     int row = (int)[indexPath row];
     currentSelection = row;
@@ -161,14 +163,7 @@ static NSString *CellIdentifier = @"FlightCell";
     } completion:nil];
     
 }
-
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if([indexPath row] == currentSelection) {
-        return 150;
-    } else {
-        return 100;
-    }
-}
+*/
 
 /*
 // Override to support conditional editing of the table view.

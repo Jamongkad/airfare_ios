@@ -139,7 +139,6 @@
     [travelPeriodTo mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(travelPeriodLabel.mas_bottom);
         make.left.equalTo(travelPeriodFrom.mas_right);
-        make.right.equalTo(self.contentView.mas_right);
         make.bottom.equalTo(travelPeriodFrom);
     }];
     
@@ -157,12 +156,19 @@
         make.left.equalTo(vertLine.mas_right).offset(10);
         make.top.equalTo(airlineLabel.mas_bottom);
     }];
+    
+    [travelPeriodFrom mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(travelPeriodLabel.mas_bottom);
+        make.left.equalTo(vertLine.mas_right).offset(10);
+        make.bottom.equalTo(self.contentView.mas_bottom).offset(-5);
+    }];
 }
 
 - (void)setNeedsLayout {
     [super setNeedsLayout];
 }
 
+/* let's open this up for another time.
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
     if(self.enableControls == YES) {
@@ -243,5 +249,5 @@
     }
     // Configure the view for the selected state
 }
-
+*/
 @end
