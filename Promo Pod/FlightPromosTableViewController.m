@@ -8,7 +8,9 @@
 
 #import "FlightPromosTableViewController.h"
 
-@interface FlightPromosTableViewController ()
+@interface FlightPromosTableViewController () {
+    UISearchBar *searchbar;
+}
 
 @end
 
@@ -24,11 +26,10 @@ static NSString *CellIdentifier = @"PromoCell";
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     [self.tableView registerClass:[PromoTableViewCell class] forCellReuseIdentifier:CellIdentifier];
     
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    searchbar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, 0)];
+    [searchbar setDelegate:self];
+    [searchbar sizeToFit];
+    [self.tableView setTableHeaderView:searchbar];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -95,6 +96,53 @@ static NSString *CellIdentifier = @"PromoCell";
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 120;
+}
+
+-(void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar {
+    [searchBar setShowsCancelButton:YES animated:YES];
+}
+
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
+    // Remove the keyboard
+    [searchBar endEditing:YES];
+    [self filterSearch:[searchBar text] resetResults:NO];
+}
+
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
+    if([searchText length] > 0) {
+        [self filterSearch:searchText resetResults:NO];
+    } else {
+        [self filterSearch:searchText resetResults:YES];
+    }
+}
+
+- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
+    // Remove the keyboard
+    [searchBar endEditing:YES];
+    [searchBar setShowsCancelButton:NO animated:YES];
+    // Clear the text on cancel
+    [searchBar setText:@""];
+    [self filterSearch:@"" resetResults:YES];
+}
+
+- (void)filterSearch:(NSString *)searchText resetResults:(BOOL)reset {
+    
+    NSString *restURL;
+    
+    if(reset) {
+        restURL = @"http://promopod.gearfish.com/group_flights";
+    } else {
+        NSString *url = [NSString stringWithFormat:@"%@/%@", @"http://promopod.gearfish.com/group_flights/search", searchText];
+        restURL = [url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    }
+
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    [manager GET:restURL parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        self.flights = responseObject;
+        [self.tableView reloadData];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"Error: %@", error);
+    }];
 }
 
 /*

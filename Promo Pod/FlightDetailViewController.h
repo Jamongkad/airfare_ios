@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface FlightDetailViewController : UIViewController
-
+@property (nonatomic, strong) NSDictionary *flightDetails;
 @end

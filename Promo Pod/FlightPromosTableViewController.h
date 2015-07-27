@@ -12,6 +12,6 @@
 #import "GroupFlightsViewController.h"
 #import <AFNetworking/AFNetworking.h>
 
-@interface FlightPromosTableViewController : UITableViewController
+@interface FlightPromosTableViewController : UITableViewController <UISearchBarDelegate, UIScrollViewDelegate>
 @property (nonatomic, strong) NSArray *flights;
 @end

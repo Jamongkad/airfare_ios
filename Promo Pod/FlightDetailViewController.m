@@ -14,16 +14,13 @@
 
 @implementation FlightDetailViewController
 
+@synthesize flightDetails;
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"Flight Details";
     [self.view setBackgroundColor:[UIColor whiteColor]];
-    /*
-    UIBarButtonItem *dismiss = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancel:)];
-    
-    [dismiss setTintColor:[UIColor whiteColor]];
-    [self.navigationItem setLeftBarButtonItem:dismiss];
-    */
+    NSLog(@"Flight Details: %@", self.flightDetails);
     // Do any additional setup after loading the view.
 }
 

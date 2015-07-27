@@ -116,7 +116,10 @@ static NSString *CellIdentifier = @"FlightCell";
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     NSDictionary *data = [self.flights objectAtIndex:indexPath.row];
-    NSLog(@"Flight Deets: %@", data);
+    
+    FlightDetailViewController *fdvc = [[FlightDetailViewController alloc] init];
+    [fdvc setFlightDetails:data];
+    [self.navigationController pushViewController:fdvc animated:YES];
 }
 
 /*

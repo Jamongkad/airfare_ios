@@ -39,9 +39,12 @@
     [self.view addSubview:ftvc.view];
     [ftvc didMoveToParentViewController:self];
     
+
     [ftvc.view mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self.view);
     }];
+    
+
 }
 
 - (void)didReceiveMemoryWarning {

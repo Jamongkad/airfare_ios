@@ -17,6 +17,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     self.title = @"Flight Promos";
     
     UIBarButtonItem *dismiss = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancel:)];
@@ -26,13 +27,28 @@
     [self.view setBackgroundColor:[UIColor whiteColor]];
     
     self.fptvc = [[FlightPromosTableViewController alloc] init];
-    
+
     [self addChildViewController:self.fptvc];
     [self.view addSubview:self.fptvc.view];
     [self.fptvc didMoveToParentViewController:self];
     
+    /*
+    SBSearchBar *searchBar = [[SBSearchBar alloc] initWithFrame:CGRectMake(0, 0, UIScreen.mainScreen.bounds.size.width - 20, 50)];
+    [searchBar setDelegate:self];
+    searchBar.addExtraCancelButton = YES;
+    searchBar.extraCancelButton.backgroundColor = [UIColor colorWithWhite:0.9 alpha:1];
+    searchBar.extraCancelButton.layer.borderWidth = 1;
+    searchBar.extraCancelButton.layer.borderColor = [UIColor blackColor].CGColor;
+    [self.view addSubview:searchBar];
+    */
+    
+    
     [self.fptvc.view mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.equalTo(self.view);
+        //make.top.equalTo(searchBar.mas_bottom);
+        make.top.equalTo(self.view);
+        make.left.equalTo(self.view);
+        make.right.equalTo(self.view);
+        make.bottom.equalTo(self.view);
     }];
     
     // Do any additional setup after loading the view.
