@@ -20,7 +20,11 @@
     [super viewDidLoad];
     self.title = @"Flight Details";
     [self.view setBackgroundColor:[UIColor whiteColor]];
-    NSLog(@"Flight Details: %@", self.flightDetails);
+    NSLog(@"Flight Details Pwet: %@", self.flightDetails);
+    
+    NSLog(@"Origin IATA: %@", self.flightDetails[@"org_iata"]);
+    NSLog(@"Destination IATA: %@", self.flightDetails[@"des_iata"]);
+
     // Do any additional setup after loading the view.
 }
 

@@ -35,7 +35,10 @@
     [bgImage setImage:[UIImage imageNamed:@"bg-main-0"]];
     [self.view addSubview:bgImage];
     UILabel *saying = [[UILabel alloc] init];
-    //[saying setText:@"Vacations don't have to be expensive"];
+    [saying setText:@"Vacations need not be expensive"];
+    [saying setLineBreakMode:NSLineBreakByWordWrapping];
+    [saying setNumberOfLines:0];
+    [saying setTextAlignment:NSTextAlignmentCenter];
     [saying setTextColor:[UIColor flatWhiteColor]];
     [saying setFont:[UIFont systemFontOfSize:23]];
     [self.view addSubview:saying];
@@ -48,36 +51,28 @@
     [viewAllPromos setBackgroundColor:[[UIColor flatBlueColor] colorWithAlphaComponent:.6]];
     [self.view addSubview:viewAllPromos];
     
-    UIView *searchFlights = [[UIView alloc] init];
-    [searchFlights setBackgroundColor:[[UIColor flatOrangeColor] colorWithAlphaComponent:.6]];
-    [self.view addSubview:searchFlights];
-    
     [sayingContainer mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.view);
         make.left.equalTo(self.view);
         make.right.equalTo(self.view);
-        make.height.mas_equalTo(68);
-        make.bottom.equalTo(@[viewAllPromos.mas_top, searchFlights.mas_top]);
+        make.height.equalTo(@200);
+        make.bottom.equalTo(viewAllPromos.mas_top);
     }];
     
     [saying mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo(sayingContainer);
         make.centerY.equalTo(sayingContainer);
+        make.left.equalTo(sayingContainer).offset(10);
+        make.right.equalTo(sayingContainer).offset(-10);
     }];
     
     [viewAllPromos mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(sayingContainer.mas_bottom);
         make.left.equalTo(self.view.mas_left);
-        make.height.mas_equalTo(120);
-        make.width.mas_equalTo([[UIScreen mainScreen] bounds].size.width/2);
-    }];
-    
-    [searchFlights mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(sayingContainer.mas_bottom);
         make.right.equalTo(self.view.mas_right);
         make.height.mas_equalTo(120);
-        make.width.mas_equalTo([[UIScreen mainScreen] bounds].size.width/2);
     }];
+    
     
     UILabel *viewPromo = [[UILabel alloc] init];
     [viewPromo setText:@"View All Flight Promos"];
@@ -91,24 +86,8 @@
         make.edges.equalTo(viewAllPromos).insets(padding);
     }];
     
-    UILabel *viewSearchFlights = [[UILabel alloc] init];
-    [viewSearchFlights setText:@"Search Flights"];
-    [viewSearchFlights setTextAlignment:NSTextAlignmentCenter];
-    [viewSearchFlights setTextColor:[UIColor flatWhiteColor]];
-    [viewSearchFlights setNumberOfLines:0];
-    [viewSearchFlights setFont:[UIFont systemFontOfSize:19]];
-    [searchFlights addSubview:viewSearchFlights];
-    
-    [viewSearchFlights mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.equalTo(searchFlights).insets(padding);
-    }];
-    
-    UITapGestureRecognizer *searchFlightGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(openSearch:)];
-    [searchFlights addGestureRecognizer:searchFlightGesture];
-    
     UITapGestureRecognizer *searchPromoGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(openPromo:)];
     [viewAllPromos addGestureRecognizer:searchPromoGesture];
-    
     // Do any additional setup after loading the view.
 }
 

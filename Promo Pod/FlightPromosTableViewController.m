@@ -32,6 +32,11 @@ static NSString *CellIdentifier = @"PromoCell";
     [self.tableView setTableHeaderView:searchbar];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self searchbarSet];
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -123,6 +128,7 @@ static NSString *CellIdentifier = @"PromoCell";
     // Clear the text on cancel
     [searchBar setText:@""];
     [self filterSearch:@"" resetResults:YES];
+    [self searchbarSet];
 }
 
 - (void)filterSearch:(NSString *)searchText resetResults:(BOOL)reset {
@@ -143,6 +149,10 @@ static NSString *CellIdentifier = @"PromoCell";
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"Error: %@", error);
     }];
+}
+
+- (void)searchbarSet {
+    [self.tableView setContentOffset:CGPointMake(0,  searchbar.frame.size.height - self.tableView.contentOffset.y) animated:YES];
 }
 
 /*
