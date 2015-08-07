@@ -30,10 +30,6 @@ static NSString *CellIdentifier = @"PromoCell";
     [searchbar setDelegate:self];
     [searchbar sizeToFit];
     [self.tableView setTableHeaderView:searchbar];
-}
-
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
     [self searchbarSet];
 }
 

@@ -10,6 +10,7 @@
 #import "PromoTableViewCell.h"
 #import "UIColor+HTMLColors.h"
 #import "GroupFlightsViewController.h"
+#import <ChameleonFramework/Chameleon.h>
 #import <AFNetworking/AFNetworking.h>
 
 @interface FlightPromosTableViewController : UITableViewController <UISearchBarDelegate, UIScrollViewDelegate>

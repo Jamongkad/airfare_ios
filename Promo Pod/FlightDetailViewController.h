@@ -7,6 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Masonry.h"
+#import "UIColor+HTMLColors.h"
+#import <ChameleonFramework/Chameleon.h>
+#import "FlightDetailTableViewController.h"
 
 @interface FlightDetailViewController : UIViewController
 @property (nonatomic, strong) NSDictionary *flightDetails;
