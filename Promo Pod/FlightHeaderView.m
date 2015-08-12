@@ -96,8 +96,6 @@
         make.left.equalTo(selectDepartureLabel.mas_left);
     }];
 
-
-    
     [tripView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(airportView.mas_bottom);
         make.left.equalTo(self.mas_left);

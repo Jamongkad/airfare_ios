@@ -14,7 +14,13 @@
     UIView *divider;
     UIView *gotoWebsite;
     
+    UILabel *departingLabel;
+    UILabel *arrivingLabel;
+    UILabel *originAirportLabel;
+    UILabel *destinationAirportLabel;
+    
     UILabel *gotoWebsiteLabel;
+    
     
     FlightDetailTableViewController *fdtvc;
 }
@@ -39,7 +45,20 @@
     // Do any additional setup after loading the view.
     
     originView = [[UIView alloc] init];
-    [originView setBackgroundColor:[UIColor flatSkyBlueColor]];
+    [originView setBackgroundColor:[UIColor flatSkyBlueColorDark]];
+    
+    departingLabel = [[UILabel alloc] init];
+    [departingLabel setTextColor:[UIColor flatWhiteColorDark]];
+    [departingLabel setFont:[UIFont systemFontOfSize:14]];
+    [departingLabel setText:@"Departing Flight"];
+    [originView addSubview:departingLabel];
+    
+    originAirportLabel = [[UILabel alloc] init];
+    [originAirportLabel setTextColor:[UIColor whiteColor]];
+    [originAirportLabel setText:self.flightDetails[@"origin_airport"]];
+    [originAirportLabel setFont:[UIFont boldSystemFontOfSize:19]];
+    [originView addSubview:originAirportLabel];
+    
     [self.view addSubview:originView];
     
     divider = [[UIView alloc] init];
@@ -47,9 +66,21 @@
     [self.view addSubview:divider];
     
     destinationView = [[UIView alloc] init];
-    [destinationView setBackgroundColor:[UIColor flatSkyBlueColor]];
-    [self.view addSubview:destinationView];
+    [destinationView setBackgroundColor:[UIColor flatSkyBlueColorDark]];
     
+    arrivingLabel = [[UILabel alloc] init];
+    [arrivingLabel setTextColor:[UIColor flatWhiteColorDark]];
+    [arrivingLabel setFont:[UIFont systemFontOfSize:14]];
+    [arrivingLabel setText:@"Arriving Flight"];
+    [destinationView addSubview:arrivingLabel];
+    
+    destinationAirportLabel = [[UILabel alloc] init];
+    [destinationAirportLabel setTextColor:[UIColor whiteColor]];
+    [destinationAirportLabel setText:self.flightDetails[@"destination_airport"]];
+    [destinationAirportLabel setFont:[UIFont boldSystemFontOfSize:19]];
+    [destinationView addSubview:destinationAirportLabel];
+    [self.view addSubview:destinationView];
+
     fdtvc = [[FlightDetailTableViewController alloc] init];
     [self addChildViewController:fdtvc];
     [self.view addSubview:fdtvc.view];
@@ -105,6 +136,26 @@
     
     [gotoWebsiteLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.center.equalTo(gotoWebsite);
+    }];
+    
+    [departingLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(originView.mas_top).offset(20);
+        make.left.equalTo(originView.mas_left).offset(15);
+    }];
+    
+    [originAirportLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(departingLabel.mas_bottom);
+        make.left.equalTo(departingLabel.mas_left);
+    }];
+    
+    [arrivingLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(destinationView.mas_top).offset(20);
+        make.left.equalTo(destinationView.mas_left).offset(15);
+    }];
+    
+    [destinationAirportLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(arrivingLabel.mas_bottom);
+        make.left.equalTo(arrivingLabel.mas_left);
     }];
     
     UITapGestureRecognizer *openWebsite = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(openWebsite:)];
