@@ -14,6 +14,10 @@
 
 @implementation FlightDetailTableViewController
 
+@synthesize flightDetails;
+
+NSString *const FlightDetailCellIdentifier = @"Cell";
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -22,6 +26,26 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    NSLog(@"Flight Details Pwet: %@", self.flightDetails);
+    
+    NSLog(@"Origin IATA: %@", self.flightDetails[@"org_iata"]);
+    NSLog(@"Destination IATA: %@", self.flightDetails[@"des_iata"]);
+
+    NSLog(@"Origin IATA: %@", self.flightDetails[@"org_iata"]);
+    NSLog(@"Destination IATA: %@", self.flightDetails[@"des_iata"]);
+    
+    FlightHeaderDetailView *headerView = [[FlightHeaderDetailView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, 160)];
+    [headerView.originAirportLabel setText:self.flightDetails[@"origin_airport"]];
+    [headerView.destinationAirportLabel setText:self.flightDetails[@"destination_airport"]];
+    [self.tableView setTableHeaderView:headerView];
+    
+    /*
+    UIView *footerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, 100)];
+    [footerView setBackgroundColor:[UIColor flatOrangeColor]];
+    [self.tableView setTableFooterView:footerView];
+    */
+    [self.tableView setBackgroundColor:[UIColor whiteColor]];
+    [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -32,26 +56,52 @@
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-#warning Potentially incomplete method implementation.
     // Return the number of sections.
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return 0;
+    return 5;
 }
 
-/*
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+    [self.tableView registerClass:[FlightDetailTableViewCell class] forCellReuseIdentifier:FlightDetailCellIdentifier];
     
-    // Configure the cell...
+    FlightDetailTableViewCell *cell = (FlightDetailTableViewCell *)[tableView dequeueReusableCellWithIdentifier:FlightDetailCellIdentifier forIndexPath:indexPath];
+    
+    if(cell == nil) {
+        cell = [[FlightDetailTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:FlightDetailCellIdentifier];
+    }
+    
+    if(indexPath.row == 0) {
+   
+    }
+    
+    if(indexPath.row == 1) {
+
+    }
+    
+    if(indexPath.row == 2) {
+
+    }
+    
+    if(indexPath.row == 3) {
+
+    }
+    
+    if(indexPath.row == 4) {
+   
+    }
     
     return cell;
+
 }
-*/
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 80;
+}
 
 /*
 // Override to support conditional editing of the table view.

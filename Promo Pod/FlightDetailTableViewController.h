@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FlightHeaderDetailView.h"
+#import "FlightDetailTableViewCell.h"
 
 @interface FlightDetailTableViewController : UITableViewController
-
+@property (nonatomic, strong) NSDictionary *flightDetails;
 @end

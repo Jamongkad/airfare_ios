@@ -35,57 +35,14 @@
     [super viewDidLoad];
     self.title = @"Flight Details";
     [self.view setBackgroundColor:[UIColor whiteColor]];
-    NSLog(@"Flight Details Pwet: %@", self.flightDetails);
-    
-    NSLog(@"Origin IATA: %@", self.flightDetails[@"org_iata"]);
-    NSLog(@"Destination IATA: %@", self.flightDetails[@"des_iata"]);
-
-    NSLog(@"Origin IATA: %@", self.flightDetails[@"org_iata"]);
-    NSLog(@"Destination IATA: %@", self.flightDetails[@"des_iata"]);
     // Do any additional setup after loading the view.
-    
-    originView = [[UIView alloc] init];
-    [originView setBackgroundColor:[UIColor flatSkyBlueColorDark]];
-    
-    departingLabel = [[UILabel alloc] init];
-    [departingLabel setTextColor:[UIColor flatWhiteColorDark]];
-    [departingLabel setFont:[UIFont systemFontOfSize:14]];
-    [departingLabel setText:@"Departing Flight"];
-    [originView addSubview:departingLabel];
-    
-    originAirportLabel = [[UILabel alloc] init];
-    [originAirportLabel setTextColor:[UIColor whiteColor]];
-    [originAirportLabel setText:self.flightDetails[@"origin_airport"]];
-    [originAirportLabel setFont:[UIFont boldSystemFontOfSize:19]];
-    [originView addSubview:originAirportLabel];
-    
-    [self.view addSubview:originView];
-    
-    divider = [[UIView alloc] init];
-    [divider setBackgroundColor:[UIColor lightGrayColor]];
-    [self.view addSubview:divider];
-    
-    destinationView = [[UIView alloc] init];
-    [destinationView setBackgroundColor:[UIColor flatSkyBlueColorDark]];
-    
-    arrivingLabel = [[UILabel alloc] init];
-    [arrivingLabel setTextColor:[UIColor flatWhiteColorDark]];
-    [arrivingLabel setFont:[UIFont systemFontOfSize:14]];
-    [arrivingLabel setText:@"Arriving Flight"];
-    [destinationView addSubview:arrivingLabel];
-    
-    destinationAirportLabel = [[UILabel alloc] init];
-    [destinationAirportLabel setTextColor:[UIColor whiteColor]];
-    [destinationAirportLabel setText:self.flightDetails[@"destination_airport"]];
-    [destinationAirportLabel setFont:[UIFont boldSystemFontOfSize:19]];
-    [destinationView addSubview:destinationAirportLabel];
-    [self.view addSubview:destinationView];
 
     fdtvc = [[FlightDetailTableViewController alloc] init];
+    [fdtvc setFlightDetails:self.flightDetails];
     [self addChildViewController:fdtvc];
     [self.view addSubview:fdtvc.view];
     [fdtvc didMoveToParentViewController:self];
-    
+
     gotoWebsite = [[UIView alloc] init];
     [gotoWebsite setBackgroundColor:[UIColor flatOrangeColor]];
     [self.view addSubview:gotoWebsite];
@@ -95,32 +52,9 @@
     [gotoWebsiteLabel setText:@"go to website"];
     [gotoWebsiteLabel setFont:[UIFont systemFontOfSize:20 weight:4]];
     [gotoWebsite addSubview:gotoWebsiteLabel];
-
-    id height = @80;
-    
-    [originView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.view);
-        make.left.equalTo(self.view);
-        make.right.equalTo(self.view);
-        make.height.equalTo(height);
-    }];
-    
-    [divider mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(originView.mas_bottom);
-        make.left.equalTo(self.view);
-        make.right.equalTo(self.view);
-        make.height.equalTo(@1);
-    }];
-    
-    [destinationView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(divider.mas_bottom);
-        make.left.equalTo(self.view);
-        make.right.equalTo(self.view);
-        make.height.equalTo(height);
-    }];
     
     [fdtvc.view mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(destinationView.mas_bottom);
+        make.top.equalTo(self.view);
         make.left.equalTo(self.view);
         make.right.equalTo(self.view);
         make.bottom.equalTo(gotoWebsite.mas_top);
@@ -136,26 +70,6 @@
     
     [gotoWebsiteLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.center.equalTo(gotoWebsite);
-    }];
-    
-    [departingLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(originView.mas_top).offset(20);
-        make.left.equalTo(originView.mas_left).offset(15);
-    }];
-    
-    [originAirportLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(departingLabel.mas_bottom);
-        make.left.equalTo(departingLabel.mas_left);
-    }];
-    
-    [arrivingLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(destinationView.mas_top).offset(20);
-        make.left.equalTo(destinationView.mas_left).offset(15);
-    }];
-    
-    [destinationAirportLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(arrivingLabel.mas_bottom);
-        make.left.equalTo(arrivingLabel.mas_left);
     }];
     
     UITapGestureRecognizer *openWebsite = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(openWebsite:)];
