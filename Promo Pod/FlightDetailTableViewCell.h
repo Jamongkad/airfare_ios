@@ -11,6 +11,30 @@
 #import "UIColor+HTMLColors.h"
 #import "Masonry.h"
 
-@interface FlightDetailTableViewCell : UITableViewCell
+@interface FlightDetailTableViewCell : UITableViewCell {
+    UILabel *currencyRate;
+    UILabel *airlineLabel;
+    UILabel *airlineIdLabel;
+    UILabel *destination;
+    
+    UILabel *travelPeriodTo;
+    UILabel *travelPeriodFrom;
+    UILabel *travelToDay;
+    UILabel *travelFromDay;
+    
+    UILabel *travelPeriodLabel;
+    UILabel *priceLabel;
+}
+
+@property (strong, atomic) UILabel *currencyRate;
+@property (strong, atomic) UILabel *travelPeriodTo;
+@property (strong, atomic) UILabel *travelPeriodFrom;
+@property (strong, atomic) UILabel *travelToDay;
+@property (strong, atomic) UILabel *travelFromDay;
+@property (strong, atomic) UILabel *airlineLabel;
+@property (strong, atomic) UILabel *airlineIdLabel;
+@property (strong, atomic) UILabel *travelPeriodLabel;
+@property (strong, atomic) UILabel *priceLabel;
+
 
 @end

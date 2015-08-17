@@ -8,7 +8,9 @@
 
 #import "FlightDetailTableViewController.h"
 
-@interface FlightDetailTableViewController ()
+@interface FlightDetailTableViewController () {
+    NSDateFormatter *formatter;
+}
 
 @end
 
@@ -39,13 +41,15 @@ NSString *const FlightDetailCellIdentifier = @"Cell";
     [headerView.destinationAirportLabel setText:self.flightDetails[@"destination_airport"]];
     [self.tableView setTableHeaderView:headerView];
     
-    /*
-    UIView *footerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, 100)];
-    [footerView setBackgroundColor:[UIColor flatOrangeColor]];
-    [self.tableView setTableFooterView:footerView];
-    */
     [self.tableView setBackgroundColor:[UIColor whiteColor]];
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
+    
+    NSLocale *enUSPOSIXLocale = [NSLocale localeWithLocaleIdentifier:@"en_US_POSIX"];
+    
+    formatter = [[NSDateFormatter alloc] init];
+    [formatter setLocale:enUSPOSIXLocale];
+    [formatter setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
+    [formatter setDateFormat:@"yyyy'-'MM'-'dd' 'HH':'mm':'ss'"];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -62,7 +66,7 @@ NSString *const FlightDetailCellIdentifier = @"Cell";
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
-    return 5;
+    return 3;
 }
 
 
@@ -76,31 +80,49 @@ NSString *const FlightDetailCellIdentifier = @"Cell";
     }
     
     if(indexPath.row == 0) {
-   
+        [cell.airlineIdLabel setText:@"Airline"];
+        [cell.airlineLabel setText:self.flightDetails[@"provider_fullname"]];
     }
     
     if(indexPath.row == 1) {
-
+        NSDate *fromDate = [formatter dateFromString:self.flightDetails[@"travel_period_from"]];
+        NSDate *toDate = [formatter dateFromString:self.flightDetails[@"travel_period_to"]];
+        
+        NSDateFormatter *df = [[NSDateFormatter alloc] init];
+        [df setTimeStyle:NSDateFormatterNoStyle];
+        [df setDateStyle:NSDateFormatterLongStyle];
+        
+        NSLocale *usLocale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US"];
+        [df setLocale:usLocale];
+        
+        NSDateFormatter *dayFormat = [[NSDateFormatter alloc] init];
+        [dayFormat setDateFormat:@"cccc"];
+        NSString *fDay = [dayFormat stringFromDate:fromDate];
+        NSString *tDay = [dayFormat stringFromDate:toDate];
+        
+        NSString *fd = [df stringFromDate:fromDate];
+        NSString *td = [df stringFromDate:toDate];
+        
+        [cell.travelPeriodLabel setText:@"Travel Period"];
+        [cell.travelPeriodFrom setText:fd];
+        [cell.travelPeriodTo setText:td];
+        [cell.travelFromDay setText:fDay];
+        [cell.travelToDay setText:tDay];
     }
     
     if(indexPath.row == 2) {
-
-    }
-    
-    if(indexPath.row == 3) {
-
-    }
-    
-    if(indexPath.row == 4) {
-   
+        [cell.priceLabel setText:@"Price/Person"];
+        [cell.currencyRate setText:self.flightDetails[@"price"]];
     }
     
     return cell;
-
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 80;
+    if(indexPath.row == 0) {
+        return 70;
+    }
+    return 140;
 }
 
 /*
