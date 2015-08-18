@@ -71,7 +71,13 @@ static NSString *CellIdentifier = @"PromoCell";
     [cell.cheapestProvider setTextColor:[UIColor flatSkyBlueColor]];
     [cell.cheapestProvider setText:data[@"cheapestProvider"]];
     
-    [cell.startingPrice setText:[NSString stringWithFormat:@"PHP%@", data[@"startingFrom"]]];
+    NSNumberFormatter *currencyFormat = [[NSNumberFormatter alloc] init];
+    [currencyFormat setNumberStyle:NSNumberFormatterCurrencyStyle];
+    [currencyFormat setCurrencySymbol:@""];
+    
+    NSNumber *rate = [NSNumber numberWithFloat:[data[@"startingFrom"] floatValue]];
+    
+    [cell.startingPrice setText:[NSString stringWithFormat:@"PHP%@", [currencyFormat stringFromNumber:rate]]];
     
     NSString *numberOfFlightStatement = @"";
     

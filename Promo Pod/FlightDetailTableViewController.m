@@ -111,8 +111,15 @@ NSString *const FlightDetailCellIdentifier = @"Cell";
     }
     
     if(indexPath.row == 2) {
+        
+        NSNumberFormatter *currencyFormat = [[NSNumberFormatter alloc] init];
+        [currencyFormat setNumberStyle:NSNumberFormatterCurrencyStyle];
+        [currencyFormat setCurrencySymbol:@""];
+        
+        NSNumber *rate = [NSNumber numberWithFloat:[self.flightDetails[@"price"] floatValue]];
+        
         [cell.priceLabel setText:@"Price/Person"];
-        [cell.currencyRate setText:self.flightDetails[@"price"]];
+        [cell.currencyRate setText: [NSString stringWithFormat:@"PHP%@", [currencyFormat stringFromNumber:rate]]];
     }
     
     return cell;

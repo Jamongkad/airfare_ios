@@ -49,7 +49,7 @@
     
     gotoWebsiteLabel = [[UILabel alloc] init];
     [gotoWebsiteLabel setTextColor:[UIColor flatWhiteColor]];
-    [gotoWebsiteLabel setText:@"go to website"];
+    [gotoWebsiteLabel setText:[NSString stringWithFormat:@"Go to %@ Website", self.flightDetails[@"provider_fullname"]]];
     [gotoWebsiteLabel setFont:[UIFont systemFontOfSize:20 weight:4]];
     [gotoWebsite addSubview:gotoWebsiteLabel];
     
