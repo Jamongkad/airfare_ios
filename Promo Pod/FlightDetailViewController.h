@@ -11,6 +11,7 @@
 #import "UIColor+HTMLColors.h"
 #import <ChameleonFramework/Chameleon.h>
 #import "FlightDetailTableViewController.h"
+#import "KINWebBrowserViewController.h"
 
 @interface FlightDetailViewController : UIViewController
 @property (nonatomic, strong) NSDictionary *flightDetails;

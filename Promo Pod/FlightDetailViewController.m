@@ -21,7 +21,6 @@
     
     UILabel *gotoWebsiteLabel;
     
-    
     FlightDetailTableViewController *fdtvc;
 }
 
@@ -78,6 +77,29 @@
 
 - (void)openWebsite:(id)sender {
     NSLog(@"Open Website %@", self.flightDetails[@"provider"]);
+    UINavigationController *webBrowserNavigationController = [KINWebBrowserViewController navigationControllerWithWebBrowser];
+    [self presentViewController:webBrowserNavigationController animated:YES completion:nil];
+    
+    KINWebBrowserViewController *webBrowser = [webBrowserNavigationController rootWebBrowser];
+    
+    NSString *provider = self.flightDetails[@"provider"];
+    
+    if([provider isEqualToString:@"tigerair"]) {
+        [webBrowser loadURLString:@"http://www.tigerair.com/ph/en"];
+    }
+    
+    if([provider isEqualToString:@"cebupac"]) {
+        [webBrowser loadURLString:@"http://www.cebupacificair.com"];
+    }
+    
+    if([provider isEqualToString:@"jetstar"]) {
+        [webBrowser loadURLString:@"http://www.jetstar.com/ph/en/home"];
+    }
+    
+    if([provider isEqualToString:@"airasia"]) {
+        [webBrowser loadURLString:@"http://www.airasia.com/ph/en/home.page?cid=1"];
+    }
+   
 }
 
 - (void)cancel:(id)sender {

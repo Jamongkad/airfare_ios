@@ -28,13 +28,14 @@ NSString *const FlightDetailCellIdentifier = @"Cell";
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    NSLog(@"Flight Details Pwet: %@", self.flightDetails);
     
+    /*
+    NSLog(@"Flight Details Pwet: %@", self.flightDetails);
     NSLog(@"Origin IATA: %@", self.flightDetails[@"org_iata"]);
     NSLog(@"Destination IATA: %@", self.flightDetails[@"des_iata"]);
-
     NSLog(@"Origin IATA: %@", self.flightDetails[@"org_iata"]);
     NSLog(@"Destination IATA: %@", self.flightDetails[@"des_iata"]);
+    */
     
     FlightHeaderDetailView *headerView = [[FlightHeaderDetailView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, 160)];
     [headerView.originAirportLabel setText:self.flightDetails[@"origin_airport"]];

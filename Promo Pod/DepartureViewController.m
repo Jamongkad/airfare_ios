@@ -35,8 +35,6 @@
     [self.view addSubview:tf];
     [tf setBorderStyle:UITextBorderStyleRoundedRect];
     [tf becomeFirstResponder];
-    
-    //[tf addTarget:self action:@selector(updateTextLabel:) forControlEvents:UIControlEventEditingChanged];
     [tf addTarget:self action:@selector(enterSearch:) forControlEvents:UIControlEventEditingDidEndOnExit];
     
     [tf mas_makeConstraints:^(MASConstraintMaker *make) {
