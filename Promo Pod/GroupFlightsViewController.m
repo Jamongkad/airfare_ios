@@ -19,6 +19,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
     [self.view setBackgroundColor:[UIColor colorWithCSS:@"#CAE1FF"]];
     
     FlightsTableViewController *ftvc = [[FlightsTableViewController alloc] init];
@@ -27,10 +28,14 @@
     
     [ftvc setDisplayFlights:self.flightData[@"displayFlights"]];
     
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.labelText = @"Fetching Flights...";
+    
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     [manager GET:escapedString parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         [ftvc setFlights:responseObject];
         [ftvc.tableView reloadData];
+        [hud hide:YES];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"Error: %@", error);
     }];

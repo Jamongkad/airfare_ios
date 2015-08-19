@@ -27,6 +27,8 @@
                                                            NSForegroundColorAttributeName: [UIColor whiteColor]
                                                            }];
     
+    [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
+    
 
     RootViewController *rvc = [[RootViewController alloc] init];
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:rvc];
