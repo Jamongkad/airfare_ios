@@ -20,6 +20,7 @@
 		AF58360F1B7511EE005D085E /* FlightDetailTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF58360E1B7511EE005D085E /* FlightDetailTableViewController.m */; };
 		AF6432271B7DDA6600852168 /* FlightHeaderDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = AF6432261B7DDA6600852168 /* FlightHeaderDetailView.m */; };
 		AF64322A1B7E38C900852168 /* FlightDetailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AF6432291B7E38C900852168 /* FlightDetailTableViewCell.m */; };
+		AF81541D1BA1B9BA0017E9B0 /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF81541C1BA1B9BA0017E9B0 /* iAd.framework */; };
 		AFAB64351B452B0B00F0132E /* FlightsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AFAB64341B452B0B00F0132E /* FlightsViewController.m */; };
 		AFAB64381B45397400F0132E /* FlightsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AFAB64371B45397400F0132E /* FlightsTableViewController.m */; };
 		AFAB643C1B46854700F0132E /* FlightTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AFAB643B1B46854700F0132E /* FlightTableViewCell.m */; };
@@ -72,6 +73,7 @@
 		AF6432261B7DDA6600852168 /* FlightHeaderDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlightHeaderDetailView.m; sourceTree = "<group>"; };
 		AF6432281B7E38C900852168 /* FlightDetailTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlightDetailTableViewCell.h; sourceTree = "<group>"; };
 		AF6432291B7E38C900852168 /* FlightDetailTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlightDetailTableViewCell.m; sourceTree = "<group>"; };
+		AF81541C1BA1B9BA0017E9B0 /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
 		AFAB64331B452B0B00F0132E /* FlightsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlightsViewController.h; sourceTree = "<group>"; };
 		AFAB64341B452B0B00F0132E /* FlightsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlightsViewController.m; sourceTree = "<group>"; };
 		AFAB64361B45397400F0132E /* FlightsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlightsTableViewController.h; sourceTree = "<group>"; };
@@ -109,6 +111,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AF81541D1BA1B9BA0017E9B0 /* iAd.framework in Frameworks */,
 				90404FC72D084677F12479C1 /* libPods-Promo Pod.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -126,6 +129,7 @@
 		556EC0D60A18C093B1533347 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				AF81541C1BA1B9BA0017E9B0 /* iAd.framework */,
 				C1E40EC5B0858B776612D238 /* libPods-Promo Pod.a */,
 			);
 			name = Frameworks;

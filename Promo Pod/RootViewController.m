@@ -24,7 +24,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    self.canDisplayBannerAds = YES;
     self.title = @"Promo Pod";
     
     UIEdgeInsets padding = UIEdgeInsetsMake(10, 10, 10, 10);
@@ -88,6 +88,7 @@
     UITapGestureRecognizer *searchPromoGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(openPromo:)];
     [viewAllPromos addGestureRecognizer:searchPromoGesture];
     // Do any additional setup after loading the view.
+    
 }
 
 - (void)openSearch:(id)sender {

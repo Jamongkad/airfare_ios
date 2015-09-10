@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <iAd/iAd.h>
 #import "Masonry.h"
 #import "SearchViewController.h"
 #import "FlightsViewController.h"
