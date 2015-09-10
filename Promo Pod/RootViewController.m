@@ -73,7 +73,6 @@
         make.height.mas_equalTo(120);
     }];
     
-    
     UILabel *viewPromo = [[UILabel alloc] init];
     [viewPromo setText:@"View All Flight Promos"];
     [viewPromo setTextAlignment:NSTextAlignmentCenter];

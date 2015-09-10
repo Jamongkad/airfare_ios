@@ -347,6 +347,7 @@
 				TargetAttributes = {
 					AFF65DD41B365A5800AFD902 = {
 						CreatedOnToolsVersion = 6.3.2;
+						DevelopmentTeam = ZQNCPBUJ3M;
 					};
 					AFF65DED1B365A5800AFD902 = {
 						CreatedOnToolsVersion = 6.3.2;
@@ -571,6 +572,7 @@
 			baseConfigurationReference = A82ADAF4E42B80BF85C041E9 /* Pods-Promo Pod.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = "Promo Pod/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -582,6 +584,7 @@
 			baseConfigurationReference = B7CD7D8183EE05DA008A4DD4 /* Pods-Promo Pod.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = "Promo Pod/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
