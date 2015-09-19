@@ -24,7 +24,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.canDisplayBannerAds = YES;
+    //self.canDisplayBannerAds = YES;
     self.title = @"Promo Pod";
     
     UIEdgeInsets padding = UIEdgeInsetsMake(10, 10, 10, 10);
@@ -100,8 +100,23 @@
 
 - (void)openPromo:(id)sender {
     self.fvc = [[FlightsViewController alloc] init];
-    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:self.fvc];
-    [self presentViewController:nav animated:YES completion:nil];
+    
+    FilterViewController *fvc = [[FilterViewController alloc] init];
+    UINavigationController *rightNav = [[UINavigationController alloc] initWithRootViewController:fvc];
+    
+    UINavigationController *centerNav = [[UINavigationController alloc] initWithRootViewController:self.fvc];
+    
+    MMDrawerController *drawer = [[MMDrawerController alloc]
+                                  initWithCenterViewController:centerNav
+                                  rightDrawerViewController:rightNav];
+    
+    [drawer setShowsShadow:NO];
+    /*
+    [drawer setOpenDrawerGestureModeMask:MMOpenDrawerGestureModeAll];
+    [drawer setCloseDrawerGestureModeMask:MMCloseDrawerGestureModeAll];
+    */
+    
+    [self presentViewController:drawer animated:YES completion:nil];
 }
 
 - (void)didReceiveMemoryWarning {

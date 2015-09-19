@@ -17,14 +17,23 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    //self.canDisplayBannerAds = YES;
     self.title = @"Flight Promos";
+    
+    UIColor *navColor = [UIColor whiteColor];
     
     UIBarButtonItem *dismiss = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancel:)];
     
     [dismiss setTintColor:[UIColor whiteColor]];
     [self.navigationItem setLeftBarButtonItem:dismiss];
-    [self.view setBackgroundColor:[UIColor whiteColor]];
+    
+    
+    UIBarButtonItem *filterButton = [[UIBarButtonItem alloc] initWithTitle:@"Filter" style:UIBarButtonItemStyleDone target:self action:@selector(openFilter:)];
+    [self.navigationItem setRightBarButtonItem:filterButton];
+    
+    [filterButton setTintColor:navColor];
+
+    [self.view setBackgroundColor:navColor];
     
     self.fptvc = [[FlightPromosTableViewController alloc] init];
 
@@ -55,6 +64,11 @@
         NSLog(@"Error: %@", error);
     }];
    
+}
+
+- (void)openFilter:(id)sender {
+    NSLog(@"Filtering!!");
+    [self.mm_drawerController toggleDrawerSide:MMDrawerSideRight animated:YES completion:nil];
 }
 
 - (void)cancel:(id)sender {

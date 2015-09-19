@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		90404FC72D084677F12479C1 /* libPods-Promo Pod.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C1E40EC5B0858B776612D238 /* libPods-Promo Pod.a */; };
+		7E1C25F5FC03A6639ED3F46C /* libPods-Promo Pod.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C23A2B299128F4A79D08866 /* libPods-Promo Pod.a */; };
 		AF046A141B368EDD00785AFB /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF046A131B368EDD00785AFB /* RootViewController.m */; };
 		AF046A191B36A49F00785AFB /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF046A181B36A49F00785AFB /* SearchViewController.m */; };
 		AF046A1C1B36AF3300785AFB /* SearchFormViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF046A1B1B36AF3300785AFB /* SearchFormViewController.m */; };
@@ -20,6 +20,7 @@
 		AF58360F1B7511EE005D085E /* FlightDetailTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF58360E1B7511EE005D085E /* FlightDetailTableViewController.m */; };
 		AF6432271B7DDA6600852168 /* FlightHeaderDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = AF6432261B7DDA6600852168 /* FlightHeaderDetailView.m */; };
 		AF64322A1B7E38C900852168 /* FlightDetailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AF6432291B7E38C900852168 /* FlightDetailTableViewCell.m */; };
+		AF6EAE841BAD7CC9004C570D /* FilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF6EAE831BAD7CC9004C570D /* FilterViewController.m */; settings = {ASSET_TAGS = (); }; };
 		AF81541D1BA1B9BA0017E9B0 /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF81541C1BA1B9BA0017E9B0 /* iAd.framework */; };
 		AFAB64351B452B0B00F0132E /* FlightsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AFAB64341B452B0B00F0132E /* FlightsViewController.m */; };
 		AFAB64381B45397400F0132E /* FlightsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AFAB64371B45397400F0132E /* FlightsTableViewController.m */; };
@@ -48,6 +49,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4C23A2B299128F4A79D08866 /* libPods-Promo Pod.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Promo Pod.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A82ADAF4E42B80BF85C041E9 /* Pods-Promo Pod.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Promo Pod.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Promo Pod/Pods-Promo Pod.debug.xcconfig"; sourceTree = "<group>"; };
 		AF046A121B368EDD00785AFB /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		AF046A131B368EDD00785AFB /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
@@ -73,6 +75,8 @@
 		AF6432261B7DDA6600852168 /* FlightHeaderDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlightHeaderDetailView.m; sourceTree = "<group>"; };
 		AF6432281B7E38C900852168 /* FlightDetailTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlightDetailTableViewCell.h; sourceTree = "<group>"; };
 		AF6432291B7E38C900852168 /* FlightDetailTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlightDetailTableViewCell.m; sourceTree = "<group>"; };
+		AF6EAE821BAD7CC9004C570D /* FilterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilterViewController.h; sourceTree = "<group>"; };
+		AF6EAE831BAD7CC9004C570D /* FilterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilterViewController.m; sourceTree = "<group>"; };
 		AF81541C1BA1B9BA0017E9B0 /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
 		AFAB64331B452B0B00F0132E /* FlightsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlightsViewController.h; sourceTree = "<group>"; };
 		AFAB64341B452B0B00F0132E /* FlightsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlightsViewController.m; sourceTree = "<group>"; };
@@ -103,7 +107,6 @@
 		AFF65DF31B365A5800AFD902 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AFF65DF41B365A5800AFD902 /* Promo_PodTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Promo_PodTests.m; sourceTree = "<group>"; };
 		B7CD7D8183EE05DA008A4DD4 /* Pods-Promo Pod.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Promo Pod.release.xcconfig"; path = "Pods/Target Support Files/Pods-Promo Pod/Pods-Promo Pod.release.xcconfig"; sourceTree = "<group>"; };
-		C1E40EC5B0858B776612D238 /* libPods-Promo Pod.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Promo Pod.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,7 +115,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AF81541D1BA1B9BA0017E9B0 /* iAd.framework in Frameworks */,
-				90404FC72D084677F12479C1 /* libPods-Promo Pod.a in Frameworks */,
+				7E1C25F5FC03A6639ED3F46C /* libPods-Promo Pod.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -130,7 +133,7 @@
 			isa = PBXGroup;
 			children = (
 				AF81541C1BA1B9BA0017E9B0 /* iAd.framework */,
-				C1E40EC5B0858B776612D238 /* libPods-Promo Pod.a */,
+				4C23A2B299128F4A79D08866 /* libPods-Promo Pod.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -164,6 +167,8 @@
 				AF3B06EA1B4FC7E100C886D9 /* CompareFlightsViewController.m */,
 				AFC14E5F1B38446E00531016 /* DepartureViewController.h */,
 				AFC14E601B38446E00531016 /* DepartureViewController.m */,
+				AF6EAE821BAD7CC9004C570D /* FilterViewController.h */,
+				AF6EAE831BAD7CC9004C570D /* FilterViewController.m */,
 				AF3B06EC1B4FC7EE00C886D9 /* FlightDetailViewController.h */,
 				AF3B06ED1B4FC7EE00C886D9 /* FlightDetailViewController.m */,
 				AFAB64331B452B0B00F0132E /* FlightsViewController.h */,
@@ -312,6 +317,7 @@
 				AFF65DD21B365A5800AFD902 /* Frameworks */,
 				AFF65DD31B365A5800AFD902 /* Resources */,
 				C268341C0E43C7A066D71E96 /* Copy Pods Resources */,
+				4FB5EE868FE39984882E5476 /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -398,6 +404,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		4FB5EE868FE39984882E5476 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Promo Pod/Pods-Promo Pod-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		52712209ED6D1BBA1E46DE55 /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -457,6 +478,7 @@
 				AFC14E611B38446E00531016 /* DepartureViewController.m in Sources */,
 				AF2DFD7B1B51692700289C0D /* PromosTableViewController.m in Sources */,
 				AF046A1C1B36AF3300785AFB /* SearchFormViewController.m in Sources */,
+				AF6EAE841BAD7CC9004C570D /* FilterViewController.m in Sources */,
 				AFF65DDB1B365A5800AFD902 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -578,6 +600,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = "Promo Pod/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -590,6 +613,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = "Promo Pod/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
