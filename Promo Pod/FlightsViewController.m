@@ -11,6 +11,7 @@
 @interface FlightsViewController ()
 @property (nonatomic, strong) FlightsTableViewController *ftvc;
 @property (nonatomic, strong) FlightPromosTableViewController *fptvc;
+@property (nonatomic, strong) UIBarButtonItem *filterButton;
 @end
 
 @implementation FlightsViewController
@@ -48,10 +49,10 @@
     [self.navigationItem setLeftBarButtonItem:dismiss];
     
     
-    UIBarButtonItem *filterButton = [[UIBarButtonItem alloc] initWithTitle:@"Filter" style:UIBarButtonItemStyleDone target:self action:@selector(openFilter:)];
-    [self.navigationItem setRightBarButtonItem:filterButton];
+    self.filterButton = [[UIBarButtonItem alloc] initWithTitle:@"Filter" style:UIBarButtonItemStyleDone target:self action:@selector(openFilter:)];
+    [self.navigationItem setRightBarButtonItem:self.filterButton];
     
-    [filterButton setTintColor:navColor];
+    [self.filterButton setTintColor:navColor];
 
     [self.view setBackgroundColor:navColor];
     
@@ -87,7 +88,16 @@
 }
 
 - (void)openFilter:(id)sender {
-    [self.mm_drawerController toggleDrawerSide:MMDrawerSideRight animated:YES completion:nil];
+    if([self.filterButton.title isEqualToString:@"Filter"]) {
+        [self.mm_drawerController openDrawerSide:MMDrawerSideRight animated:YES completion:^(BOOL finished) {
+            [self.filterButton setTitle:@"Apply"];
+        }];
+    } else {
+        [self.mm_drawerController closeDrawerAnimated:YES completion:^(BOOL finished) {
+            [self.filterButton setTitle:@"Filter"];
+        }];
+    }
+
 }
 
 - (void)cancel:(id)sender {
