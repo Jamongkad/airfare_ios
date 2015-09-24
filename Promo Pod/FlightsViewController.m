@@ -15,6 +15,26 @@
 
 @implementation FlightsViewController
 
+- (instancetype)init {
+    self = [super init];
+    if(!self) return nil;
+    
+    [[NSNotificationCenter defaultCenter]
+         addObserver:self
+         selector:@selector(pullFilteredFlights:)
+         name:@"filteredFlights"
+         object:nil];
+    
+    return self;
+}
+
+- (void)pullFilteredFlights:(NSNotification *)notification {
+    if([[notification name] isEqualToString:@"filteredFlights"]) {
+        NSDictionary *data = [notification userInfo];
+        NSLog(@"%@", data);
+    }
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     //self.canDisplayBannerAds = YES;
@@ -67,7 +87,6 @@
 }
 
 - (void)openFilter:(id)sender {
-    NSLog(@"Filtering!!");
     [self.mm_drawerController toggleDrawerSide:MMDrawerSideRight animated:YES completion:nil];
 }
 

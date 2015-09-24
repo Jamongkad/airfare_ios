@@ -88,7 +88,6 @@
     UITapGestureRecognizer *searchPromoGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(openPromo:)];
     [viewAllPromos addGestureRecognizer:searchPromoGesture];
     // Do any additional setup after loading the view.
-    
 }
 
 - (void)openSearch:(id)sender {
@@ -100,10 +99,9 @@
 
 - (void)openPromo:(id)sender {
     self.fvc = [[FlightsViewController alloc] init];
+    FilterViewController *filterViewController = [[FilterViewController alloc] init];
     
-    FilterViewController *fvc = [[FilterViewController alloc] init];
-    UINavigationController *rightNav = [[UINavigationController alloc] initWithRootViewController:fvc];
-    
+    UINavigationController *rightNav = [[UINavigationController alloc] initWithRootViewController:filterViewController];
     UINavigationController *centerNav = [[UINavigationController alloc] initWithRootViewController:self.fvc];
     
     MMDrawerController *drawer = [[MMDrawerController alloc]
@@ -111,11 +109,6 @@
                                   rightDrawerViewController:rightNav];
     
     [drawer setShowsShadow:NO];
-    /*
-    [drawer setOpenDrawerGestureModeMask:MMOpenDrawerGestureModeAll];
-    [drawer setCloseDrawerGestureModeMask:MMCloseDrawerGestureModeAll];
-    */
-    
     [self presentViewController:drawer animated:YES completion:nil];
 }
 

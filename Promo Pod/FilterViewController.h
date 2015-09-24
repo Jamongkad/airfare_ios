@@ -7,6 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Masonry.h"
+#import "UIColor+HTMLColors.h"
+#import <ChameleonFramework/Chameleon.h>
+#import <AFNetworking/AFNetworking.h>
+#import "FilterHeaderView.h"
 
 @interface FilterViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 @property (nonatomic, strong) UITableView * tableView;
