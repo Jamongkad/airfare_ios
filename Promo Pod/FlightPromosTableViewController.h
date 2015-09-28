@@ -12,7 +12,10 @@
 #import "GroupFlightsViewController.h"
 #import <ChameleonFramework/Chameleon.h>
 #import <AFNetworking/AFNetworking.h>
+#import "FlightDetailViewController.h"
+
 
 @interface FlightPromosTableViewController : UITableViewController <UISearchBarDelegate, UIScrollViewDelegate>
 @property (nonatomic, strong) NSArray *flights;
+@property (nonatomic, strong) NSArray *filteredFlights;
 @end

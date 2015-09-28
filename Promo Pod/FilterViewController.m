@@ -148,7 +148,8 @@ extern NSString * const FilterCell = @"FilterCell";
     NSString *url = @"http://promopod.gearfish.com/provider";
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     [manager GET:url parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        for (NSDictionary *provider in responseObject) {
+        
+        for (NSDictionary *provider in responseObject){
             [self.providers addObject:provider];
         }
 

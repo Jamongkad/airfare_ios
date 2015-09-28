@@ -9,6 +9,7 @@
 #import "FlightsViewController.h"
 
 @interface FlightsViewController ()
+@property (nonatomic, strong) AFHTTPRequestOperationManager *manager;
 @property (nonatomic, strong) FlightsTableViewController *ftvc;
 @property (nonatomic, strong) FlightPromosTableViewController *fptvc;
 @property (nonatomic, strong) UIBarButtonItem *filterButton;
@@ -19,6 +20,8 @@
 - (instancetype)init {
     self = [super init];
     if(!self) return nil;
+    
+    self.manager = [AFHTTPRequestOperationManager manager];
     
     [[NSNotificationCenter defaultCenter]
          addObserver:self
@@ -32,7 +35,13 @@
 - (void)pullFilteredFlights:(NSNotification *)notification {
     if([[notification name] isEqualToString:@"filteredFlights"]) {
         NSDictionary *data = [notification userInfo];
-        NSLog(@"%@", data);
+        
+        if([[data valueForKey:@"filters"] count] > 0) {
+            [self filterNow:data];
+        } else {
+            [self pullGroupFlights];
+        }
+       
     }
 }
 
@@ -67,17 +76,16 @@
     }];
     
     // Do any additional setup after loading the view.
-    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    [self pullGroupFlights:hud];
+    [self pullGroupFlights];
 }
 
-- (void)pullGroupFlights:(MBProgressHUD *)hud {
-
-    NSString *airfareURL = @"http://promopod.gearfish.com/group_flights";
+- (void)pullGroupFlights {
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.labelText = @"Fetching Flights...";
+    NSString *airfareURL = @"http://promopod.gearfish.com/group_flights";
     
-    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    [manager GET:airfareURL parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [self.manager GET:airfareURL parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        [self.fptvc setFilteredFlights:nil];
         [self.fptvc setFlights:responseObject];
         [self.fptvc.tableView reloadData];
         [hud hide:YES];
@@ -85,6 +93,22 @@
         NSLog(@"Error: %@", error);
     }];
    
+}
+
+- (void)filterNow:(NSDictionary *)params {
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.labelText = @"Fetching Flights...";
+    NSString *airfareURL = @"http://promopod.gearfish.com/filter";
+    
+    [self.manager POST:airfareURL parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        [self.fptvc setFilteredFlights:responseObject];
+        [self.fptvc setFlights:nil];
+        [self.fptvc.tableView reloadData];        
+        [hud hide:YES];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"Error: %@", error);
+    }];
+    
 }
 
 - (void)openFilter:(id)sender {
