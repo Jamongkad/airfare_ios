@@ -29,6 +29,13 @@ extern NSString * const FilterCell = @"FilterCell";
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:FilterCell];
     self.selected = [[NSMutableArray alloc] init];
+    
+    FilterButtonView *applyButton = [[FilterButtonView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, 50)];
+    [self.tableView setTableFooterView:applyButton];
+    
+    UITapGestureRecognizer *applyFilterGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(applyFilter:)];
+    [applyButton addGestureRecognizer:applyFilterGesture];
+    
     [self pullProviders];
     // Do any additional setup after loading the view.
 }
@@ -120,11 +127,9 @@ extern NSString * const FilterCell = @"FilterCell";
                 if (cell.accessoryType == UITableViewCellAccessoryCheckmark) {
                     cell.accessoryType = UITableViewCellAccessoryNone;
                     [self.selected removeObject:filterChoices];
-                    
                 } else if (cell.accessoryType == UITableViewCellAccessoryNone) {
                     cell.accessoryType = UITableViewCellAccessoryCheckmark;
                     [self.selected addObject:filterChoices];
-                    
                 }
             }
             break;
@@ -157,6 +162,11 @@ extern NSString * const FilterCell = @"FilterCell";
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"Error: %@", error);
     }];
+}
+
+- (void)applyFilter:(id)sender {
+    NSLog(@"Tapped");
+    [self.mm_drawerController closeDrawerAnimated:YES completion:nil];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {

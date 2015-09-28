@@ -112,16 +112,7 @@
 }
 
 - (void)openFilter:(id)sender {
-    if([self.filterButton.title isEqualToString:@"Filter"]) {
-        [self.mm_drawerController openDrawerSide:MMDrawerSideRight animated:YES completion:^(BOOL finished) {
-            [self.filterButton setTitle:@"Apply"];
-        }];
-    } else {
-        [self.mm_drawerController closeDrawerAnimated:YES completion:^(BOOL finished) {
-            [self.filterButton setTitle:@"Filter"];
-        }];
-    }
-
+    [self.mm_drawerController toggleDrawerSide:MMDrawerSideRight animated:YES completion:nil];
 }
 
 - (void)cancel:(id)sender {

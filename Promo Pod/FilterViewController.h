@@ -11,7 +11,9 @@
 #import "UIColor+HTMLColors.h"
 #import <ChameleonFramework/Chameleon.h>
 #import <AFNetworking/AFNetworking.h>
+#import "UIViewController+MMDrawerController.h"
 #import "FilterHeaderView.h"
+#import "FilterButtonView.h"
 
 @interface FilterViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 @property (nonatomic, strong) UITableView * tableView;

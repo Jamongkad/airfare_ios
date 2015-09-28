@@ -123,7 +123,6 @@ static NSString *CellIdentifier = @"PromoCell";
         [cell.cheapestProvider setText:data[@"provider_fullname"]];
     }
 
-    
     return cell;
 }
 
