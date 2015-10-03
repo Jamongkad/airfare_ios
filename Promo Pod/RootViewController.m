@@ -24,7 +24,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    //self.canDisplayBannerAds = YES;
+    self.canDisplayBannerAds = YES;
     self.title = @"Promo Pod";
     
     UIEdgeInsets padding = UIEdgeInsetsMake(10, 10, 10, 10);

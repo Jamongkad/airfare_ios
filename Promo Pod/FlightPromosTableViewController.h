@@ -18,4 +18,5 @@
 @interface FlightPromosTableViewController : UITableViewController <UISearchBarDelegate, UIScrollViewDelegate>
 @property (nonatomic, strong) NSArray *flights;
 @property (nonatomic, strong) NSArray *filteredFlights;
+@property (nonatomic) BOOL filterOn;
 @end

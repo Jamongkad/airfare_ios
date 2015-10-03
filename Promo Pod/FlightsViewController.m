@@ -47,7 +47,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    //self.canDisplayBannerAds = YES;
     self.title = @"Flight Promos";
     
     UIColor *navColor = [UIColor whiteColor];
@@ -87,6 +86,7 @@
     [self.manager GET:airfareURL parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         [self.fptvc setFilteredFlights:nil];
         [self.fptvc setFlights:responseObject];
+        [self.fptvc setFilterOn:NO];
         [self.fptvc.tableView reloadData];
         [hud hide:YES];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -103,12 +103,12 @@
     [self.manager POST:airfareURL parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
         [self.fptvc setFilteredFlights:responseObject];
         [self.fptvc setFlights:nil];
+        [self.fptvc setFilterOn:YES];
         [self.fptvc.tableView reloadData];        
         [hud hide:YES];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"Error: %@", error);
     }];
-    
 }
 
 - (void)openFilter:(id)sender {

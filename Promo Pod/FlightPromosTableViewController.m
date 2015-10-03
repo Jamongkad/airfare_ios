@@ -12,11 +12,14 @@
     UISearchBar *searchbar;
 }
 
+@property (nonatomic, strong) NSMutableDictionary *filters;
+@property (nonatomic, strong) AFHTTPRequestOperationManager *manager;
+
 @end
 
 @implementation FlightPromosTableViewController
 
-@synthesize flights, filteredFlights;
+@synthesize flights, filteredFlights, filterOn;
 static NSString *CellIdentifier = @"PromoCell";
 
 - (void)viewDidLoad {
@@ -31,6 +34,27 @@ static NSString *CellIdentifier = @"PromoCell";
     [searchbar sizeToFit];
     [self.tableView setTableHeaderView:searchbar];
     [self searchbarSet];
+    
+    [[NSNotificationCenter defaultCenter]
+         addObserver:self
+         selector:@selector(pullFilteredFlights:)
+         name:@"filteredFlights"
+         object:nil];
+    
+    self.manager = [AFHTTPRequestOperationManager manager];
+}
+
+- (void)pullFilteredFlights:(id)notification {
+    if([[notification name] isEqualToString:@"filteredFlights"]) {
+        NSMutableDictionary *data = [notification userInfo];
+        
+        if([[data valueForKey:@"filters"] count] > 0) {
+            self.filters = data;
+        } else {
+            self.filters = [[NSMutableDictionary alloc] init];
+        }
+       
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -184,20 +208,37 @@ static NSString *CellIdentifier = @"PromoCell";
     
     NSString *restURL;
     
-    if(reset) {
-        restURL = @"http://promopod.gearfish.com/group_flights";
-    } else {
-        NSString *url = [NSString stringWithFormat:@"%@/%@", @"http://promopod.gearfish.com/group_flights/search", searchText];
-        restURL = [url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-    }
+    if(self.filterOn == NO) {
+        if(reset) {
+            restURL = @"http://promopod.gearfish.com/group_flights";
+        } else {
+            NSString *url = [NSString stringWithFormat:@"%@/%@", @"http://promopod.gearfish.com/group_flights/search", searchText];
+            restURL = [url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+        }
 
-    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    [manager GET:restURL parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        self.flights = responseObject;
-        [self.tableView reloadData];
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"Error: %@", error);
-    }];
+        [self.manager GET:restURL parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+            self.flights = responseObject;
+            [self.tableView reloadData];
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            NSLog(@"Error: %@", error);
+        }];
+    } else {
+        
+        restURL = @"http://promopod.gearfish.com/filtered_flights/search";
+        
+        id params = @{@"guards" : self.filters[@"filters"], @"search": searchText};
+        
+        //NSLog(@"Params %@", params);
+
+        [self.manager POST:restURL parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
+            self.flights = nil;
+            self.filteredFlights = responseObject;
+            [self.tableView reloadData];
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            NSLog(@"Error: %@", error);
+        }];
+
+    }
 }
 
 - (void)searchbarSet {
