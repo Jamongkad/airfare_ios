@@ -24,8 +24,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.canDisplayBannerAds = YES;
     self.title = @"Promo Pod";
+    
+    self.canDisplayBannerAds = YES;
     
     UIEdgeInsets padding = UIEdgeInsetsMake(10, 10, 10, 10);
         
@@ -101,20 +102,29 @@
     self.fvc = [[FlightsViewController alloc] init];
     FilterViewController *filterViewController = [[FilterViewController alloc] init];
     
-    UINavigationController *rightNav = [[UINavigationController alloc] initWithRootViewController:filterViewController];
-    UINavigationController *centerNav = [[UINavigationController alloc] initWithRootViewController:self.fvc];
+    //UINavigationController *rightNav = [[UINavigationController alloc] initWithRootViewController:filterViewController];
+    //UINavigationController *centerNav = [[UINavigationController alloc] initWithRootViewController:self.fvc];
     
     MMDrawerController *drawer = [[MMDrawerController alloc]
-                                  initWithCenterViewController:centerNav
-                                  rightDrawerViewController:rightNav];
+                                  initWithCenterViewController:self.fvc
+                                  rightDrawerViewController:filterViewController];
     
     [drawer setShowsShadow:NO];
-    [self presentViewController:drawer animated:YES completion:nil];
+    [self.navigationController pushViewController:drawer animated:YES];
+    //[self presentViewController:drawer animated:YES completion:nil];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
 }
 
 /*

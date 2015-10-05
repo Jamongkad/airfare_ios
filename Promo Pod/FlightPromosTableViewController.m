@@ -30,10 +30,12 @@ static NSString *CellIdentifier = @"PromoCell";
     [self.tableView registerClass:[PromoTableViewCell class] forCellReuseIdentifier:CellIdentifier];
     
     searchbar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, 0)];
+    [searchbar setPlaceholder:@"Search Flights"];
     [searchbar setDelegate:self];
     [searchbar sizeToFit];
     [self.tableView setTableHeaderView:searchbar];
-    [self searchbarSet];
+    
+    //[self searchbarSet];
     
     [[NSNotificationCenter defaultCenter]
          addObserver:self
@@ -243,6 +245,15 @@ static NSString *CellIdentifier = @"PromoCell";
 
 - (void)searchbarSet {
     [self.tableView setContentOffset:CGPointMake(0,  searchbar.frame.size.height - self.tableView.contentOffset.y) animated:YES];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self performSelector:@selector(hideSearchBar) withObject:nil afterDelay:0.0f];
+}
+
+- (void)hideSearchBar {
+    [self.tableView setContentOffset:CGPointMake(0, 44)];
 }
 
 /*

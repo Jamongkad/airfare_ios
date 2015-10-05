@@ -47,18 +47,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"Flight Promos";
+    self.canDisplayBannerAds = YES;
     
     UIColor *navColor = [UIColor whiteColor];
-    
-    UIBarButtonItem *dismiss = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancel:)];
-    
-    [dismiss setTintColor:[UIColor whiteColor]];
-    [self.navigationItem setLeftBarButtonItem:dismiss];
-    
+    [self.parentViewController.navigationItem setTitle:@"Flight Promos"];
     
     self.filterButton = [[UIBarButtonItem alloc] initWithTitle:@"Filter" style:UIBarButtonItemStyleDone target:self action:@selector(openFilter:)];
-    [self.navigationItem setRightBarButtonItem:self.filterButton];
+    [self.parentViewController.navigationItem setRightBarButtonItem:self.filterButton];
     
     [self.filterButton setTintColor:navColor];
 
