@@ -165,7 +165,6 @@ extern NSString * const FilterCell = @"FilterCell";
 }
 
 - (void)applyFilter:(id)sender {
-    NSLog(@"Tapped");
     [self.mm_drawerController closeDrawerAnimated:YES completion:nil];
 }
 
