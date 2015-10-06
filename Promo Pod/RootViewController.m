@@ -102,9 +102,6 @@
     self.fvc = [[FlightsViewController alloc] init];
     FilterViewController *filterViewController = [[FilterViewController alloc] init];
     
-    //UINavigationController *rightNav = [[UINavigationController alloc] initWithRootViewController:filterViewController];
-    //UINavigationController *centerNav = [[UINavigationController alloc] initWithRootViewController:self.fvc];
-    
     MMDrawerController *drawer = [[MMDrawerController alloc]
                                   initWithCenterViewController:self.fvc
                                   rightDrawerViewController:filterViewController];

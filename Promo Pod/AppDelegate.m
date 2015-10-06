@@ -23,13 +23,9 @@
     
     [[UINavigationBar appearance] setBarTintColor:[UIColor flatSkyBlueColor]];
     [[UINavigationBar appearance] setTranslucent:NO];
-    [[UINavigationBar appearance] setTitleTextAttributes:@{
-                                                           NSForegroundColorAttributeName: [UIColor whiteColor]
-                                                           }];
-    
+    [[UINavigationBar appearance] setTitleTextAttributes:@{ NSForegroundColorAttributeName: [UIColor whiteColor] }];
     [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
     
-
     RootViewController *rvc = [[RootViewController alloc] init];
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:rvc];
     

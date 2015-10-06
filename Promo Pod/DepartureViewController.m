@@ -20,8 +20,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    NSLog(@"Flight Identity %ld", self.flightIdentifier);
-    
     // Do any additional setup after loading the view.
     if(self.flightIdentifier == 0) {
         self.title = @"Select Departure";

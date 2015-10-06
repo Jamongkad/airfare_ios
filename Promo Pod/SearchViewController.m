@@ -258,13 +258,10 @@
 }
 
 - (void)search:(id)sender {
-    NSLog(@"Searching");
     if(self.departureData && self.arrivalData) {
         NSString *url = [NSString stringWithFormat:@"http://promopod.gearfish.com/departing/%@/arriving/%@", self.departureData[@"location"], self.arrivalData[@"location"]];
         NSString *escapedString = [url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-        
-        NSLog(@"%@", escapedString);
-    
+            
         AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
         [manager GET:escapedString parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
             NSLog(@"%@", responseObject);
