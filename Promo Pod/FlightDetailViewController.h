@@ -12,6 +12,7 @@
 #import <ChameleonFramework/Chameleon.h>
 #import "FlightDetailTableViewController.h"
 #import "KINWebBrowserViewController.h"
+#import "Common.h"
 
 @interface FlightDetailViewController : UIViewController
 @property (nonatomic, strong) NSDictionary *flightDetails;

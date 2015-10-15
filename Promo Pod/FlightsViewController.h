@@ -14,6 +14,7 @@
 #import "FlightsTableViewController.h"
 #import "FlightPromosTableViewController.h"
 #import "UIViewController+MMDrawerController.h"
+#import "Common.h"
 
 
 @interface FlightsViewController : UIViewController

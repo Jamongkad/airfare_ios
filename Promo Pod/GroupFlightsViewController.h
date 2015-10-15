@@ -12,6 +12,7 @@
 #import "Masonry.h"
 #import "FlightsTableViewController.h"
 #import <MBProgressHUD/MBProgressHUD.h>
+#import "Common.h"
 
 @interface GroupFlightsViewController : UIViewController
 @property (nonatomic, strong) NSDictionary *flightData;

@@ -23,13 +23,15 @@
     [self.view setBackgroundColor:[UIColor colorWithCSS:@"#CAE1FF"]];
     
     FlightsTableViewController *ftvc = [[FlightsTableViewController alloc] init];
-    NSString *url = [NSString stringWithFormat:@"%@/%@", @"http://promopod.gearfish.com/flights", self.flightData[@"flights"]];
+    
+    NSString *url = [NSString stringWithFormat:@"%@%@/%@", API_URL, @"flights", self.flightData[@"flights"]];
+    
     NSString *escapedString = [url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     
     [ftvc setDisplayFlights:self.flightData[@"displayFlights"]];
     
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    hud.labelText = @"Fetching Flights...";
+    hud.labelText = FLIGHT_FETCH_MSG;
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     [manager GET:escapedString parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {

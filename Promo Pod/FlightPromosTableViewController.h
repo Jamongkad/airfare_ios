@@ -13,6 +13,7 @@
 #import <ChameleonFramework/Chameleon.h>
 #import <AFNetworking/AFNetworking.h>
 #import "FlightDetailViewController.h"
+#import "Common.h"
 
 
 @interface FlightPromosTableViewController : UITableViewController <UISearchBarDelegate, UIScrollViewDelegate>

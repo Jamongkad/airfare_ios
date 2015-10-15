@@ -77,6 +77,7 @@
 		AF6432261B7DDA6600852168 /* FlightHeaderDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlightHeaderDetailView.m; sourceTree = "<group>"; };
 		AF6432281B7E38C900852168 /* FlightDetailTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlightDetailTableViewCell.h; sourceTree = "<group>"; };
 		AF6432291B7E38C900852168 /* FlightDetailTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlightDetailTableViewCell.m; sourceTree = "<group>"; };
+		AF6760E31BCF41E20000A720 /* Common.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Common.h; sourceTree = "<group>"; };
 		AF6EAE821BAD7CC9004C570D /* FilterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilterViewController.h; sourceTree = "<group>"; };
 		AF6EAE831BAD7CC9004C570D /* FilterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilterViewController.m; sourceTree = "<group>"; };
 		AF6EAE851BB14277004C570D /* FilterHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilterHeaderView.h; sourceTree = "<group>"; };
@@ -237,8 +238,8 @@
 				AFAB64371B45397400F0132E /* FlightsTableViewController.m */,
 				AF39F92C1B53918C00A5FC54 /* FlightPromosTableViewController.h */,
 				AF39F92D1B53918C00A5FC54 /* FlightPromosTableViewController.m */,
-				AF58360D1B7511EE005D085E /* FlightDetailTableViewController.h */,
 				AF58360E1B7511EE005D085E /* FlightDetailTableViewController.m */,
+				AF58360D1B7511EE005D085E /* FlightDetailTableViewController.h */,
 				AFAB64391B46853400F0132E /* Cells */,
 			);
 			name = Tables;
@@ -279,6 +280,7 @@
 			isa = PBXGroup;
 			children = (
 				AFF65DDC1B365A5800AFD902 /* AppDelegate.h */,
+				AF6760E31BCF41E20000A720 /* Common.h */,
 				AFF65DDD1B365A5800AFD902 /* AppDelegate.m */,
 				AFDA81191B3A64E200B847D1 /* DB */,
 				AF046A111B3661E800785AFB /* ViewControllers */,

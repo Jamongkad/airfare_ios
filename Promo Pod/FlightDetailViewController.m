@@ -85,19 +85,19 @@
     NSString *provider = self.flightDetails[@"provider"];
     
     if([provider isEqualToString:@"tigerair"]) {
-        [webBrowser loadURLString:@"http://www.tigerair.com/ph/en"];
+        [webBrowser loadURLString:TIGERAIR];
     }
     
     if([provider isEqualToString:@"cebupac"]) {
-        [webBrowser loadURLString:@"http://www.cebupacificair.com"];
+        [webBrowser loadURLString:CEBUPAC];
     }
     
     if([provider isEqualToString:@"jetstar"]) {
-        [webBrowser loadURLString:@"http://www.jetstar.com/ph/en/home"];
+        [webBrowser loadURLString:JETSTAR];
     }
     
     if([provider isEqualToString:@"airasia"]) {
-        [webBrowser loadURLString:@"http://www.airasia.com/ph/en/home.page?cid=1"];
+        [webBrowser loadURLString:AIRASIA];
     }
    
 }

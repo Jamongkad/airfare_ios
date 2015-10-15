@@ -212,9 +212,9 @@ static NSString *CellIdentifier = @"PromoCell";
     
     if(self.filterOn == NO) {
         if(reset) {
-            restURL = @"http://promopod.gearfish.com/group_flights";
+            restURL = [NSString stringWithFormat:@"%@%@", API_URL, @"group_flights"];
         } else {
-            NSString *url = [NSString stringWithFormat:@"%@/%@", @"http://promopod.gearfish.com/group_flights/search", searchText];
+            NSString *url = [NSString stringWithFormat:@"%@%@/%@", API_URL, @"group_flights/search", searchText];
             restURL = [url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
         }
 
@@ -226,12 +226,10 @@ static NSString *CellIdentifier = @"PromoCell";
         }];
     } else {
         
-        restURL = @"http://promopod.gearfish.com/filtered_flights/search";
+        restURL = [NSString stringWithFormat:@"%@%@", API_URL, @"filtered_flights/search"];
         
         id params = @{@"guards" : self.filters[@"filters"], @"search": searchText};
         
-        //NSLog(@"Params %@", params);
-
         [self.manager POST:restURL parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
             self.flights = nil;
             self.filteredFlights = responseObject;

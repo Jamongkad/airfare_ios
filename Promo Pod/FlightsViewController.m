@@ -75,8 +75,8 @@
 
 - (void)pullGroupFlights {
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    hud.labelText = @"Fetching Flights...";
-    NSString *airfareURL = @"http://promopod.gearfish.com/group_flights";
+    hud.labelText = FLIGHT_FETCH_MSG;
+    NSString *airfareURL = [NSString stringWithFormat:@"%@%@", API_URL, @"group_flights"];
     
     [self.manager GET:airfareURL parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         [self.fptvc setFilteredFlights:nil];
@@ -92,8 +92,8 @@
 
 - (void)filterNow:(NSDictionary *)params {
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    hud.labelText = @"Fetching Flights...";
-    NSString *airfareURL = @"http://promopod.gearfish.com/filter";
+    hud.labelText = FLIGHT_FETCH_MSG;
+    NSString *airfareURL = [NSString stringWithFormat:@"%@%@", API_URL, @"filter"];
     
     [self.manager POST:airfareURL parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
         [self.fptvc setFilteredFlights:responseObject];
