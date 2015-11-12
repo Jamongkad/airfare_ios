@@ -91,6 +91,10 @@
     // Do any additional setup after loading the view.
 }
 
+- (void)openOptions:(id)sender {
+
+}
+
 - (void)openSearch:(id)sender {
     [self.dbc clearAllFlights];
     self.svc = [[SearchViewController alloc] init];
@@ -100,11 +104,10 @@
 
 - (void)openPromo:(id)sender {
     self.fvc = [[FlightsViewController alloc] init];
-    FilterViewController *filterViewController = [[FilterViewController alloc] init];
     
     MMDrawerController *drawer = [[MMDrawerController alloc]
                                   initWithCenterViewController:self.fvc
-                                  rightDrawerViewController:filterViewController];
+                                  rightDrawerViewController:[[FilterViewController alloc] init]];
     
     [drawer setShowsShadow:NO];
     [self.navigationController pushViewController:drawer animated:YES];

@@ -26,7 +26,7 @@
     
     NSString *url = [NSString stringWithFormat:@"%@%@/%@", API_URL, @"flights", self.flightData[@"flights"]];
     
-    NSString *escapedString = [url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    NSString *restURL = [url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     
     [ftvc setDisplayFlights:self.flightData[@"displayFlights"]];
     
@@ -34,7 +34,7 @@
     hud.labelText = FLIGHT_FETCH_MSG;
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    [manager GET:escapedString parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [manager GET:restURL parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         [ftvc setFlights:responseObject];
         [ftvc.tableView reloadData];
         [hud hide:YES];

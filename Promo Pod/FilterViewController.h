@@ -14,6 +14,7 @@
 #import "UIViewController+MMDrawerController.h"
 #import "FilterHeaderView.h"
 #import "FilterButtonView.h"
+#import "Common.h"
 
 @interface FilterViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 @property (nonatomic, strong) UITableView * tableView;

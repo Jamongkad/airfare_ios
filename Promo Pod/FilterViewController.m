@@ -93,7 +93,6 @@ extern NSString * const FilterCell = @"FilterCell";
                 }
                 
                 if([[providerData objectForKey:@"provider"] isEqualToString:@"cebupac"]) {
-                
                     airline = @"Cebu Pacific";
                 }
                 
@@ -150,7 +149,7 @@ extern NSString * const FilterCell = @"FilterCell";
 
 - (void)pullProviders {
     self.providers = [[NSMutableArray alloc] init];
-    NSString *url = @"http://promopod.gearfish.com/provider";
+    NSString *url = [NSString stringWithFormat:@"%@%@", API_URL, @"provider"];
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     [manager GET:url parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         

@@ -157,19 +157,15 @@ static NSString *CellIdentifier = @"PromoCell";
     NSDictionary *data;
     
     if([self.flights count] > 0) {
-        
         data = [self.flights objectAtIndex:indexPath.row];
         GroupFlightsViewController *gfvc = [[GroupFlightsViewController alloc] init];
         [gfvc setFlightData:data];
         [self.navigationController pushViewController:gfvc animated:YES];
-        
     } else {
-        
         data = [self.filteredFlights objectAtIndex:indexPath.row];
         FlightDetailViewController *fdvc = [[FlightDetailViewController alloc] init];
         [fdvc setFlightDetails:data];
         [self.navigationController pushViewController:fdvc animated:YES];
-        
     }
     
 }
@@ -211,25 +207,27 @@ static NSString *CellIdentifier = @"PromoCell";
     NSString *restURL;
     
     if(self.filterOn == NO) {
+                
         if(reset) {
             restURL = [NSString stringWithFormat:@"%@%@", API_URL, @"group_flights"];
         } else {
             NSString *url = [NSString stringWithFormat:@"%@%@/%@", API_URL, @"group_flights/search", searchText];
             restURL = [url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
         }
-
+        
         [self.manager GET:restURL parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
             self.flights = responseObject;
             [self.tableView reloadData];
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
             NSLog(@"Error: %@", error);
         }];
-    } else {
         
+    } else {
+    
         restURL = [NSString stringWithFormat:@"%@%@", API_URL, @"filtered_flights/search"];
         
-        id params = @{@"guards" : self.filters[@"filters"], @"search": searchText};
-        
+        NSDictionary *params = @{@"guards" : self.filters[@"filters"], @"search": searchText};
+                
         [self.manager POST:restURL parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
             self.flights = nil;
             self.filteredFlights = responseObject;
