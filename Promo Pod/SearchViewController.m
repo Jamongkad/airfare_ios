@@ -261,13 +261,22 @@
     if(self.departureData && self.arrivalData) {
         NSString *url = [NSString stringWithFormat:@"http://promopod.gearfish.com/departing/%@/arriving/%@", self.departureData[@"location"], self.arrivalData[@"location"]];
         NSString *escapedString = [url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-            
+       
+        /*j
         AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
         [manager GET:escapedString parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
             NSLog(@"%@", responseObject);
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
             NSLog(@"Error: %@", error);
         }];
+        */
+        AFHTTPSessionManager *httpManager = [AFHTTPSessionManager manager];
+        [httpManager GET:escapedString parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+            NSLog(@"%@", responseObject);
+        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+            NSLog(@"Error: %@", error);
+        }];
+        
     }
     //[self.dbc clearAllFlights];
 }

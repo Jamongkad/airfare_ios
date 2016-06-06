@@ -25,9 +25,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"Promo Pod";
-    
-    self.canDisplayBannerAds = YES;
-    
+
     UIEdgeInsets padding = UIEdgeInsetsMake(10, 10, 10, 10);
         
     UIImageView *bgImage = [[UIImageView alloc] init];
@@ -35,6 +33,7 @@
     [bgImage setContentMode:UIViewContentModeScaleAspectFill];
     [bgImage setImage:[UIImage imageNamed:@"bg-main-0"]];
     [self.view addSubview:bgImage];
+    
     UILabel *saying = [[UILabel alloc] init];
     [saying setText:@"Vacations need not be expensive"];
     [saying setLineBreakMode:NSLineBreakByWordWrapping];
@@ -111,7 +110,6 @@
     
     [drawer setShowsShadow:NO];
     [self.navigationController pushViewController:drawer animated:YES];
-    //[self presentViewController:drawer animated:YES completion:nil];
 }
 
 - (void)didReceiveMemoryWarning {

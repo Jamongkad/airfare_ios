@@ -9,10 +9,6 @@
 #import "FlightsViewController.h"
 
 @interface FlightsViewController ()
-@property (nonatomic, strong) AFHTTPRequestOperationManager *manager;
-@property (nonatomic, strong) FlightsTableViewController *ftvc;
-@property (nonatomic, strong) FlightPromosTableViewController *fptvc;
-@property (nonatomic, strong) UIBarButtonItem *filterButton;
 @end
 
 @implementation FlightsViewController
@@ -21,7 +17,7 @@
     self = [super init];
     if(!self) return nil;
     
-    self.manager = [AFHTTPRequestOperationManager manager];
+    self.httpManager = [AFHTTPSessionManager manager];
     
     [[NSNotificationCenter defaultCenter]
          addObserver:self
@@ -47,7 +43,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.canDisplayBannerAds = YES;
     
     UIColor *navColor = [UIColor whiteColor];
     [self.parentViewController.navigationItem setTitle:@"Flight Promos"];
@@ -78,16 +73,15 @@
     hud.labelText = FLIGHT_FETCH_MSG;
     NSString *airfareURL = [NSString stringWithFormat:@"%@%@", API_URL, @"group_flights"];
     
-    [self.manager GET:airfareURL parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [[self httpManager] GET:airfareURL parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         [self.fptvc setFilteredFlights:nil];
         [self.fptvc setFlights:responseObject];
         [self.fptvc setFilterOn:NO];
         [self.fptvc.tableView reloadData];
         [hud hide:YES];
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         NSLog(@"Error: %@", error);
     }];
-   
 }
 
 - (void)filterNow:(NSDictionary *)params {
@@ -95,13 +89,13 @@
     hud.labelText = FLIGHT_FETCH_MSG;
     NSString *airfareURL = [NSString stringWithFormat:@"%@%@", API_URL, @"filter"];
     
-    [self.manager POST:airfareURL parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [[self httpManager] POST:airfareURL parameters:params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         [self.fptvc setFilteredFlights:responseObject];
         [self.fptvc setFlights:nil];
         [self.fptvc setFilterOn:YES];
         [self.fptvc.tableView reloadData];        
         [hud hide:YES];
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         NSLog(@"Error: %@", error);
     }];
 }

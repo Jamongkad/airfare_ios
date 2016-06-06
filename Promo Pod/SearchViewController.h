@@ -15,7 +15,7 @@
 
 #import "DatabaseController.h"
 #import "DepartureViewController.h"
-
+#import <AFNetworking/AFNetworking.h>
 
 @interface SearchViewController : UIViewController
 @end

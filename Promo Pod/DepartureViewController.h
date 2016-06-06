@@ -12,6 +12,8 @@
 #import <MBProgressHUD/MBProgressHUD.h>
 #import <AFNetworking/AFNetworking.h>
 
-@interface DepartureViewController : UIViewController
+@interface DepartureViewController : UIViewController {
+    AFHTTPSessionManager *httpManager;
+}
 @property (nonatomic) long flightIdentifier;
 @end

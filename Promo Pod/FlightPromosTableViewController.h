@@ -11,13 +11,18 @@
 #import "UIColor+HTMLColors.h"
 #import "GroupFlightsViewController.h"
 #import <ChameleonFramework/Chameleon.h>
-#import <AFNetworking/AFNetworking.h>
+#import "AFNetworking.h"
 #import "FlightDetailViewController.h"
 #import "Common.h"
 
 
-@interface FlightPromosTableViewController : UITableViewController <UISearchBarDelegate, UIScrollViewDelegate>
+@interface FlightPromosTableViewController : UITableViewController <UISearchBarDelegate, UIScrollViewDelegate> {
+
+    UISearchBar *searchbar;
+    AFHTTPSessionManager *httpManager;
+}
 @property (nonatomic, strong) NSArray *flights;
 @property (nonatomic, strong) NSArray *filteredFlights;
+@property (nonatomic, strong) NSMutableDictionary *filters;
 @property (nonatomic) BOOL filterOn;
 @end

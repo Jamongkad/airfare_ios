@@ -60,7 +60,15 @@
     
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.labelText = @"Fetching Airports...";
-    
+    [httpManager GET:url parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        [self.srtvc setSearchCount:(int)[responseObject count]];
+        [self.srtvc setSearchResults:responseObject];
+        [self.srtvc.tableView reloadData];
+        [hud hide:YES];
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSLog(@"Error: %@", error);
+    }];
+    /*
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     [manager GET:url parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         [self.srtvc setSearchCount:(int)[responseObject count]];
@@ -70,6 +78,7 @@
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"Error: %@", error);
     }];
+    */
 }
 
 - (void)enterSearch:(id)sender {
@@ -88,7 +97,17 @@
     if([tf.text length] > 0) {
         NSString *searchQuery = [[tf text] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
         NSString *url = [NSString stringWithFormat:@"%@%@", @"http://promopod.gearfish.com/location/", searchQuery];
-
+        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        hud.labelText = @"Searching...";
+        [httpManager GET:url parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+            [self.srtvc setSearchCount:(int)[responseObject count]];
+            [self.srtvc setSearchResults:responseObject];
+            [self.srtvc.tableView reloadData];
+            [hud hide:YES];
+        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+            NSLog(@"Error: %@", error);
+        }];
+        /*
         AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
         
         MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
@@ -102,7 +121,7 @@
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
             NSLog(@"Error: %@", error);
         }];
-
+        */
     } else {
         [self.srtvc setSearchCount:0];
     }

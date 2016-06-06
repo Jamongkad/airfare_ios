@@ -8,13 +8,7 @@
 
 #import "FlightPromosTableViewController.h"
 
-@interface FlightPromosTableViewController () {
-    UISearchBar *searchbar;
-}
-
-@property (nonatomic, strong) NSMutableDictionary *filters;
-@property (nonatomic, strong) AFHTTPRequestOperationManager *manager;
-
+@interface FlightPromosTableViewController ()
 @end
 
 @implementation FlightPromosTableViewController
@@ -43,7 +37,7 @@ static NSString *CellIdentifier = @"PromoCell";
          name:@"filteredFlights"
          object:nil];
     
-    self.manager = [AFHTTPRequestOperationManager manager];
+    httpManager = [AFHTTPSessionManager manager];
 }
 
 - (void)pullFilteredFlights:(id)notification {
@@ -215,11 +209,11 @@ static NSString *CellIdentifier = @"PromoCell";
             restURL = [url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
         }
         
-        [self.manager GET:restURL parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        [httpManager GET:restURL parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
             self.flights = responseObject;
             [self.tableView reloadData];
-        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-            NSLog(@"Error: %@", error);
+        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+             NSLog(@"Error: %@", error);
         }];
         
     } else {
@@ -227,15 +221,23 @@ static NSString *CellIdentifier = @"PromoCell";
         restURL = [NSString stringWithFormat:@"%@%@", API_URL, @"filtered_flights/search"];
         
         NSDictionary *params = @{@"guards" : self.filters[@"filters"], @"search": searchText};
-                
-        [self.manager POST:restURL parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        [httpManager POST:restURL parameters:params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+            self.flights = nil;
+            self.filteredFlights = responseObject;
+            [self.tableView reloadData];
+        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+            NSLog(@"Error: %@", error);
+        }];
+        /*
+        [httpManager POST:restURL parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
             self.flights = nil;
             self.filteredFlights = responseObject;
             [self.tableView reloadData];
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
             NSLog(@"Error: %@", error);
         }];
-
+        */
     }
 }
 

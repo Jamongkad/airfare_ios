@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7E1C25F5FC03A6639ED3F46C /* libPods-Promo Pod.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C23A2B299128F4A79D08866 /* libPods-Promo Pod.a */; };
+		4D30872EA8CF88898590833E /* libPods-Promo Pod.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E2791E01D9F021745E7C0EED /* libPods-Promo Pod.a */; };
 		AF046A141B368EDD00785AFB /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF046A131B368EDD00785AFB /* RootViewController.m */; };
 		AF046A191B36A49F00785AFB /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF046A181B36A49F00785AFB /* SearchViewController.m */; };
 		AF046A1C1B36AF3300785AFB /* SearchFormViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF046A1B1B36AF3300785AFB /* SearchFormViewController.m */; };
@@ -20,10 +20,10 @@
 		AF58360F1B7511EE005D085E /* FlightDetailTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF58360E1B7511EE005D085E /* FlightDetailTableViewController.m */; };
 		AF6432271B7DDA6600852168 /* FlightHeaderDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = AF6432261B7DDA6600852168 /* FlightHeaderDetailView.m */; };
 		AF64322A1B7E38C900852168 /* FlightDetailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AF6432291B7E38C900852168 /* FlightDetailTableViewCell.m */; };
-		AF6EAE841BAD7CC9004C570D /* FilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF6EAE831BAD7CC9004C570D /* FilterViewController.m */; settings = {ASSET_TAGS = (); }; };
-		AF6EAE871BB14277004C570D /* FilterHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = AF6EAE861BB14277004C570D /* FilterHeaderView.m */; settings = {ASSET_TAGS = (); }; };
+		AF6EAE841BAD7CC9004C570D /* FilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF6EAE831BAD7CC9004C570D /* FilterViewController.m */; };
+		AF6EAE871BB14277004C570D /* FilterHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = AF6EAE861BB14277004C570D /* FilterHeaderView.m */; };
 		AF81541D1BA1B9BA0017E9B0 /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF81541C1BA1B9BA0017E9B0 /* iAd.framework */; };
-		AF9D5B841BB8E1E900DB0460 /* FilterButtonView.m in Sources */ = {isa = PBXBuildFile; fileRef = AF9D5B831BB8E1E900DB0460 /* FilterButtonView.m */; settings = {ASSET_TAGS = (); }; };
+		AF9D5B841BB8E1E900DB0460 /* FilterButtonView.m in Sources */ = {isa = PBXBuildFile; fileRef = AF9D5B831BB8E1E900DB0460 /* FilterButtonView.m */; };
 		AFAB64351B452B0B00F0132E /* FlightsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AFAB64341B452B0B00F0132E /* FlightsViewController.m */; };
 		AFAB64381B45397400F0132E /* FlightsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AFAB64371B45397400F0132E /* FlightsTableViewController.m */; };
 		AFAB643C1B46854700F0132E /* FlightTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AFAB643B1B46854700F0132E /* FlightTableViewCell.m */; };
@@ -51,8 +51,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		4C23A2B299128F4A79D08866 /* libPods-Promo Pod.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Promo Pod.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		A82ADAF4E42B80BF85C041E9 /* Pods-Promo Pod.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Promo Pod.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Promo Pod/Pods-Promo Pod.debug.xcconfig"; sourceTree = "<group>"; };
+		6CCC5586FAA11491AFD43D6A /* Pods-Promo Pod.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Promo Pod.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Promo Pod/Pods-Promo Pod.debug.xcconfig"; sourceTree = "<group>"; };
 		AF046A121B368EDD00785AFB /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		AF046A131B368EDD00785AFB /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 		AF046A171B36A49F00785AFB /* SearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
@@ -113,7 +112,8 @@
 		AFF65DEE1B365A5800AFD902 /* Promo PodTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Promo PodTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AFF65DF31B365A5800AFD902 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AFF65DF41B365A5800AFD902 /* Promo_PodTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Promo_PodTests.m; sourceTree = "<group>"; };
-		B7CD7D8183EE05DA008A4DD4 /* Pods-Promo Pod.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Promo Pod.release.xcconfig"; path = "Pods/Target Support Files/Pods-Promo Pod/Pods-Promo Pod.release.xcconfig"; sourceTree = "<group>"; };
+		E2791E01D9F021745E7C0EED /* libPods-Promo Pod.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Promo Pod.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F0266355B10861C6FEE4F733 /* Pods-Promo Pod.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Promo Pod.release.xcconfig"; path = "Pods/Target Support Files/Pods-Promo Pod/Pods-Promo Pod.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,7 +122,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AF81541D1BA1B9BA0017E9B0 /* iAd.framework in Frameworks */,
-				7E1C25F5FC03A6639ED3F46C /* libPods-Promo Pod.a in Frameworks */,
+				4D30872EA8CF88898590833E /* libPods-Promo Pod.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -140,16 +140,16 @@
 			isa = PBXGroup;
 			children = (
 				AF81541C1BA1B9BA0017E9B0 /* iAd.framework */,
-				4C23A2B299128F4A79D08866 /* libPods-Promo Pod.a */,
+				E2791E01D9F021745E7C0EED /* libPods-Promo Pod.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		649E309B4877E254B7912137 /* Pods */ = {
+		55C6256604865197CBE190A0 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				A82ADAF4E42B80BF85C041E9 /* Pods-Promo Pod.debug.xcconfig */,
-				B7CD7D8183EE05DA008A4DD4 /* Pods-Promo Pod.release.xcconfig */,
+				6CCC5586FAA11491AFD43D6A /* Pods-Promo Pod.debug.xcconfig */,
+				F0266355B10861C6FEE4F733 /* Pods-Promo Pod.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -262,8 +262,8 @@
 				AFF65DD71B365A5800AFD902 /* Promo Pod */,
 				AFF65DF11B365A5800AFD902 /* Promo PodTests */,
 				AFF65DD61B365A5800AFD902 /* Products */,
-				649E309B4877E254B7912137 /* Pods */,
 				556EC0D60A18C093B1533347 /* Frameworks */,
+				55C6256604865197CBE190A0 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -324,10 +324,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = AFF65DF81B365A5800AFD902 /* Build configuration list for PBXNativeTarget "Promo Pod" */;
 			buildPhases = (
+				C077D0ACA1E9B9AEDC4A141A /* [CP] Check Pods Manifest.lock */,
 				AFF65DD11B365A5800AFD902 /* Sources */,
 				AFF65DD21B365A5800AFD902 /* Frameworks */,
 				AFF65DD31B365A5800AFD902 /* Resources */,
-				4FB5EE868FE39984882E5476 /* Embed Pods Frameworks */,
+				C24EE89C77111101008C56A0 /* [CP] Embed Pods Frameworks */,
+				1ABC7278281D28E78E0BAFCD /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -414,14 +416,44 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		4FB5EE868FE39984882E5476 /* Embed Pods Frameworks */ = {
+		1ABC7278281D28E78E0BAFCD /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Embed Pods Frameworks";
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Promo Pod/Pods-Promo Pod-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C077D0ACA1E9B9AEDC4A141A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		C24EE89C77111101008C56A0 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -578,7 +610,7 @@
 		};
 		AFF65DF91B365A5800AFD902 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A82ADAF4E42B80BF85C041E9 /* Pods-Promo Pod.debug.xcconfig */;
+			baseConfigurationReference = 6CCC5586FAA11491AFD43D6A /* Pods-Promo Pod.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -593,7 +625,7 @@
 		};
 		AFF65DFA1B365A5800AFD902 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B7CD7D8183EE05DA008A4DD4 /* Pods-Promo Pod.release.xcconfig */;
+			baseConfigurationReference = F0266355B10861C6FEE4F733 /* Pods-Promo Pod.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";

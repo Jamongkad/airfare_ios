@@ -14,6 +14,8 @@
 #import <MBProgressHUD/MBProgressHUD.h>
 #import "Common.h"
 
-@interface GroupFlightsViewController : UIViewController
+@interface GroupFlightsViewController : UIViewController {
+    AFHTTPSessionManager *httpManager;
+}
 @property (nonatomic, strong) NSDictionary *flightData;
 @end

@@ -18,5 +18,7 @@
 
 
 @interface FlightsViewController : UIViewController
-
+@property (nonatomic, strong) AFHTTPSessionManager *httpManager;
+@property (nonatomic, strong) FlightPromosTableViewController *fptvc;
+@property (nonatomic, strong) UIBarButtonItem *filterButton;
 @end

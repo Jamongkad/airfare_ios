@@ -150,15 +150,21 @@ extern NSString * const FilterCell = @"FilterCell";
 - (void)pullProviders {
     self.providers = [[NSMutableArray alloc] init];
     NSString *url = [NSString stringWithFormat:@"%@%@", API_URL, @"provider"];
+    /*
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     [manager GET:url parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"Error: %@", error);
+    }];
+    */
+    
+    AFHTTPSessionManager *httpManager = [AFHTTPSessionManager manager];
+    [httpManager GET:url parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         for (NSDictionary *provider in responseObject){
             [self.providers addObject:provider];
         }
-
         [self.tableView reloadData];
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         NSLog(@"Error: %@", error);
     }];
 }

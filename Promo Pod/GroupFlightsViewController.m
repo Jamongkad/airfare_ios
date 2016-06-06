@@ -32,13 +32,13 @@
     
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.labelText = FLIGHT_FETCH_MSG;
-    
-    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    [manager GET:restURL parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+
+    httpManager = [AFHTTPSessionManager manager];
+    [httpManager GET:restURL parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         [ftvc setFlights:responseObject];
         [ftvc.tableView reloadData];
         [hud hide:YES];
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         NSLog(@"Error: %@", error);
     }];
     
