@@ -46,6 +46,7 @@
     
     UIColor *navColor = [UIColor whiteColor];
     [self.parentViewController.navigationItem setTitle:@"Flight Promos"];
+    self.canDisplayBannerAds = YES;
     
     self.filterButton = [[UIBarButtonItem alloc] initWithTitle:@"Filter" style:UIBarButtonItemStyleDone target:self action:@selector(openFilter:)];
     [self.parentViewController.navigationItem setRightBarButtonItem:self.filterButton];

@@ -13,7 +13,7 @@
 #import "SearchViewController.h"
 #import "DatabaseController.h"
 #import "FilterViewController.h"
-
+#import "IAPurchaseViewController.h"
 #import "MMDrawerController.h"
 
 @interface RootViewController : UIViewController

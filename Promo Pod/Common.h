@@ -31,6 +31,7 @@
 #define JETSTAR @"http://www.jetstar.com/ph/en/home"
 #define AIRASIA @"http://www.airasia.com/ph/en/home.page?cid=1"
 #define FLIGHT_FETCH_MSG @"Fetching Flights..."
+#define generousTipID @"GenerousTip"
 
 
 #endif /* Common_h */

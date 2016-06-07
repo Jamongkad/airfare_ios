@@ -25,6 +25,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"Promo Pod";
+    self.canDisplayBannerAds = YES;
+    
+    UIBarButtonItem *settingsButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"podgear"]
+                                                                       style:UIBarButtonItemStylePlain
+                                                                      target:self
+                                                                      action:@selector(showSettings:)];
+    
+    [[self navigationItem] setLeftBarButtonItem:settingsButton];
 
     UIEdgeInsets padding = UIEdgeInsetsMake(10, 10, 10, 10);
         
@@ -90,8 +98,14 @@
     // Do any additional setup after loading the view.
 }
 
-- (void)openOptions:(id)sender {
-
+- (void)showSettings:(UIBarButtonItem *)theButton {
+    /*
+    UINavigationController *webBrowserNavigationController = [KINWebBrowserViewController navigationControllerWithWebBrowser];
+    [self presentViewController:webBrowserNavigationController animated:YES completion:nil];
+    */
+    IAPurchaseViewController *iap = [[IAPurchaseViewController alloc] init];
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:iap];
+    [self presentViewController:nav animated:YES completion:nil];
 }
 
 - (void)openSearch:(id)sender {

@@ -17,6 +17,8 @@
 		AF3B06EB1B4FC7E100C886D9 /* CompareFlightsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF3B06EA1B4FC7E100C886D9 /* CompareFlightsViewController.m */; };
 		AF3B06EE1B4FC7EE00C886D9 /* FlightDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF3B06ED1B4FC7EE00C886D9 /* FlightDetailViewController.m */; };
 		AF3B06F21B4FCF2600C886D9 /* MatTapGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = AF3B06F11B4FCF2600C886D9 /* MatTapGestureRecognizer.m */; };
+		AF4930C21D05584700830D96 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF4930C11D05584700830D96 /* StoreKit.framework */; };
+		AF4930C51D0561F600830D96 /* IAPurchaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF4930C41D0561F600830D96 /* IAPurchaseViewController.m */; };
 		AF58360F1B7511EE005D085E /* FlightDetailTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF58360E1B7511EE005D085E /* FlightDetailTableViewController.m */; };
 		AF6432271B7DDA6600852168 /* FlightHeaderDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = AF6432261B7DDA6600852168 /* FlightHeaderDetailView.m */; };
 		AF64322A1B7E38C900852168 /* FlightDetailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AF6432291B7E38C900852168 /* FlightDetailTableViewCell.m */; };
@@ -70,6 +72,9 @@
 		AF3B06ED1B4FC7EE00C886D9 /* FlightDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlightDetailViewController.m; sourceTree = "<group>"; };
 		AF3B06F01B4FCF2600C886D9 /* MatTapGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MatTapGestureRecognizer.h; sourceTree = "<group>"; };
 		AF3B06F11B4FCF2600C886D9 /* MatTapGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MatTapGestureRecognizer.m; sourceTree = "<group>"; };
+		AF4930C11D05584700830D96 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		AF4930C31D0561F600830D96 /* IAPurchaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IAPurchaseViewController.h; sourceTree = "<group>"; };
+		AF4930C41D0561F600830D96 /* IAPurchaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IAPurchaseViewController.m; sourceTree = "<group>"; };
 		AF58360D1B7511EE005D085E /* FlightDetailTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlightDetailTableViewController.h; sourceTree = "<group>"; };
 		AF58360E1B7511EE005D085E /* FlightDetailTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlightDetailTableViewController.m; sourceTree = "<group>"; };
 		AF6432251B7DDA6600852168 /* FlightHeaderDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlightHeaderDetailView.h; sourceTree = "<group>"; };
@@ -121,6 +126,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AF4930C21D05584700830D96 /* StoreKit.framework in Frameworks */,
 				AF81541D1BA1B9BA0017E9B0 /* iAd.framework in Frameworks */,
 				4D30872EA8CF88898590833E /* libPods-Promo Pod.a in Frameworks */,
 			);
@@ -139,6 +145,7 @@
 		556EC0D60A18C093B1533347 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				AF4930C11D05584700830D96 /* StoreKit.framework */,
 				AF81541C1BA1B9BA0017E9B0 /* iAd.framework */,
 				E2791E01D9F021745E7C0EED /* libPods-Promo Pod.a */,
 			);
@@ -182,6 +189,8 @@
 				AFAB64341B452B0B00F0132E /* FlightsViewController.m */,
 				AFADC21A1B56507E0099500E /* GroupFlightsViewController.h */,
 				AFADC21B1B56507E0099500E /* GroupFlightsViewController.m */,
+				AF4930C31D0561F600830D96 /* IAPurchaseViewController.h */,
+				AF4930C41D0561F600830D96 /* IAPurchaseViewController.m */,
 				AF046A171B36A49F00785AFB /* SearchViewController.h */,
 				AF046A181B36A49F00785AFB /* SearchViewController.m */,
 			);
@@ -370,6 +379,11 @@
 					AFF65DD41B365A5800AFD902 = {
 						CreatedOnToolsVersion = 6.3.2;
 						DevelopmentTeam = ZQNCPBUJ3M;
+						SystemCapabilities = {
+							com.apple.InAppPurchase = {
+								enabled = 1;
+							};
+						};
 					};
 					AFF65DED1B365A5800AFD902 = {
 						CreatedOnToolsVersion = 6.3.2;
@@ -491,6 +505,7 @@
 				AF39F9311B53967900A5FC54 /* PromoTableViewCell.m in Sources */,
 				AFC14E611B38446E00531016 /* DepartureViewController.m in Sources */,
 				AF2DFD7B1B51692700289C0D /* PromosTableViewController.m in Sources */,
+				AF4930C51D0561F600830D96 /* IAPurchaseViewController.m in Sources */,
 				AF046A1C1B36AF3300785AFB /* SearchFormViewController.m in Sources */,
 				AF6EAE841BAD7CC9004C570D /* FilterViewController.m in Sources */,
 				AFF65DDB1B365A5800AFD902 /* main.m in Sources */,
@@ -615,7 +630,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = "Promo Pod/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "YidgetSoft.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -630,7 +645,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = "Promo Pod/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "YidgetSoft.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
