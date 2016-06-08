@@ -7,15 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <iAd/iAd.h>
+#import "RootAdvertisingViewController.h"
 #import "Masonry.h"
 #import "FlightsViewController.h"
-#import "SearchViewController.h"
 #import "DatabaseController.h"
 #import "FilterViewController.h"
 #import "IAPurchaseViewController.h"
 #import "MMDrawerController.h"
+@import GoogleMobileAds;
 
-@interface RootViewController : UIViewController
+@interface RootViewController : RootAdvertisingViewController
 @property (nonatomic, strong) DatabaseController *dbc;
+@property (nonatomic, strong) FlightsViewController *fvc;
 @end

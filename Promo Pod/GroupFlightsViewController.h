@@ -7,14 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "RootAdvertisingViewController.h"
 #import "UIColor+HTMLColors.h"
 #import <AFNetworking/AFNetworking.h>
-#import "Masonry.h"
 #import "FlightsTableViewController.h"
 #import <MBProgressHUD/MBProgressHUD.h>
-#import "Common.h"
 
-@interface GroupFlightsViewController : UIViewController {
+@interface GroupFlightsViewController : RootAdvertisingViewController {
     AFHTTPSessionManager *httpManager;
 }
 @property (nonatomic, strong) NSDictionary *flightData;

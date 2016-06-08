@@ -43,17 +43,16 @@
     [tipText setLineBreakMode:NSLineBreakByWordWrapping];
     [self.view addSubview:tipText];
     
-    UIButton *genTip = [UIButton buttonWithType:UIButtonTypeCustom];
-    [genTip setTitle:@"Tip of US$0.99" forState:UIControlStateNormal];
-    [genTip setBackgroundColor:[UIColor flatPowderBlueColorDark]];
-    [genTip addTarget:self action:@selector(enableTip:) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:genTip];
+    loadingText = [[UILabel alloc] init];
+    [loadingText setText:@"Loading..."];
+    [loadingText setTextAlignment:NSTextAlignmentCenter];
+    [loadingText setLineBreakMode:NSLineBreakByWordWrapping];
+    [self.view addSubview:loadingText];
     
-    UIButton *massTip = [UIButton buttonWithType:UIButtonTypeCustom];
-    [massTip setTitle:@"Generous Tip of US$1.99" forState:UIControlStateNormal];
-    [massTip setBackgroundColor:[UIColor flatForestGreenColor]];
-    [massTip addTarget:self action:@selector(enableTip:) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:massTip];
+    [loadingText mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.bottom.equalTo(self.view).offset(-20);
+        make.centerX.equalTo(self.view);
+    }];
     
     [tipTitle mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.view).offset(40);
@@ -66,26 +65,12 @@
         make.right.equalTo(self.view).offset(-10);
     }];
     
-    [genTip mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.bottom.equalTo(massTip.mas_top);
-        make.left.equalTo(self.view.mas_left);
-        make.right.equalTo(self.view.mas_right);
-        make.height.equalTo(@55);
-    }];
-    
-    [massTip mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.bottom.equalTo(self.view.mas_bottom);
-        make.right.equalTo(self.view.mas_right);
-        make.left.equalTo(self.view.mas_left);
-        make.height.equalTo(@55);
-    }];
-    
     transactionInProgress = NO;
 }
 
 - (void)requestProductInfo {
     if([SKPaymentQueue canMakePayments]) {
-        SKProductsRequest *productsRequest = [[SKProductsRequest alloc] initWithProductIdentifiers:[NSSet setWithObject:generousTipID]];
+        SKProductsRequest *productsRequest = [[SKProductsRequest alloc] initWithProductIdentifiers:[NSSet setWithObjects:generousTipID, massiveTipID, nil]];
         productsRequest.delegate = self;
         [productsRequest start];
     } else {
@@ -98,6 +83,33 @@
     
     if([response.products count] > 0) {
         productsArray = response.products;
+        
+        UIButton *genTip = [UIButton buttonWithType:UIButtonTypeCustom];
+        [genTip setTitle:@"Tip of US$0.99" forState:UIControlStateNormal];
+        [genTip setBackgroundColor:[UIColor flatPowderBlueColorDark]];
+        [genTip addTarget:self action:@selector(enableTip:) forControlEvents:UIControlEventTouchUpInside];
+        [self.view addSubview:genTip];
+        
+        UIButton *massTip = [UIButton buttonWithType:UIButtonTypeCustom];
+        [massTip setTitle:@"Generous Tip of US$1.99" forState:UIControlStateNormal];
+        [massTip setBackgroundColor:[UIColor flatForestGreenColor]];
+        [massTip addTarget:self action:@selector(enableTip:) forControlEvents:UIControlEventTouchUpInside];
+        [self.view addSubview:massTip];
+        
+        [genTip mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.bottom.equalTo(massTip.mas_top);
+            make.left.equalTo(self.view.mas_left);
+            make.right.equalTo(self.view.mas_right);
+            make.height.equalTo(@55);
+        }];
+        
+        [massTip mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.bottom.equalTo(self.view.mas_bottom);
+            make.right.equalTo(self.view.mas_right);
+            make.left.equalTo(self.view.mas_left);
+            make.height.equalTo(@55);
+        }];
+        
     } else if(!validProduct) {
         NSLog(@"No products available");
     }
@@ -110,27 +122,36 @@
 - (void)enableTip:(UIButton *)btn {
     if([productsArray count] > 0) {
         if([[btn currentTitle] isEqualToString:@"Tip of US$0.99"]) {
-            NSLog(@"Generous Tip");
-            [self showActions];
+            SKProduct *generousTipProduct = [productsArray objectAtIndex:0];
+            /*
+            NSLog(@"%@", [generousTipProduct localizedTitle]);
+            NSLog(@"%@", [generousTipProduct price]);
+            */
+            [self showActions:generousTipProduct];
         }
         
         if([[btn currentTitle] isEqualToString:@"Generous Tip of US$1.99"]) {
-            NSLog(@"Massive Tip");
-            [self showActions];
+            SKProduct *massiveTipProduct = [productsArray objectAtIndex:1];
+            /*
+            NSLog(@"%@", [massiveTipProduct localizedTitle]);
+            NSLog(@"%@", [massiveTipProduct price]);
+            */
+            [self showActions:massiveTipProduct];
         }
     }
     
     transactionInProgress = YES;
 }
 
-- (void)showActions {
+- (void)showActions:(SKProduct *)product {
 
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Thank You!"
                          message:@"Thank you for patronage. Your generosity will go a long way to help further the development of Promo Pod."
                   preferredStyle:UIAlertControllerStyleAlert];
     
     UIAlertAction *buy = [UIAlertAction actionWithTitle:@"Donate" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        [self purchase:[productsArray objectAtIndex:0]];
+        //NSLog(@"Product %@", product);
+        [self purchase:product];
     }];
     UIAlertAction *noThanks = [UIAlertAction actionWithTitle:@"No Thanks" style:UIAlertActionStyleDefault handler:nil];
     
@@ -153,6 +174,7 @@
             case SKPaymentTransactionStatePurchased:
                 //this is called when the user has successfully purchased the package (Cha-Ching!)
                 //[self doRemoveAds]; //you can add your code for what you want to happen when the user buys the purchase here, for this tutorial we use removing ads
+                [self doRemoveAds];
                 [[SKPaymentQueue defaultQueue] finishTransaction:transaction];
                 NSLog(@"Transaction state -> Purchased");
                 transactionInProgress = NO;
@@ -175,6 +197,11 @@
     }
 }
 
+- (void)doRemoveAds {
+    bool isAdRemoved = YES;
+    [[NSUserDefaults standardUserDefaults] setBool:isAdRemoved forKey:@"isAdRemoved"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
 
 - (void)cancel:(id)sender {
     [self dismissViewControllerAnimated:YES completion:nil];

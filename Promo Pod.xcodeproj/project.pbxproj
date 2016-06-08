@@ -25,6 +25,7 @@
 		AF6EAE841BAD7CC9004C570D /* FilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF6EAE831BAD7CC9004C570D /* FilterViewController.m */; };
 		AF6EAE871BB14277004C570D /* FilterHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = AF6EAE861BB14277004C570D /* FilterHeaderView.m */; };
 		AF81541D1BA1B9BA0017E9B0 /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF81541C1BA1B9BA0017E9B0 /* iAd.framework */; };
+		AF96DDB71D080A3800D04F0E /* RootAdvertisingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF96DDB61D080A3800D04F0E /* RootAdvertisingViewController.m */; };
 		AF9D5B841BB8E1E900DB0460 /* FilterButtonView.m in Sources */ = {isa = PBXBuildFile; fileRef = AF9D5B831BB8E1E900DB0460 /* FilterButtonView.m */; };
 		AFAB64351B452B0B00F0132E /* FlightsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AFAB64341B452B0B00F0132E /* FlightsViewController.m */; };
 		AFAB64381B45397400F0132E /* FlightsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AFAB64371B45397400F0132E /* FlightsTableViewController.m */; };
@@ -87,6 +88,8 @@
 		AF6EAE851BB14277004C570D /* FilterHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilterHeaderView.h; sourceTree = "<group>"; };
 		AF6EAE861BB14277004C570D /* FilterHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilterHeaderView.m; sourceTree = "<group>"; };
 		AF81541C1BA1B9BA0017E9B0 /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
+		AF96DDB51D080A3800D04F0E /* RootAdvertisingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootAdvertisingViewController.h; sourceTree = "<group>"; };
+		AF96DDB61D080A3800D04F0E /* RootAdvertisingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootAdvertisingViewController.m; sourceTree = "<group>"; };
 		AF9D5B821BB8E1E900DB0460 /* FilterButtonView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilterButtonView.h; sourceTree = "<group>"; };
 		AF9D5B831BB8E1E900DB0460 /* FilterButtonView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilterButtonView.m; sourceTree = "<group>"; };
 		AFAB64331B452B0B00F0132E /* FlightsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlightsViewController.h; sourceTree = "<group>"; };
@@ -215,6 +218,8 @@
 				AF9D5B831BB8E1E900DB0460 /* FilterButtonView.m */,
 				AF6432251B7DDA6600852168 /* FlightHeaderDetailView.h */,
 				AF6432261B7DDA6600852168 /* FlightHeaderDetailView.m */,
+				AF96DDB51D080A3800D04F0E /* RootAdvertisingViewController.h */,
+				AF96DDB61D080A3800D04F0E /* RootAdvertisingViewController.m */,
 				AFC6210E1B59F55800D1E357 /* FlightHeaderView.h */,
 				AFC6210F1B59F55800D1E357 /* FlightHeaderView.m */,
 				AF3B06F01B4FCF2600C886D9 /* MatTapGestureRecognizer.h */,
@@ -491,6 +496,7 @@
 				AF64322A1B7E38C900852168 /* FlightDetailTableViewCell.m in Sources */,
 				AF3B06EB1B4FC7E100C886D9 /* CompareFlightsViewController.m in Sources */,
 				AF9D5B841BB8E1E900DB0460 /* FilterButtonView.m in Sources */,
+				AF96DDB71D080A3800D04F0E /* RootAdvertisingViewController.m in Sources */,
 				AFDA811C1B3A650D00B847D1 /* Database.m in Sources */,
 				AFADC21C1B56507E0099500E /* GroupFlightsViewController.m in Sources */,
 				AFDA811F1B3A657800B847D1 /* DatabaseController.m in Sources */,

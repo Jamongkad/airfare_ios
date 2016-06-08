@@ -32,6 +32,7 @@
 #define AIRASIA @"http://www.airasia.com/ph/en/home.page?cid=1"
 #define FLIGHT_FETCH_MSG @"Fetching Flights..."
 #define generousTipID @"GenerousTip"
+#define massiveTipID @"MassiveTip"
 
 
 #endif /* Common_h */

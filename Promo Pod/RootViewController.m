@@ -9,8 +9,6 @@
 #import "RootViewController.h"
 
 @interface RootViewController ()
-@property (nonatomic, strong) SearchViewController *svc;
-@property (nonatomic, strong) FlightsViewController *fvc;
 @end
 
 @implementation RootViewController
@@ -25,7 +23,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"Promo Pod";
-    self.canDisplayBannerAds = YES;
     
     UIBarButtonItem *settingsButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"podgear"]
                                                                        style:UIBarButtonItemStylePlain
@@ -59,6 +56,17 @@
     [viewAllPromos setBackgroundColor:[[UIColor flatBlueColor] colorWithAlphaComponent:.6]];
     [self.view addSubview:viewAllPromos];
     
+    UILabel *viewPromo = [[UILabel alloc] init];
+    [viewPromo setText:@"View All Flight Promos"];
+    [viewPromo setTextAlignment:NSTextAlignmentCenter];
+    [viewPromo setTextColor:[UIColor flatWhiteColor]];
+    [viewPromo setNumberOfLines:0];
+    [viewPromo setFont:[UIFont systemFontOfSize:19]];
+    [viewAllPromos addSubview:viewPromo];
+    
+    UITapGestureRecognizer *searchPromoGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(openPromo:)];
+    [viewAllPromos addGestureRecognizer:searchPromoGesture];
+    
     [sayingContainer mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.view);
         make.left.equalTo(self.view);
@@ -81,37 +89,20 @@
         make.height.mas_equalTo(120);
     }];
     
-    UILabel *viewPromo = [[UILabel alloc] init];
-    [viewPromo setText:@"View All Flight Promos"];
-    [viewPromo setTextAlignment:NSTextAlignmentCenter];
-    [viewPromo setTextColor:[UIColor flatWhiteColor]];
-    [viewPromo setNumberOfLines:0];
-    [viewPromo setFont:[UIFont systemFontOfSize:19]];
-    [viewAllPromos addSubview:viewPromo];
-    
     [viewPromo mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(viewAllPromos).insets(padding);
     }];
-    
-    UITapGestureRecognizer *searchPromoGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(openPromo:)];
-    [viewAllPromos addGestureRecognizer:searchPromoGesture];
     // Do any additional setup after loading the view.
 }
 
-- (void)showSettings:(UIBarButtonItem *)theButton {
-    /*
-    UINavigationController *webBrowserNavigationController = [KINWebBrowserViewController navigationControllerWithWebBrowser];
-    [self presentViewController:webBrowserNavigationController animated:YES completion:nil];
-    */
-    IAPurchaseViewController *iap = [[IAPurchaseViewController alloc] init];
-    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:iap];
-    [self presentViewController:nav animated:YES completion:nil];
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self showAds];
 }
 
-- (void)openSearch:(id)sender {
-    [self.dbc clearAllFlights];
-    self.svc = [[SearchViewController alloc] init];
-    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:self.svc];
+- (void)showSettings:(UIBarButtonItem *)theButton {
+    IAPurchaseViewController *iap = [[IAPurchaseViewController alloc] init];
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:iap];
     [self presentViewController:nav animated:YES completion:nil];
 }
 
@@ -130,15 +121,6 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillDisappear:animated];
-}
-
-- (void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
-}
-
 /*
 #pragma mark - Navigation
 

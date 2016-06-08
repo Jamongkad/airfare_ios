@@ -16,6 +16,6 @@
 @interface IAPurchaseViewController : UIViewController <SKProductsRequestDelegate, SKPaymentTransactionObserver> {
     NSArray *productsArray;
     BOOL transactionInProgress;
+    UILabel *loadingText;
 }
-
 @end

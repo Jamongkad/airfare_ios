@@ -19,22 +19,19 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
+    NSLog(@"GroupFlights");
     [self.view setBackgroundColor:[UIColor colorWithCSS:@"#CAE1FF"]];
     
     FlightsTableViewController *ftvc = [[FlightsTableViewController alloc] init];
     
     NSString *url = [NSString stringWithFormat:@"%@%@/%@", API_URL, @"flights", self.flightData[@"flights"]];
-    
-    NSString *restURL = [url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-    
     [ftvc setDisplayFlights:self.flightData[@"displayFlights"]];
     
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.labelText = FLIGHT_FETCH_MSG;
 
     httpManager = [AFHTTPSessionManager manager];
-    [httpManager GET:restURL parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    [httpManager GET:url parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         [ftvc setFlights:responseObject];
         [ftvc.tableView reloadData];
         [hud hide:YES];
@@ -49,6 +46,7 @@
     [ftvc.view mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self.view);
     }];
+    [self showAds];
 }
 
 - (void)didReceiveMemoryWarning {
