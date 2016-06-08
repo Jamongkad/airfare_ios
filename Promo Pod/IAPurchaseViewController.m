@@ -13,11 +13,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"Settings";
-    UIBarButtonItem *dismiss = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel
+    UIBarButtonItem *dismiss = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone
                                                                              target:self
                                                                              action:@selector(cancel:)];
     [dismiss setTintColor:[UIColor whiteColor]];
-    [self.navigationItem setLeftBarButtonItem:dismiss];
+    [self.navigationItem setRightBarButtonItem:dismiss];
     [self.view setBackgroundColor:[UIColor whiteColor]];
     
     [[SKPaymentQueue defaultQueue] addTransactionObserver:self];
@@ -50,7 +50,7 @@
     [self.view addSubview:loadingText];
     
     [loadingText mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.bottom.equalTo(self.view).offset(-20);
+        make.bottom.equalTo(self.view).offset(-30);
         make.centerX.equalTo(self.view);
     }];
     
@@ -123,19 +123,11 @@
     if([productsArray count] > 0) {
         if([[btn currentTitle] isEqualToString:@"Tip of US$0.99"]) {
             SKProduct *generousTipProduct = [productsArray objectAtIndex:0];
-            /*
-            NSLog(@"%@", [generousTipProduct localizedTitle]);
-            NSLog(@"%@", [generousTipProduct price]);
-            */
             [self showActions:generousTipProduct];
         }
         
         if([[btn currentTitle] isEqualToString:@"Generous Tip of US$1.99"]) {
             SKProduct *massiveTipProduct = [productsArray objectAtIndex:1];
-            /*
-            NSLog(@"%@", [massiveTipProduct localizedTitle]);
-            NSLog(@"%@", [massiveTipProduct price]);
-            */
             [self showActions:massiveTipProduct];
         }
     }

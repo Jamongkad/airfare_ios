@@ -14,7 +14,6 @@
 #import "MatTapGestureRecognizer.h"
 
 #import "FlightDetailViewController.h"
-#import "CompareFlightsViewController.h"
 
 #import "NSDate+DateTools.h"
 #import "FlightHeaderView.h"

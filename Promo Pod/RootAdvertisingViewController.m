@@ -19,8 +19,7 @@ static NSString *const kBannerAdUnitID = @"ca-app-pub-9326129526361363/243010713
 
 - (void)showAds {
     bool isAdRemoved = [[NSUserDefaults standardUserDefaults] boolForKey:@"isAdRemoved"];
-    NSLog(isAdRemoved ? @"Ad is removed" : @"Ad is not removed");
-    
+    //NSLog(isAdRemoved ? @"Ad is removed" : @"Ad is not removed");
     if(!isAdRemoved) {
         dispatch_async(dispatch_get_main_queue(), ^{
             gbannerView = [[GADBannerView alloc] initWithAdSize:kGADAdSizeSmartBannerLandscape];
