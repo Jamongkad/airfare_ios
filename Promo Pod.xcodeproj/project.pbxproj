@@ -36,6 +36,8 @@
 		AFF65DE61B365A5800AFD902 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AFF65DE51B365A5800AFD902 /* Images.xcassets */; };
 		AFF65DE91B365A5800AFD902 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = AFF65DE71B365A5800AFD902 /* LaunchScreen.xib */; };
 		AFF65DF51B365A5800AFD902 /* Promo_PodTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AFF65DF41B365A5800AFD902 /* Promo_PodTests.m */; };
+		AFFE50751D08F36D0051E35A /* ModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AFFE50741D08F36D0051E35A /* ModalViewController.m */; };
+		AFFE50781D08F87D0051E35A /* WhatsNewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AFFE50771D08F87D0051E35A /* WhatsNewViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -105,6 +107,10 @@
 		AFF65DEE1B365A5800AFD902 /* Promo PodTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Promo PodTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AFF65DF31B365A5800AFD902 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AFF65DF41B365A5800AFD902 /* Promo_PodTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Promo_PodTests.m; sourceTree = "<group>"; };
+		AFFE50731D08F36D0051E35A /* ModalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModalViewController.h; sourceTree = "<group>"; };
+		AFFE50741D08F36D0051E35A /* ModalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModalViewController.m; sourceTree = "<group>"; };
+		AFFE50761D08F87D0051E35A /* WhatsNewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WhatsNewViewController.h; sourceTree = "<group>"; };
+		AFFE50771D08F87D0051E35A /* WhatsNewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WhatsNewViewController.m; sourceTree = "<group>"; };
 		E2791E01D9F021745E7C0EED /* libPods-Promo Pod.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Promo Pod.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0266355B10861C6FEE4F733 /* Pods-Promo Pod.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Promo Pod.release.xcconfig"; path = "Pods/Target Support Files/Pods-Promo Pod/Pods-Promo Pod.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -167,6 +173,8 @@
 				AF6EAE821BAD7CC9004C570D /* FilterViewController.h */,
 				AF6EAE831BAD7CC9004C570D /* FilterViewController.m */,
 				AF3B06EC1B4FC7EE00C886D9 /* FlightDetailViewController.h */,
+				AFFE50761D08F87D0051E35A /* WhatsNewViewController.h */,
+				AFFE50771D08F87D0051E35A /* WhatsNewViewController.m */,
 				AF3B06ED1B4FC7EE00C886D9 /* FlightDetailViewController.m */,
 				AFAB64331B452B0B00F0132E /* FlightsViewController.h */,
 				AFAB64341B452B0B00F0132E /* FlightsViewController.m */,
@@ -181,18 +189,20 @@
 		AF3B06EF1B4FCEFC00C886D9 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				AF6EAE851BB14277004C570D /* FilterHeaderView.h */,
-				AF6EAE861BB14277004C570D /* FilterHeaderView.m */,
 				AF9D5B821BB8E1E900DB0460 /* FilterButtonView.h */,
 				AF9D5B831BB8E1E900DB0460 /* FilterButtonView.m */,
+				AF6EAE851BB14277004C570D /* FilterHeaderView.h */,
+				AF6EAE861BB14277004C570D /* FilterHeaderView.m */,
 				AF6432251B7DDA6600852168 /* FlightHeaderDetailView.h */,
 				AF6432261B7DDA6600852168 /* FlightHeaderDetailView.m */,
-				AF96DDB51D080A3800D04F0E /* RootAdvertisingViewController.h */,
-				AF96DDB61D080A3800D04F0E /* RootAdvertisingViewController.m */,
 				AFC6210E1B59F55800D1E357 /* FlightHeaderView.h */,
 				AFC6210F1B59F55800D1E357 /* FlightHeaderView.m */,
 				AF3B06F01B4FCF2600C886D9 /* MatTapGestureRecognizer.h */,
 				AF3B06F11B4FCF2600C886D9 /* MatTapGestureRecognizer.m */,
+				AFFE50731D08F36D0051E35A /* ModalViewController.h */,
+				AFFE50741D08F36D0051E35A /* ModalViewController.m */,
+				AF96DDB51D080A3800D04F0E /* RootAdvertisingViewController.h */,
+				AF96DDB61D080A3800D04F0E /* RootAdvertisingViewController.m */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -474,9 +484,11 @@
 				AFAB64381B45397400F0132E /* FlightsTableViewController.m in Sources */,
 				AF39F9311B53967900A5FC54 /* PromoTableViewCell.m in Sources */,
 				AF2DFD7B1B51692700289C0D /* PromosTableViewController.m in Sources */,
+				AFFE50751D08F36D0051E35A /* ModalViewController.m in Sources */,
 				AF4930C51D0561F600830D96 /* IAPurchaseViewController.m in Sources */,
 				AF6EAE841BAD7CC9004C570D /* FilterViewController.m in Sources */,
 				AFF65DDB1B365A5800AFD902 /* main.m in Sources */,
+				AFFE50781D08F87D0051E35A /* WhatsNewViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -98,6 +98,7 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self showAds];
+    [self whatsNew];
 }
 
 - (void)showSettings:(UIBarButtonItem *)theButton {
@@ -115,6 +116,35 @@
     
     [drawer setShowsShadow:NO];
     [self.navigationController pushViewController:drawer animated:YES];
+}
+
+- (void)whatsNew {
+    NSString *currentVersion   = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"];
+    NSString *versionOfLastRun = [[NSUserDefaults standardUserDefaults] objectForKey:@"VersionOfLastRun"];
+    
+    NSLog(@"Current Version %@", currentVersion);
+    NSLog(@"Version of Last Run %@", versionOfLastRun);
+    
+    if (versionOfLastRun == nil) {
+        NSLog(@"First run of app");
+        [self whatsNewVC];
+    } else if (![versionOfLastRun isEqual:currentVersion]) {
+        NSLog(@"App was updated");
+        [self whatsNewVC];
+    } else {
+        NSLog(@"App Nothing happened");
+    }
+    
+    [[NSUserDefaults standardUserDefaults] setObject:currentVersion forKey:@"VersionOfLastRun"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
+- (void)whatsNewVC {
+    WhatsNewViewController *wnvc = [[WhatsNewViewController alloc] init];
+    [self addChildViewController:wnvc];
+    [wnvc didMoveToParentViewController:self];
+    [self.view addSubview:wnvc.view];
+
 }
 
 - (void)didReceiveMemoryWarning {

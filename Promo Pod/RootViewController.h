@@ -13,6 +13,7 @@
 #import "DatabaseController.h"
 #import "FilterViewController.h"
 #import "IAPurchaseViewController.h"
+#import "WhatsNewViewController.h"
 #import "MMDrawerController.h"
 @import GoogleMobileAds;
 
