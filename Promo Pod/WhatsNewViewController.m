@@ -33,7 +33,7 @@
     
     NSString *newsString = [NSString new];
     NSArray *announcements = @[@"Added new Settings Screen w/ Tip Jar.",
-                               @"Tip Jar allows you to pay a small one time fee for Promo Pod's development. Paying the fee will also turn off all ads.",
+                               @"Tip Jar allows you to pay a small fee for Promo Pod's development. Paying the fee will also deactivate all ads.",
                                ];
     
     for (NSString *news in announcements) {

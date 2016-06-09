@@ -44,7 +44,7 @@
     [self.view addSubview:tipText];
     
     loadingText = [[UILabel alloc] init];
-    [loadingText setText:@"Loading..."];
+    [loadingText setText:@"Loading buttons..."];
     [loadingText setTextAlignment:NSTextAlignmentCenter];
     [loadingText setLineBreakMode:NSLineBreakByWordWrapping];
     [self.view addSubview:loadingText];
@@ -141,7 +141,7 @@
                          message:@"Thank you for patronage. Your generosity will go a long way to help further the development of Promo Pod."
                   preferredStyle:UIAlertControllerStyleAlert];
     
-    UIAlertAction *buy = [UIAlertAction actionWithTitle:@"Donate" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+    UIAlertAction *buy = [UIAlertAction actionWithTitle:@"Leave Tip" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         //NSLog(@"Product %@", product);
         [self purchase:product];
     }];
